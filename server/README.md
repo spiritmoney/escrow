@@ -1,85 +1,133 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Escrow Application for Espees
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Project Overview
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+The Escrow Application is designed to facilitate safe and secure trading of goods and services using Espees as the currency. By acting as an intermediary, the platform ensures that transactions between buyers and sellers are fair, transparent, and secure. This application aims to promote the use of Espees in everyday transactions, thereby increasing its adoption and integration into daily life.
 
-## Description
+## Table of Contents
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- [Tech Stack](#tech-stack)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Running the Project](#running-the-project)
+- [API Endpoints](#api-endpoints)
+- [Architecture](#architecture)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Project setup
+## Tech Stack
 
-```bash
-$ yarn install
-```
+### Frontend
+- React.js with TypeScript
 
-## Compile and run the project
+### Backend
+- NestJS (Node.js framework)
+- MongoDB/PostgreSQL for Database
+- JWT for authentication
+- WebSocket for real-time communication
 
-```bash
-# development
-$ yarn run start
+### Blockchain Integration
+- Ethers.js
+- Solidity for smart contracts
 
-# watch mode
-$ yarn run start:dev
+### DevOps
+- Docker
+- Kubernetes
+- GitHub Actions for CI/CD
+- AWS/Heroku for cloud hosting
 
-# production mode
-$ yarn run start:prod
-```
+## Features
 
-## Run tests
+- User Registration/Login
+- Product Listing
+- Escrow Service
+- Transaction Management
+- Dispute Resolution
+- Rating System
 
-```bash
-# unit tests
-$ yarn run test
+## Getting Started
 
-# e2e tests
-$ yarn run test:e2e
+(Add instructions for setting up the project locally)
 
-# test coverage
-$ yarn run test:cov
-```
+## Running the Project
 
-## Resources
+To run the NestJS project, follow these steps:
 
-Check out a few resources that may come in handy when working with NestJS:
+1. Install dependencies:
+   ```
+   npm install
+   ```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+2. Start the development server:
+   ```
+   npm run start:dev
+   ```
 
-## Support
+3. For production, build and start the server:
+   ```
+   npm run build
+   npm run start:prod
+   ```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+4. Run tests:
+   ```
+   npm run test
+   ```
 
-## Stay in touch
+5. Run e2e tests:
+   ```
+   npm run test:e2e
+   ```
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+6. Check code linting:
+   ```
+   npm run lint
+   ```
+
+7. Format code:
+   ```
+   npm run format
+   ```
+
+Make sure you have the necessary environment variables set up before running the project.
+
+## API Endpoints
+
+### User Endpoints
+- `POST /register`: Register a new user
+- `POST /login`: Authenticate a user and generate a JWT
+- `GET /profile`: Retrieve user profile information
+
+### Product Endpoints
+- `POST /products`: Create a new product listing
+- `PUT /products/:id`: Edit product listing
+- `DELETE /products/:id`: Delete product listing
+- `GET /products`: Retrieve all product listings
+- `GET /products/:id`: Retrieve details of a specific product
+
+### Transaction Endpoints
+- `POST /transactions`: Initiate a new transaction
+- `GET /transactions`: Retrieve all transactions for a user
+- `GET /transactions/:id`: Retrieve details of a specific transaction
+
+### Escrow Endpoints
+- `POST /escrow`: Create a new escrow contract
+- `GET /escrow/:id`: Retrieve details of a specific escrow contract
+- `POST /escrow/:id/release`: Release funds from escrow
+- `POST /escrow/:id/dispute`: Initiate a dispute resolution process
+
+## Architecture
+
+The system architecture consists of:
+- Frontend: React.js application for user interfaces
+- Backend: NestJS server managing business logic and APIs
+- Blockchain: Ethereum blockchain for smart contracts handling Espees transactions
+- Database: MongoDB for storing user profiles, product listings, and transaction history
+
+## Contributing
+
+(Add guidelines for contributing to the project)
 
 ## License
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+(Add license information)
