@@ -1,9 +1,12 @@
 import { Module } from '@nestjs/common';
-import { EscrowService } from './escrow.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { EscrowController } from './escrow.controller';
+import { EscrowService } from './escrow.service';
+import { EscrowEntity } from './entities/escrow.entity';
 
 @Module({
-  providers: [EscrowService],
+  imports: [TypeOrmModule.forFeature([EscrowEntity])],
   controllers: [EscrowController],
+  providers: [EscrowService],
 })
 export class EscrowModule {}
