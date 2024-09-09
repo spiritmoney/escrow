@@ -1,3 +1,5 @@
+
+
 import { Controller, Post, Body, Param } from '@nestjs/common';
 import { EscrowService } from './escrow.service';
 
@@ -5,23 +7,23 @@ import { EscrowService } from './escrow.service';
 export class EscrowController {
   constructor(private escrowService: EscrowService) {}
 
-  @Post('new-agreement')
-  async newAgreement(
-    @Body()
-    body: {
-      seller: string;
-      verifier: string;
-      description: string;
-      amount: string;
-    },
-  ) {
-    return this.escrowService.newAgreement(
-      body.seller,
-      body.verifier,
-      body.description,
-      body.amount,
-    );
-  }
+  // @Post('new-agreement')
+  // async newAgreement(
+  //   @Body()
+  //   body: {
+  //     seller: string;
+  //     verifier: string;
+  //     description: string;
+  //     amount: string;
+  //   },
+  // ) {
+  //   return this.escrowService.newAgreement(
+  //     body.seller,
+  //     body.verifier,
+  //     body.description,
+  //     body.amount,
+  //   );
+  // }
 
   @Post('request-delivery/:id')
   async requestDelivery(@Param('id') id: number) {
