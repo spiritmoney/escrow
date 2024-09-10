@@ -4,6 +4,8 @@ import "./styles/globals.css";
 import {Poppins} from "next/font/google"
 import Navbar from './components/Navbar';
 import Header from "./components/Header";
+import Tabs from "./components/Tabs";
+import Footer from "./components/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,6 +28,8 @@ export const metadata: Metadata = {
   description: "Created by Debug",
 };
 
+
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,11 +42,22 @@ export default function RootLayout({
         <Navbar />
         <Header />
         </header>
-        <main>{children}</main>
+        <main>
+        <Tabs />
+        </main>
         <footer>
-          {/* For footer*/}
+          <Footer />
         </footer>
       </body>
     </html>
   ); 
 }
+
+
+
+
+// Updates_ Features
+// - Search Results page
+// - Navbar Dropdowns 
+// - Connect Wallet popup
+// .
