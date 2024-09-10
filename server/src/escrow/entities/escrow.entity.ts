@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm';
+import { TransactionEntity } from 'src/transactions/entities/transactions.entity';
 
 @Entity()
 export class EscrowEntity {
@@ -25,6 +26,9 @@ export class EscrowEntity {
   
     @Column({ nullable: true })
     arbitrator?: string;
+
+    @ManyToOne(() => TransactionEntity, (transaction) => transaction.id)
+    transaction: TransactionEntity;
 
     @CreateDateColumn()
     createdAt: Date;
