@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./styles/globals.css";
-import {Poppins} from "next/font/google"
+import { Poppins } from "next/font/google"
 import Navbar from './components/Navbar';
 import Header from "./components/Header";
 import Tabs from "./components/Tabs";
@@ -26,6 +26,9 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Escrow",
   description: "Created by Debug",
+  icons: {
+    icon: '/icons/favicon.ico',
+  }
 };
 
 
@@ -39,18 +42,19 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.className}>
         <header>
-        <Navbar />
-        <Header />
+          <Navbar />
+          <Header />
         </header>
         <main>
-        <Tabs />
+          <Tabs />
+          {/* {children} */}
         </main>
         <footer>
           <Footer />
         </footer>
       </body>
     </html>
-  ); 
+  );
 }
 
 
@@ -58,6 +62,6 @@ export default function RootLayout({
 
 // Updates_ Features
 // - Search Results page
-// - Navbar Dropdowns 
+// - Navbar Dropdowns
 // - Connect Wallet popup
 // .

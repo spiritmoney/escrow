@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import ProductsPage from "../products/page";
-import ServicesPage from "../services/page";
+import ProductsTab from "./ProductsTab";
+import ServicesTab from "./ServicesTab";
+
 
 export default function Tabs() {
     const [activeTab, setActiveTab] = useState('products');
@@ -27,7 +28,7 @@ export default function Tabs() {
             </div>
 
             <div>
-                {activeTab === 'products' ? <ProductsPage /> : <ServicesPage />}
+                {activeTab === 'products' ? <ProductsTab /> : <ServicesTab />}
             </div>
         </>
 

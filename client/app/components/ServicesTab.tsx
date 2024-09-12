@@ -61,7 +61,7 @@ const services = [
         rate: '10.5 Espees', src: '/images/profile.png' },
 ]
 
-export default function ServicesPage() {
+export default function ServicesTab() {
     return (
         <>
             <ServiceTypes />

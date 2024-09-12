@@ -19,11 +19,11 @@ interface ServiceProps {
 
 export default function ServiceCard({ service }: ServiceProps) {
     return (
-        <div className="flex flex-col justify-center items-center p-2 border rounded-lg bg-white">
+        <div className="flex flex-col justify-center items-center p-3 py-6 cursor-pointer border rounded-lg bg-white">
             <img src={service.src} alt='image' className="mb-4 rounded-lg" />
             <h2 className="text-xl text-gray-800 font-semibold">{service.name}</h2>
-            <p className="text-blue-500 text-sm font-semibold ">{service.service}</p>
-            <p className="mt-2 text-gray-400 text-sm px-1">{service.desc}</p>
+            <p className="text-blue-600 text-sm font-semibold ">{service.service}</p>
+            <p className="mt-2 text-gray-400 text-sm ">{service.desc}</p>
 
             {/* Star Rating */}
             <div className="flex justify-center items-center mt-5">

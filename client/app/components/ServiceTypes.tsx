@@ -15,17 +15,6 @@ export default function ServiceTypes() {
     }
 
     return (
-        // <div className="w-11/12 Flex mb-5 mx-auto">
-        //     <a className="bg-white text-sm text-black mr-2 p-2 px-4 rounded-md" href="">All</a>
-        //     <a className="bg-white text-sm text-black mx-2 p-2 px-4 rounded-md" href="">Programming</a>
-        //     <a className="bg-white text-sm text-black mx-2 p-2 px-4 rounded-md" href="">Graphic Design</a>
-        //     <a className="bg-white text-sm text-black mx-2 p-2 px-4 rounded-md" href="">digital Marketing</a>
-        //     <a className="bg-white text-sm text-black mx-2 p-2 px-4 rounded-md" href="">Video Animation</a>
-        //     <a className="bg-white text-sm text-black mr-2 p-2 px-4 rounded-md" href="">Social Media Marketing</a>
-        //     <a className="bg-white text-sm text-black mx-2 p-2 px-4 rounded-md" href="">SEO</a>
-        //     <a className="bg-white text-sm text-black mx-2 p-2 px-4 rounded-md" href="">Web Development</a>
-        // </div>
-
         <div className="relative inline-block ml-14">
             <div className="flex items-center space-x-3">
                 <p className="text-gray-600 font-semibold">Category</p>
