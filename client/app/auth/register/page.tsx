@@ -1,6 +1,5 @@
 "use client";
 
-import Navbar from "@/app/components/Navbar";
 import Image from "next/image";
 import React, { useState } from "react";
 import countriesData from "@/countries.json";
@@ -41,11 +40,10 @@ const Page = () => {
         onClick={() => handleSelect(type)}
       >
         <div
-          className={`w-[257px] h-[257px] rounded-xl border-2 py-10 font-medium space-y-3 transition-colors duration-300 ${
-            isSelected
-              ? "bg-[#035ADC] border-[#035ADC] text-white"
-              : "bg-white border-[#035ADC] text-[#035ADC] group-hover:bg-[#035ADC] group-hover:text-white"
-          }`}
+          className={`w-[257px] h-[257px] rounded-xl border-2 py-10 font-medium space-y-3 transition-colors duration-300 ${isSelected
+            ? "bg-[#035ADC] border-[#035ADC] text-white"
+            : "bg-white border-[#035ADC] text-[#035ADC] group-hover:bg-[#035ADC] group-hover:text-white"
+            }`}
         >
           <div className="px-8">
             <Image
@@ -234,7 +232,6 @@ const Page = () => {
 
   return (
     <main className="bg-white w-screen h-screen flex flex-col">
-      <Navbar />
       <div className="flex-grow flex flex-col justify-center items-center space-y-8">
         {!showForm ? (
           <>
@@ -258,12 +255,14 @@ const Page = () => {
             </Link>
           </>
         ) : (
-          <div className="space-y-4 flex flex-col items-center justify-center">
-            <div className="text-[32px] text-black font-medium">
-              Create an Escrow Account
+          <Link href={"/"}>
+            <div className="space-y-4 flex flex-col items-center justify-center">
+              <div className="text-[32px] text-black font-medium">
+                Create an Escrow Account
+              </div>
+              {renderForm()}
             </div>
-            {renderForm()}
-          </div>
+          </Link>
         )}
       </div>
     </main>

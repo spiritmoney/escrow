@@ -1,6 +1,7 @@
 import Heading from '../components/Heading';
 import ServiceTypes from '../components/ServiceTypes';
 import ServiceCard, { ServiceTypeCard } from '../components/ServiceCard';
+import Link from 'next/link';
 
 const servicesTypes = [
     { id: 1, name: 'Graphics Design', src: '/images/service.png' },
@@ -80,7 +81,9 @@ export default function ServicesTab() {
             <div className="container w-11/12 bg-gray-100 p-5 rounded-lg mx-auto">
                 <div className="grid grid-cols-4 gap-6">
                     {services.map(service => (
-                        <ServiceCard key={service.id} service={service} />
+                        <Link href={'/service/1'}>
+                            <ServiceCard key={service.id} service={service} />
+                        </Link>
                     ))}
                 </div>
 
