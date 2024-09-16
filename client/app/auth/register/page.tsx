@@ -5,6 +5,8 @@ import Image from "next/image";
 import React, { useState } from "react";
 import countriesData from "@/countries.json";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 const countries = countriesData.map((country) => ({
   name: country.name,
@@ -15,6 +17,14 @@ const countries = countriesData.map((country) => ({
 const Page = () => {
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    kingsChat: "",
+    email: "",
+    country: "",
+  });
+  const router = useRouter();
 
   const handleSelect = (type: string) => {
     setSelectedType(type);
@@ -86,15 +96,48 @@ const Page = () => {
     }
   };
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, userType: selectedType }),
+      });
+
+      if (response.ok) {
+        const user = await response.json();
+        // Sign in the user after successful signup
+        await signIn("credentials", {
+          email: user.email,
+          password: "password", // You should implement a proper password flow
+          callbackUrl: "/dashboard",
+        });
+      } else {
+        // Handle error
+        console.error("Signup failed");
+      }
+    } catch (error) {
+      console.error("Error during signup:", error);
+    }
+  };
+
   const renderForm = () => {
     return (
-      <form className="w-[512px] space-y-4">
+      <form onSubmit={handleSubmit} className="w-[512px] space-y-4">
         <div className="text-black text-[14px] space-y-2">
           <label htmlFor="firstName" className="font-medium">
             First Name
           </label>
           <input
             type="text"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleInputChange}
             placeholder="Enter your first name"
             className="w-full h-[48px] p-2 border border-black rounded-lg"
           />
@@ -105,6 +148,9 @@ const Page = () => {
           </label>
           <input
             type="text"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleInputChange}
             placeholder="Enter your Last name"
             className="w-full h-[48px] p-2 border border-black rounded-lg"
           />
@@ -115,6 +161,9 @@ const Page = () => {
           </label>
           <input
             type="text"
+            name="kingsChat"
+            value={formData.kingsChat}
+            onChange={handleInputChange}
             placeholder="Enter your KingsChat Number"
             className="w-full h-[48px] p-2 border border-black rounded-lg"
           />
@@ -125,6 +174,9 @@ const Page = () => {
           </label>
           <input
             type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
             placeholder="Enter your Email Address"
             className="w-full h-[48px] p-2 border border-black rounded-lg"
           />
@@ -135,6 +187,9 @@ const Page = () => {
           </label>
           <select
             id="country"
+            name="country"
+            value={formData.country}
+            onChange={handleInputChange}
             className="w-full h-[48px] p-2 border border-black rounded-lg"
           >
             <option value="">Select your country</option>
@@ -167,14 +222,12 @@ const Page = () => {
             .
           </label>
         </div>
-        <Link href={"/auth/register/verify"}>
-          <button
-            type="submit"
-            className="w-full mt-5 h-[50px] bg-[#035ADC] font-medium text-white rounded-lg"
-          >
-            Create Account
-          </button>
-        </Link>
+        <button
+          type="submit"
+          className="w-full mt-5 h-[50px] bg-[#035ADC] font-medium text-white rounded-lg"
+        >
+          Create Account
+        </button>
       </form>
     );
   };
