@@ -16,7 +16,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="bg-white p-4 h-24 flex justify-center px-14">
+    <nav className="w-screen bg-white p-4 h-24 flex justify-center px-14 border-b border-gray-300">
       <div className="container flex justify-center items-center space-x-5">
         <Link href="/" legacyBehavior>
           <a className="text-blue-600 flex-1 text-lg font-bold" >ESCROW</a>
