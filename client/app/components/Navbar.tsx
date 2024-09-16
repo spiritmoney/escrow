@@ -2,10 +2,16 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import FundWallet from './FundWallet';
 
 export default function Navbar() {
   const [selectedOption, setSelectedOption] = useState("Products");
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+  function togglePopup() {
+    setIsPopupVisible(!isPopupVisible);
+  }
 
   function toggleDropdown() {
     setIsDropdownVisible(!isDropdownVisible);
@@ -41,17 +47,23 @@ export default function Navbar() {
           )}
         </div>
 
-        <div className="flex space-x-6">
-          <Link href="/account" legacyBehavior>
-            <a className="text-gray-500 flex items-center">
-              <img className='m-1' src="/icons/user.png" width={20} alt="" />
-              Account
-              <img className='m-1' src="/icons/arrdown.png" width={20} alt="" />
-            </a>
-          </Link>
-          <Link href="/" legacyBehavior>
-            <a className="bg-blue-600 p-2 text-white rounded-md">Connect Wallet</a>
-          </Link>
+        <div className="relative flex space-x-6">
+          <div className="text-gray-500 flex items-start">
+            <img className='m-1' src="/images/profile.png" width={30} alt="" />
+            <span className=''>
+              <h2>Kingsley Odim</h2>
+              <h4 className='text-sm text-blue-600'>Client</h4>
+            </span>
+            <img className='m-1' src="/icons/arrdown.png" width={20} alt="" />
+          </div>
+          <button onClick={togglePopup} className="bg-blue-600 p-2 text-white px-5 rounded-md">
+            Fund Wallet
+          </button>
+          {isPopupVisible && (
+            <FundWallet togglePopup={togglePopup}/>
+          )}
+          <div>
+          </div>
         </div>
       </div>
     </nav>
