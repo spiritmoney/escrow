@@ -220,12 +220,13 @@ const Page = () => {
             .
           </label>
         </div>
-        <button
-          type="submit"
-          className="w-full mt-5 h-[50px] bg-[#035ADC] font-medium text-white rounded-lg"
-        >
-          Create Account
-        </button>
+        <Link href={"/auth/register/verify"}>
+          <button
+            className="w-full mt-5 h-[50px] bg-[#035ADC] font-medium text-white rounded-lg"
+          >
+            Create Account
+          </button>
+        </Link>
       </form>
     );
   };
@@ -255,14 +256,12 @@ const Page = () => {
             </Link>
           </>
         ) : (
-          <Link href={"/"}>
-            <div className="space-y-4 flex flex-col items-center justify-center">
-              <div className="text-[32px] text-black font-medium">
-                Create an Escrow Account
-              </div>
-              {renderForm()}
+          <div className="space-y-4 flex flex-col items-center justify-center">
+            <div className="text-[32px] text-black font-medium">
+              Create an Escrow Account
             </div>
-          </Link>
+            {renderForm()}
+          </div>
         )}
       </div>
     </main>

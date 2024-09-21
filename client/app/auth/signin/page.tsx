@@ -2,7 +2,7 @@
 
 import Navbar from "@/app/components/Navbar";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "next/link"; 
 import React from "react";
 
 const page = () => {
@@ -52,7 +52,7 @@ const page = () => {
             <Link href={"/"}>
               <button
                 type="submit"
-                className="w-full h-[50px] bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-[#035ADC] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                className="w-full h-[50px] bg-blue-600 text-white py-2 px-4 mt-4 rounded-md hover:bg-[#035ADC] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
               >
                 Login
               </button>
@@ -63,7 +63,7 @@ const page = () => {
             <span className="text-gray-600">OR</span>
             <div className="w-full h-[2px] bg-[#CACACA] "></div>
           </div>
-          <button className="mt-4 w-full h-[50px] border-2 border-[#035ADC] text-[#035ADC] font-semibold py-2 px-4 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 flex items-center justify-center">
+          <button className="mt-4 w-full h-[50px] border-2 border-[#035ADC] text-[#035ADC] font-semibold py-2 px-4 rounded-md hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 flex items-center justify-center">
             <Image
               src="/kingschat-icon.svg"
               width={35}

@@ -17,15 +17,21 @@ export default function FundWallet({ togglePopup }: FundWalletProps) {
     }, []);
 
     return (
-        <div className="absolute top-16 right-2 bg-white shadow-lg text-black z-10 p-7 rounded-3xl flex flex-col
+        <div className="absolute top-16 right-2 bg-white shadow-lg text-black z-10 p-4 rounded-3xl flex flex-col
         justify-evenly items-center">
-            <p className="font-semibold text-lg py-3">Your Wallet Information</p>
-            <p className="text-sm">Your Wallet Address</p>
-            <p className="text-sm py-1">0x123bf43hdf678fh5yhn6lkmhs7jnsdhdjkcdnh7...</p>
-            <span className="flex items-center space-x-2 mb-5 cursor-pointer text-blue-600">
-                <img src="/icons/copy.png" alt="icon" height={5}/>
-                <p className="text-sm">Copy address</p>
-            </span>
+            <p className="text-3xl w-full text-center py-3 border-b mb-4">Wallet Information</p>
+            <div className='w-full'>
+                <p className="text-sm font-semibold">My Wallet Address:</p>
+                <p className="text-sm py-1">0x123bf43hdf678fh5yhn6lkmhs7jnsdhdjkcdnh7...</p>
+                <span className="flex items-center space-x-2 cursor-pointer text-blue-600">
+                    <img src="/icons/copy.png" alt="icon" height={5}/>
+                    <p className="text-sm">Copy address</p>
+                </span>
+            </div>
+            <div className='w-full flex items-center justify-center border-y py-5 my-4 space-x-5'>
+                <p className="font-semibold">My Balance:</p>
+                <p className='p-3 bg-blue-400 text-white text-lg font-semibold'>200 Espees</p>
+            </div>
 
             {isLoading ? (
                 <div className="py-5 flex flex-col items-center">
@@ -39,7 +45,7 @@ export default function FundWallet({ togglePopup }: FundWalletProps) {
                 </div>
             ) : (
                 <div className='flex flex-col items-center'>
-                    <p>Wallet QR Code</p>
+                    <p className='text-sm'>Wallet QR Code</p>
                     <img className="py-2" src="/images/QrCode.png" alt="QR Code" />
                 </div>
             )}

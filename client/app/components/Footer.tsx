@@ -1,8 +1,8 @@
 export default function Footer() {
     return (
-      <footer className="mt-10">
+      <footer className="mt-10 ">
         {/* Main Footer Section */}
-        <div className="w-full h-80 bg-blue-700 text-white py-10">
+        <div className="w-screen h-80 bg-blue-700 text-white py-10">
           {/* <div className="container mx-auto grid grid-cols-3 gap-14 px-20"> */}
           <div className="container mx-auto flex justify-between px-10">
             

@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 
 const page = () => {
   return (
-    <main className="w-screen h-screen">
+    <main className="w-screen">
       {/* <Navbar /> */}
       <GuestNavbar />
       <Header />
