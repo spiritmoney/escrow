@@ -1,38 +1,32 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
 import { TransactionEntity } from 'src/transactions/entities/transactions.entity';
 
-@Entity()
-export class EscrowEntity {
-    @PrimaryGeneratedColumn()
-    id: number;
-  
-    @Column()
-    seller: string;
-  
-    @Column()
-    verifier: string;
-  
-    @Column()
-    description: string;
-  
-    @Column()
-    amount: string; 
-    
-    @Column({ default: 'Pending' })
-    status: string;
-  
-    @Column({ nullable: true })
-    winner?: string;
-  
-    @Column({ nullable: true })
-    arbitrator?: string;
+@Schema({ timestamps: true }) // Automatically adds createdAt and updatedAt
+export class Escrow extends Document {
+  @Prop({ required: true })
+  seller: string;
 
-    @ManyToOne(() => TransactionEntity, (transaction) => transaction.id)
-    transaction: TransactionEntity;
+  @Prop({ required: true })
+  verifier: string;
 
-    @CreateDateColumn()
-    createdAt: Date;
+  @Prop({ required: true })
+  description: string;
 
-    @UpdateDateColumn()
-    updatedAt: Date;
+  @Prop({ required: true })
+  amount: string;
+
+  @Prop({ default: 'Pending' })
+  status: string;
+
+  @Prop({ nullable: true })
+  winner?: string;
+
+  @Prop({ nullable: true })
+  arbitrator?: string;
+
+  @Prop({ type: String, ref: 'TransactionEntity', required: true }) // Reference to Transaction model
+  transaction: TransactionEntity;
 }
+
+export const EscrowSchema = SchemaFactory.createForClass(Escrow);

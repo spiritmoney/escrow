@@ -1,39 +1,32 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { ProductEntity } from './entities/products.entity';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { Product } from './entities/products.entity';
 
 @Injectable()
 export class ProductService {
   constructor(
-    @InjectRepository(ProductEntity) private productRepository: Repository<ProductEntity>,
+    @InjectModel(Product.name) private productModel: Model<Product>,
   ) {}
 
   async createProduct(data: any) {
-    const product = this.productRepository.create(data);
-    return this.productRepository.save(product);
+    const product = new this.productModel(data);
+    return product.save();
   }
 
   async getAllProducts() {
-    return this.productRepository.find();
+    return this.productModel.find().exec();
   }
 
-  // Updated getProductById method
-  async getProductById(id: number) {
-    return this.productRepository.findOne({
-      where: { id }, // Updated to use the 'where' clause
-    });
+  async getProductById(id: string) {
+    return this.productModel.findById(id).exec();
   }
 
-  // Updated updateProduct method
-  async updateProduct(id: number, data: any) {
-    await this.productRepository.update(id, data);
-    return this.productRepository.findOne({
-      where: { id }, // Updated to use the 'where' clause
-    });
+  async updateProduct(id: string, data: any) {
+    return this.productModel.findByIdAndUpdate(id, data, { new: true }).exec();
   }
 
-  async deleteProduct(id: number) {
-    return this.productRepository.delete(id);
+  async deleteProduct(id: string) {
+    return this.productModel.findByIdAndDelete(id).exec();
   }
 }

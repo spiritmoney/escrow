@@ -35,7 +35,7 @@ export class UserController {
   }
 
   @Get('profile/:id')
-  async getProfile(@Body() body: { id: number }) {
+  async getProfile(@Body() body: { id: string }) {
     return this.userService.getProfile(body.id);
   }
 }
