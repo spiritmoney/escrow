@@ -1,25 +1,19 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Schema, Document } from 'mongoose';
 
-@Entity()
-export class UserEntity {
-    @PrimaryGeneratedColumn()
-    id: number;
-
-    @Column({ unique: true })
-    email: string;
-
-    @Column()
-    password: string;
-
-    @Column()
-    fullName: string;
-
-    @Column({ default: false })
-    isVerified: boolean;
-
-    @CreateDateColumn()
-    createdAt: Date;
-
-    @UpdateDateColumn()
-    updatedAt: Date;
+// Define the interface representing the User document
+export interface User extends Document {
+  email: string;
+  password: string;
+  fullName: string;
+  isVerified: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }
+
+// Define the Mongoose schema
+export const UserSchema = new Schema<User>({
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  fullName: { type: String, required: true },
+  isVerified: { type: Boolean, default: false },
+}, { timestamps: true });

@@ -1,33 +1,35 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { EscrowModule } from './escrow/escrow.module';
-import { EscrowEntity } from './escrow/entities/escrow.entity';
-import { ProductEntity } from './products/entities/products.entity';
 import { ProductModule } from './products/products.module';
-import { UserEntity } from './users/entities/users.entity';
 import { UserModule } from './users/users.module';
-import { TransactionEntity } from './transactions/entities/transactions.entity';
 import { TransactionModule } from './transactions/transactions.module';
+import { RatingModule } from './rating/rating.module';
+import { DisputeModule } from './dispuite/dispute.module';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      password: '08086338671',
-      username: 'postgres',
-      entities: [EscrowEntity, TransactionEntity, UserEntity, ProductEntity],
-      database: 'EscrowDb',
-      synchronize: true,
-      logging: true,
+    // ConfigModule for handling environment variables
+    ConfigModule.forRoot({ isGlobal: true }),
+
+    // MongooseModule for MongoDB connection using async configuration
+    MongooseModule.forRootAsync({
+      useFactory: (configService: ConfigService) => ({
+        uri: configService.getOrThrow<string>('MONGO_URI'),
+      }),
+      inject: [ConfigService],
     }),
+
+    // Feature modules (no TypeORM, these will use Mongoose instead)
     EscrowModule,
     TransactionModule,
     UserModule,
     ProductModule,
+    RatingModule,
+    DisputeModule,
   ],
   controllers: [AppController],
   providers: [AppService],

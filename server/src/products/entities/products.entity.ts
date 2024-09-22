@@ -1,26 +1,20 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-import { UserEntity } from 'src/users/entities/users.entity';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
+import { User } from 'src/users/entities/users.entity';
 
-@Entity()
-export class ProductEntity {
-    @PrimaryGeneratedColumn()
-    id: number;
+@Schema({ timestamps: true }) // Adds createdAt and updatedAt automatically
+export class Product extends Document {
+  @Prop({ required: true })
+  title: string;
 
-    @Column()
-    title: string;
+  @Prop({ required: true })
+  description: string;
 
-    @Column('text')
-    description: string;
+  @Prop({ required: true })
+  price: string;
 
-    @Column()
-    price: string;
-
-    @ManyToOne(() => UserEntity, (user) => user.id)
-    seller: UserEntity;
-
-    @CreateDateColumn()
-    createdAt: Date;
-
-    @UpdateDateColumn()
-    updatedAt: Date;
+  @Prop({ type: String, ref: 'User', required: true }) // Reference to User model
+  seller: User;
 }
+
+export const ProductSchema = SchemaFactory.createForClass(Product);

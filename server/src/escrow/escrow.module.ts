@@ -1,12 +1,15 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { EscrowController } from './escrow.controller';
+import { MongooseModule } from '@nestjs/mongoose';
+import { Escrow, EscrowSchema } from './entities/escrow.entity';
 import { EscrowService } from './escrow.service';
-import { EscrowEntity } from './entities/escrow.entity';
+import { EscrowController } from './escrow.controller';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([EscrowEntity])],
-  controllers: [EscrowController],
+  imports: [
+    MongooseModule.forFeature([{ name: Escrow.name, schema: EscrowSchema }]), // Register the model
+  ],
   providers: [EscrowService],
+  controllers: [EscrowController],
+  exports: [MongooseModule], // Export the MongooseModule to be used in other modules
 })
 export class EscrowModule {}
