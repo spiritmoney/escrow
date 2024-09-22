@@ -16,17 +16,17 @@ export class ProductController {
   }
 
   @Get(':id')
-  async getProductById(@Param('id') id: number) {
+  async getProductById(@Param('id') id: string) {
     return this.productService.getProductById(id);
   }
 
   @Put(':id')
-  async updateProduct(@Param('id') id: number, @Body() body: any) {
+  async updateProduct(@Param('id') id: string, @Body() body: any) {
     return this.productService.updateProduct(id, body);
   }
 
   @Delete(':id')
-  async deleteProduct(@Param('id') id: number) {
+  async deleteProduct(@Param('id') id: string) {
     return this.productService.deleteProduct(id);
   }
 }

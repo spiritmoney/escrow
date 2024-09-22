@@ -1,31 +1,26 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-import { UserEntity } from 'src/users/entities/users.entity';
-import { ProductEntity } from 'src/products/entities/products.entity';
-import { EscrowEntity } from 'src/escrow/entities/escrow.entity';
+import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
+import { Document, Types } from 'mongoose'; // Import Types from mongoose
+import { User } from 'src/users/entities/users.entity';
+import { Product } from 'src/products/entities/products.entity';
+import { Escrow } from 'src/escrow/entities/escrow.entity';
 
-@Entity()
-export class TransactionEntity {
-    @PrimaryGeneratedColumn()
-    id: number;
+@Schema({ timestamps: true })
+export class TransactionEntity extends Document {
+  
+  @Prop({ type: Types.ObjectId, ref: 'User', required: true }) // Use Types.ObjectId
+  buyer: User;
 
-    @ManyToOne(() => UserEntity, (user) => user.id)
-    buyer: UserEntity;
+  @Prop({ type: Types.ObjectId, ref: 'Product', required: true }) // Use Types.ObjectId
+  product: Product;
 
-    @ManyToOne(() => ProductEntity, (product) => product.id)
-    product: ProductEntity;
+  @Prop({ required: true })
+  amount: string;
 
-    @Column()
-    amount: string;
+  @Prop({ default: 'Pending' })
+  status: string;
 
-    @Column({ default: 'Pending' })
-    status: string;
-
-    @ManyToOne(() => EscrowEntity, (escrow) => escrow.id, { nullable: true })
-    escrow?: EscrowEntity;
-
-    @CreateDateColumn()
-    createdAt: Date;
-
-    @UpdateDateColumn()
-    updatedAt: Date;
+  @Prop({ type: Types.ObjectId, ref: 'Escrow', required: false }) // Use Types.ObjectId
+  escrow?: Escrow;
 }
+
+export const TransactionSchema = SchemaFactory.createForClass(TransactionEntity);

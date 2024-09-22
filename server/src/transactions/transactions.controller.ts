@@ -16,7 +16,7 @@ export class TransactionController {
   }
 
   @Get(':id')
-  async getTransactionById(@Param('id') id: number) {
+  async getTransactionById(@Param('id') id: string) {
     return this.transactionService.getTransactionById(id);
   }
 }

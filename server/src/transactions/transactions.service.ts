@@ -1,27 +1,25 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 import { TransactionEntity } from './entities/transactions.entity';
+
 
 @Injectable()
 export class TransactionService {
   constructor(
-    @InjectRepository(TransactionEntity) private transactionRepository: Repository<TransactionEntity>,
+    @InjectModel(TransactionEntity.name) private transactionModel: Model<TransactionEntity>,
   ) {}
 
-  async createTransaction(data: any) {
-    const transaction = this.transactionRepository.create(data);
-    return this.transactionRepository.save(transaction);
+  async createTransaction(data: any): Promise<TransactionEntity> {
+    const transaction = new this.transactionModel(data);
+    return transaction.save();
   }
 
-  async getAllTransactions() {
-    return this.transactionRepository.find();
+  async getAllTransactions(): Promise<TransactionEntity[]> {
+    return this.transactionModel.find().exec();
   }
 
-  // Updated getTransactionById method
-  async getTransactionById(id: number) {
-    return this.transactionRepository.findOne({
-      where: { id },
-    });
+  async getTransactionById(id: string): Promise<TransactionEntity> {
+    return this.transactionModel.findById(id).exec();
   }
 }
