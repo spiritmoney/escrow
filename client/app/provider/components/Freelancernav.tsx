@@ -3,7 +3,7 @@
 import Rating from '@/app/components/Rating';
 import { services } from '@/app/data/Service';
 import React, { useState } from 'react'
-import NewOrders from './OrdersTabs';
+import NewOrders, { Active, Cancelled, Completed } from './OrdersTabs';
 
 export default function Orders() {
     const [activeTab, setActiveTab] = useState("New Orders");
@@ -13,50 +13,68 @@ export default function Orders() {
     };
     return (
         <div className='w-full'>
-            <h1 className='text-black text-2xl font-semibold'>Orders</h1>
+            <h1 className='w-11/12 mx-auto text-black text-3xl py-3 font-semibold'>Orders</h1>
 
-            <div className="flex w-full space-x-40 border-b">
+            <div className="w-11/12 flex items-center mx-auto border-b border-gray-400">
                 <button
-                    className={`py-2 px-4 text-lg sm:text-xl font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "New Orders"
-                            ? "text-blue-600 border-b-2 border-blue-600"
-                            : "text-black hover:text-blue-400"
+                    className={`w-1/4 py-2 px-4 text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "New Orders"
+                            ? "text-black border-b-2 border-blue-600"
+                            : "text-gray-400 hover:text-blue-400"
                         }`}
                     onClick={() => handleTabClick("New Orders")}
                 >
                     New Orders
+                    <span className={`ml-2 text-white px-2 rounded-full 
+                        ${activeTab === "New Orders" ? "bg-blue-600" : "bg-gray-400"}`}>
+                            7
+                    </span>
                 </button>
                 <button
-                    className={`py-2 px-4 text-lg sm:text-xl font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Active"
-                            ? "text-blue-600 border-b-2 border-blue-600"
-                            : "text-black hover:text-blue-400"
+                    className={`w-1/4 py-2 px-4 text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Active"
+                            ? "text-black border-b-2 border-blue-600"
+                            : "text-gray-400 hover:text-blue-400"
                         }`}
                     onClick={() => handleTabClick("Active")}
                 >
                     Active
+                    <span className={`ml-2 text-white px-2 rounded-full 
+                        ${activeTab === "Active" ? "bg-blue-600" : "bg-gray-400"}`}>
+                            3
+                    </span>
                 </button>
                 <button
-                    className={`py-2 px-4 text-lg sm:text-xl font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Completed"
-                            ? "text-blue-600 border-b-2 border-blue-600"
-                            : "text-black hover:text-blue-400"
+                    className={`w-1/4 py-2 px-4 text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Completed"
+                            ? "text-black border-b-2 border-blue-600"
+                            : "text-gray-400 hover:text-blue-400"
                         }`}
                     onClick={() => handleTabClick("Completed")}
                 >
                     Completed
+                    <span className={`ml-2 text-white px-2 rounded-full 
+                        ${activeTab === "Completed" ? "bg-blue-600" : "bg-gray-400"}`}>
+                            5
+                    </span>
                 </button>
                 <button
-                    className={`py-2 px-4 text-lg sm:text-xl font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Cancelled"
-                            ? "text-blue-600 border-b-2 border-blue-600"
-                            : "text-black hover:text-blue-400"
+                    className={`w-1/4 py-2 px-4 text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Cancelled"
+                            ? "text-black border-b-2 border-blue-600"
+                            : "text-gray-400 hover:text-blue-400"
                         }`}
                     onClick={() => handleTabClick("Cancelled")}
                 >
                     Cancelled
+                    <span className={`ml-2 text-white px-2 rounded-full 
+                        ${activeTab === "Cancelled" ? "bg-blue-600" : "bg-gray-400"}`}>
+                            4
+                    </span>
                 </button>
             </div>
 
-            <div className="max-w-full px-14 mx-auto mt-4">
+            <div className="w-11/12 mx-auto mt-4">
                 {activeTab === "New Orders" && <NewOrders />}
-                
+                {activeTab === "Active" && <Active />}
+                {activeTab === "Completed" && <Completed />}
+                {activeTab === "Cancelled" && <Cancelled />}
             </div>
 
         </div>
@@ -109,7 +127,7 @@ export function Profile({ params }: { params: { id: string } }) {
     }
     return (
         <div className='w-full '>
-            <h1 className='text-black text-2xl font-semibold'>Profile</h1>
+            <h1 className='text-black text-3xl py-3 font-semibold'>Profile</h1>
             <div className="container bg-white rounded-xl mt-10 mx-auto w-full text-black">
                 <div className="relative bg-white w-full p-7 rounded-xl flex items-center space-x-8">
                     <div className='relative flex items-center justify-center w-32 h-w-32'>

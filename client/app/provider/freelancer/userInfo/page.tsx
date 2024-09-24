@@ -248,8 +248,7 @@ function Step3({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
 
                 <div className='pb-20'>
                     <label htmlFor="hourly-rate">What is your hourly rate?</label>
-                    <div style={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
-
+                    <div className='flex items-center mt-5 border-2 border-gray-400 rounded-lg'>
 
                         {/* Rate Input */}
                         <input
@@ -257,17 +256,17 @@ function Step3({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
                             type="text"
                             value={`${hourlyRate} Espees`}
                             readOnly
-                            className='w-96 p-5 border-y-2 border-l-2 border-gray-400 rounded-l-lg outline-none'
+                            className='w-96 p-5 outline-none rounded-lg'
                         />
 
-                        <div className='flex flex-col items-center w-40 p-[19.5px] border-y-2 border-r-2 border-gray-400 rounded-r-lg'>
+                        <div className='flex flex-col items-end space-y-2 w-40 p-4'>
                             {/* Increment Button */}
                             <button onClick={incrementRate}>
-                                <img src="/icons/arrup.png" width={10} alt="" />
+                                <img src="/icons/calcUp.png" width={15} alt="" />
                             </button>
                             {/* Decrement Button */}
                             <button onClick={decrementRate}>
-                                <img src="/icons/arrdown.png" width={15} alt="" />
+                                <img src="/icons/calcDown.png" width={15} alt="" />
                             </button>
                         </div>
 

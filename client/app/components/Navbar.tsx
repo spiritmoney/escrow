@@ -103,7 +103,7 @@ export default function Navbar() {
                 Feedback
               </li>
               <Link href={'/auth/signin'}>
-                <li className="cursor-pointer w-full text-center px-4 py-2 text-red-800 
+                <li className="cursor-pointer w-full px-4 py-2 text-red-800 
                 hover:bg-gray-100">
                   Logout
                 </li>

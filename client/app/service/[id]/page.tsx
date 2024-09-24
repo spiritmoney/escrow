@@ -77,9 +77,12 @@ export default function ServicePage({ params }: { params: { id: string } }) {
                 <div className='w-full  flex items-center'>
                     <button className="m-6 px-6 py-2 mx-auto w-80 bg-blue-700 text-white rounded-lg">Book Now</button>
                 </div>
-            </div>
 
-            <Heading text="SIMILAR SERVICES" />
+
+            </div>
+            <div className='w-full'>
+                <Heading text="SIMILAR SERVICES" />
+            </div>
 
             <div className="container bg-gray-100 p-5 rounded-lg mx-auto">
                 <div className="grid grid-cols-4 gap-6">

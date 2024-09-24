@@ -30,7 +30,7 @@ const page = () => {
                     </Link>
                     <button
                         className={`py-2 px-4 text-lg sm:text-xl font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Orders"
-                                ? "text-blue-600 border-b-2 border-blue-600"
+                                ? "text-blue-600"
                                 : "text-black hover:text-blue-400"
                             }`}
                         onClick={() => handleTabClick("Orders")}
@@ -39,7 +39,7 @@ const page = () => {
                     </button>
                     <button
                         className={`py-2 px-4 text-lg sm:text-xl font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Messages"
-                                ? "text-blue-600 border-b-2 border-blue-600"
+                                ? "text-blue-600"
                                 : "text-black hover:text-blue-400"
                             }`}
                         onClick={() => handleTabClick("Messages")}
@@ -48,7 +48,7 @@ const page = () => {
                     </button>
                     <button
                         className={`py-2 px-4 text-lg sm:text-xl font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Analytics"
-                                ? "text-blue-600 border-b-2 border-blue-600"
+                                ? "text-blue-600"
                                 : "text-black hover:text-blue-400"
                             }`}
                         onClick={() => handleTabClick("Analytics")}
@@ -57,7 +57,7 @@ const page = () => {
                     </button>
                     <button
                         className={`py-2 px-4 text-lg sm:text-xl font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Earnings"
-                                ? "text-blue-600 border-b-2 border-blue-600"
+                                ? "text-blue-600"
                                 : "text-black hover:text-blue-400"
                             }`}
                         onClick={() => handleTabClick("Earnings")}
@@ -66,7 +66,7 @@ const page = () => {
                     </button>
                     <button
                         className={`py-2 px-4 text-lg sm:text-xl font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Profile"
-                                ? "text-blue-600 border-b-2 border-blue-600"
+                                ? "text-blue-600"
                                 : "text-black hover:text-blue-400"
                             }`}
                         onClick={() => handleTabClick("Profile")}
