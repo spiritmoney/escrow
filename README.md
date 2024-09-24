@@ -39,7 +39,7 @@ The Escrow Application is designed to facilitate safe and secure trading of good
 ## Features
 
 - User Registration/Login
-- Product Listing
+- Product and Service Listing
 - Escrow Service
 - Transaction Management
 - Dispute Resolution
