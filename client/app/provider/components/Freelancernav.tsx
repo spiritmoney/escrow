@@ -18,54 +18,54 @@ export default function Orders() {
             <div className="w-11/12 flex items-center mx-auto border-b border-gray-400">
                 <button
                     className={`w-1/4 py-2 px-4 text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "New Orders"
-                            ? "text-black border-b-2 border-blue-600"
-                            : "text-gray-400 hover:text-blue-400"
+                        ? "text-black border-b-2 border-blue-600"
+                        : "text-gray-400 hover:text-blue-400"
                         }`}
                     onClick={() => handleTabClick("New Orders")}
                 >
                     New Orders
                     <span className={`ml-2 text-white px-2 rounded-full 
                         ${activeTab === "New Orders" ? "bg-blue-600" : "bg-gray-400"}`}>
-                            7
+                        7
                     </span>
                 </button>
                 <button
                     className={`w-1/4 py-2 px-4 text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Active"
-                            ? "text-black border-b-2 border-blue-600"
-                            : "text-gray-400 hover:text-blue-400"
+                        ? "text-black border-b-2 border-blue-600"
+                        : "text-gray-400 hover:text-blue-400"
                         }`}
                     onClick={() => handleTabClick("Active")}
                 >
                     Active
                     <span className={`ml-2 text-white px-2 rounded-full 
                         ${activeTab === "Active" ? "bg-blue-600" : "bg-gray-400"}`}>
-                            3
+                        3
                     </span>
                 </button>
                 <button
                     className={`w-1/4 py-2 px-4 text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Completed"
-                            ? "text-black border-b-2 border-blue-600"
-                            : "text-gray-400 hover:text-blue-400"
+                        ? "text-black border-b-2 border-blue-600"
+                        : "text-gray-400 hover:text-blue-400"
                         }`}
                     onClick={() => handleTabClick("Completed")}
                 >
                     Completed
                     <span className={`ml-2 text-white px-2 rounded-full 
                         ${activeTab === "Completed" ? "bg-blue-600" : "bg-gray-400"}`}>
-                            5
+                        5
                     </span>
                 </button>
                 <button
                     className={`w-1/4 py-2 px-4 text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Cancelled"
-                            ? "text-black border-b-2 border-blue-600"
-                            : "text-gray-400 hover:text-blue-400"
+                        ? "text-black border-b-2 border-blue-600"
+                        : "text-gray-400 hover:text-blue-400"
                         }`}
                     onClick={() => handleTabClick("Cancelled")}
                 >
                     Cancelled
                     <span className={`ml-2 text-white px-2 rounded-full 
                         ${activeTab === "Cancelled" ? "bg-blue-600" : "bg-gray-400"}`}>
-                            4
+                        4
                     </span>
                 </button>
             </div>
@@ -82,12 +82,276 @@ export default function Orders() {
 }
 
 export function Messages() {
+    const [viewNotification, setViewNotification] = useState(false);
+    const [negotiating, setNegotiating] = useState(false);
+    const [hourlyRate, setHourlyRate] = useState(10); // Default hourly rate
+    const gigs = [
+        {
+            client: 'Emmanuel Charles',
+            gig: 'Build a Landing Page for my busin...',
+            dueOn: 'Sep 30',
+            total: '180 Espees',
+        },
+    ];
+
+    function toggleNotify() {
+        setViewNotification(!viewNotification);
+    }
+    function toggleNegotiate() {
+        setNegotiating(!negotiating)
+    }
+
+    // Function to increment the rate
+    const incrementRate = () => {
+        setHourlyRate(prevRate => prevRate + 1);
+    };
+
+    // Function to decrement the rate
+    const decrementRate = () => {
+        if (hourlyRate > 1) { // Ensure the rate doesn't go below 1
+            setHourlyRate(prevRate => prevRate - 1);
+        }
+    };
+
     return (
         <div className='w-full'>
-            <h1 className='text-black text-2xl font-semibold'>Messages</h1>
+            {viewNotification && <div className="fixed w-full h-full inset-0 bg-black bg-opacity-50 z-20"></div>}
 
-            <div className='w-full flex items-center justify-center'>
-                <img src="/images/coming-soon.png" alt="" className='w-96 h-96' />
+            <h1 className='text-black text-2xl font-semibold'>My Notifications</h1>
+
+            <div className='relative container w-full my-16 text-black bg-white'>
+                {/* Table */}
+                <div className="overflow-x-auto">
+                    <h1 className="w-full text-lg font-semibold border-b border-gray-300 p-3">Notifications</h1>
+                    <table className="min-w-full table-auto bg-white border-collapse">
+
+                        <thead>
+                            <tr className="bg-gray-100 text-left">
+                                <th className="px-6 py-4 font-medium text-gray-400">CLIENT</th>
+                                <th className="px-6 py-4 font-medium text-gray-400">GIG</th>
+                                <th className="px-6 py-4 font-medium text-gray-400">DUE ON</th>
+                                <th className="px-6 py-4 font-medium text-gray-400">TOTAL</th>
+                                <th className="px-6 py-4 font-medium text-gray-400"> </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {gigs.map((gig, index) => (
+                                <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
+                                    <td className="px-6 py-4 flex items-center space-x-1">
+                                        <img src="/images/profile2.png" alt="" />
+                                        <p>{gig.client}</p>
+                                    </td>
+                                    <td className="px-6 py-4">{gig.gig}</td>
+                                    <td className="px-6 py-4">{gig.dueOn}</td>
+                                    <td className="px-6 py-4">{gig.total}</td>
+                                    <td className="px-6 py-4">
+                                        <button onClick={toggleNotify} className="bg-blue-600 py-1 px-5 text-white rounded-md">View</button>
+                                    </td>
+                                </tr>
+                            ))}
+                            {gigs.map((gig, index) => (
+                                <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
+                                    <td className="px-6 py-4 flex items-center space-x-1">
+                                        <img src="/images/profile2.png" alt="" />
+                                        <p>{gig.client}</p>
+                                    </td>
+                                    <td className="px-6 py-4">{gig.gig}</td>
+                                    <td className="px-6 py-4">{gig.dueOn}</td>
+                                    <td className="px-6 py-4">{gig.total}</td>
+                                    <td className="px-6 py-4">
+                                        <button onClick={toggleNotify} className="bg-blue-600 py-1 px-5 text-white rounded-md">View</button>
+                                    </td>
+                                </tr>
+                            ))}
+                            {gigs.map((gig, index) => (
+                                <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
+                                    <td className="px-6 py-4 flex items-center space-x-1">
+                                        <img src="/images/profile2.png" alt="" />
+                                        <p>{gig.client}</p>
+                                    </td>
+                                    <td className="px-6 py-4">{gig.gig}</td>
+                                    <td className="px-6 py-4">{gig.dueOn}</td>
+                                    <td className="px-6 py-4">{gig.total}</td>
+                                    <td className="px-6 py-4">
+                                        <button onClick={toggleNotify} className="bg-blue-600 py-1 px-5 text-white rounded-md">View</button>
+                                    </td>
+                                </tr>
+                            ))}
+                            {gigs.map((gig, index) => (
+                                <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
+                                    <td className="px-6 py-4 flex items-center space-x-1">
+                                        <img src="/images/profile2.png" alt="" />
+                                        <p>{gig.client}</p>
+                                    </td>
+                                    <td className="px-6 py-4">{gig.gig}</td>
+                                    <td className="px-6 py-4">{gig.dueOn}</td>
+                                    <td className="px-6 py-4">{gig.total}</td>
+                                    <td className="px-6 py-4">
+                                        <button onClick={toggleNotify} className="bg-blue-600 py-1 px-5 text-white rounded-md">View</button>
+                                    </td>
+                                </tr>
+                            ))}
+                            {gigs.map((gig, index) => (
+                                <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
+                                    <td className="px-6 py-4 flex items-center space-x-1">
+                                        <img src="/images/profile2.png" alt="" />
+                                        <p>{gig.client}</p>
+                                    </td>
+                                    <td className="px-6 py-4">{gig.gig}</td>
+                                    <td className="px-6 py-4">{gig.dueOn}</td>
+                                    <td className="px-6 py-4">{gig.total}</td>
+                                    <td className="px-6 py-4">
+                                        <button onClick={toggleNotify} className="bg-blue-600 py-1 px-5 text-white rounded-md">View</button>
+                                    </td>
+                                </tr>
+                            ))}
+
+                        </tbody>
+                    </table>
+                </div>
+
+                {viewNotification &&
+                    <div className='absolute w-[550px] top-5 inset-x-0 mx-auto z-30 bg-white p-5 rounded-lg shadow-lg flex flex-col space-y-2'>
+                        {negotiating && <div className="fixed w-full h-full inset-0 bg-black bg-opacity-50 z-40"></div>}
+                        <div className='relative'>
+                            <div className="relative w-full flex items-center space-x-5 pb-3">
+                                <img src="/images/profile2.png" alt="" />
+
+                                <div>
+                                    <p>Emmanuel Charles</p>
+                                    <span className='flex items-center space-x-2'>
+                                        <img src="/icons/location2.png" alt="" className='w-4' />
+                                        <p className='text-gray-600'>Nigeria</p>
+                                    </span>
+                                </div>
+
+                                <p onClick={toggleNotify} className='text-blue-600 text-3xl absolute top-0 right-0 cursor-pointer'>&times;</p>
+                            </div>
+
+                            <p className='font-semibold text-sm'>Service Description</p>
+                            <p className='text-gray-600 text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, ut dolorem esse quae, excepturi blanditiis sequi natus cumque, incidunt necessitatibus explicabo obcaecati veritatis dolor culpa officiis error libero dolorum! Quia.</p>
+
+                            <div className='py-3 flex-col space-y-2'>
+                                <p className='font-semibold text-sm'>Additional Documents</p>
+                                <div className='flex items-center space-x-2'>
+                                    <img src="/icons/docs.png" alt="" />
+                                    <img src="/icons/docs.png" alt="" />
+                                </div>
+                            </div>
+
+                            <div className='lex flex-col space-y-2'>
+                                <p className='font-semibold text-sm'>Timeline</p>
+                                <div className='flex items-center space-x-2'>
+                                    <span className="w-24 text-sm font-medium"><p>Start Date</p></span>
+                                    <span className="flex items-center space-x-2 text-sm">
+                                        <img src="/icons/calender.png" alt="" />
+                                        <p>24 September 2024</p>
+                                    </span>
+                                </div>
+
+                                <div className='flex items-center space-x-2'>
+                                    <span className="w-24 text-sm font-medium"><p>End Date</p></span>
+                                    <span className="flex items-center space-x-2 text-sm">
+                                        <img src="/icons/calender.png" alt="" />
+                                        <p>05 November 2024</p>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div className='py-3 flex flex-col space-y-2'>
+                                <p className='font-semibold text-sm'>Mile Stone</p>
+                                <div className='flex items-center space-x-2'>
+                                    <span className="w-24 text-sm font-medium"><p>Date</p></span>
+                                    <span className="flex items-center space-x-2 text-sm">
+                                        <img src="/icons/calender.png" alt="" />
+                                        <p>24 September 2024</p>
+                                    </span>
+                                </div>
+                                <div className='flex space-x-6'>
+                                    <span className="w-24 text-sm font-medium"><p>Description</p></span>
+                                    <span className="text-sm">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit consectetur dicta officia sunt ipsa dolor dolorem</p>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <p className='font-semibold text-sm'>Price</p>
+                            <span className='flex text-sm items-center space-x-5'>
+                                <p className='font-medium'>Amount Offer</p>
+                                <p>400 Espees</p>
+                            </span>
+
+                            <div className='flex items-center justify-between py-5 space-x-2'>
+                                <button
+                                    onClick={toggleNotify}
+                                    className="bg-red-700 py-2 px-5 w-40 text-sm text-white rounded-md">
+                                    Decline
+                                </button>
+                                <button
+                                    onClick={toggleNegotiate}
+                                    className="bg-blue-600 py-2 px-5 w-40 text-sm text-white rounded-md">
+                                    Negotiate
+                                </button>
+                                <button
+                                    onClick={toggleNotify}
+                                    className="bg-green-700 py-2 px-5 w-40 text-sm text-white rounded-md">
+                                    Accept
+                                </button>
+                            </div>
+
+                            {negotiating &&
+                                <div className='absolute inset-0 mx-auto z-50 bg-white rounded-lg w-[500px] h-[450px] p-5 flex flex-col space-y-2'>
+                                    <p onClick={toggleNegotiate} className='text-blue-600 text-3xl text-right cursor-pointer'>&times;</p>
+                                    <p className='font-semibold text-center pb-3'>Negotiate Offer</p>
+
+                                    <div>
+                                        <p className='text-[12px] font-semibold'>Start Date</p>
+                                        <input type="date" name="" className='w-full border-2 border-gray-400 rounded-lg p-2' />
+                                    </div>
+
+                                    <div>
+                                        <p className='text-[12px] font-semibold'>Due Date</p>
+                                        <input type="date" name="" className='w-full border-2 border-gray-400 rounded-lg p-2' />
+                                    </div>
+
+                                    <div className='pb-5'>
+                                        <label htmlFor="hourly-rate" className='text-[12px] font-semibold'>Amount in Espees</label>
+                                        <div className='flex items-center border-2 border-gray-400 rounded-lg'>
+
+                                            {/* Rate Input */}
+                                            <input
+                                                id="hourly-rate"
+                                                type="text"
+                                                value={`${hourlyRate}`}
+                                                readOnly
+                                                className='w-full py-2 px-5 font-semibold outline-none rounded-lg'
+                                            />
+
+                                            <div className='flex flex-col items-end space-y-2 p-3'>
+                                                {/* Increment Button */}
+                                                <button onClick={incrementRate}>
+                                                    <img src="/icons/calcUp.png" width={15} alt="" />
+                                                </button>
+                                                {/* Decrement Button */}
+                                                <button onClick={decrementRate}>
+                                                    <img src="/icons/calcDown.png" width={15} alt="" />
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <button 
+                                    onClick={() => {toggleNotify(); toggleNegotiate();}}
+                                    className='text-white rounded-lg bg-blue-600 w-full p-2'>
+                                        Negotiate
+                                    </button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     )

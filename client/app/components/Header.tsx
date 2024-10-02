@@ -9,10 +9,10 @@ export default function Header() {
           <div className="bg-white flex rounded-md items-center h-12 w-full relative">
             <input
               className="p-2 pr-12 w-full h-[66px] text-black outline-none rounded-md"
-              type="text"
+              type="search"
               placeholder="Search products or services"
             />
-            <button className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-600 p-2 rounded-md">
+            <button className="absolute right-2 top-1/2 ml-2 transform -translate-y-1/2 bg-blue-600 p-2 rounded-md">
               <Image src="/icons/search2.png" alt="search" width={20} height={20} />
             </button>
           </div>
