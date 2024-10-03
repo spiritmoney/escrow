@@ -41,7 +41,7 @@ export default function Tabs() {
         </div>
       </div>
 
-      <div className="max-w-[1485px] mx-auto mt-4">
+      <div className="w-full mx-auto mt-4">
         {activeTab === "products" ? <ProductsTab /> : <ServicesTab />}
       </div>
     </div>

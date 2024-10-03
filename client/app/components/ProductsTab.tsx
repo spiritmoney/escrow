@@ -31,8 +31,8 @@ export default function ProductsTab() {
         <>
             <ProductTypes />
 
-            <div className="container mx-auto pt-6">
-                <div className="grid grid-cols-4 gap-6 p-3 bg-white rounded-lg">
+            <div className="w-full container mx-auto pt-6">
+                <div className="min-w-full grid grid-cols-4 gap-6 p-3 bg-white rounded-lg">
                     {productTypes.map(product => (
                         <ProductTypeCard key={product.id} product={product} />
                     ))}
@@ -42,8 +42,8 @@ export default function ProductsTab() {
             <Heading text="LATEST PRODUCTS" />
             <div className="mx-auto grid grid-cols-5 gap-6 rounded-lg">
                 {products.map(product => (
-                    <Link href={'/product/1'}>
-                        <ProductCard key={product.id} product={product} />
+                    <Link key={product.id} href={'/product/1'}>
+                        <ProductCard product={product} />
                     </Link>
                 ))}
             </div>
@@ -51,8 +51,8 @@ export default function ProductsTab() {
             <Heading text="TOP SELLING ITEMS" />
             <div className="mx-auto grid grid-cols-5 gap-6 rounded-lg">
                 {products.map(product => (
-                    <Link href={'/product/1'}>
-                        <ProductCard key={product.id} product={product} />
+                    <Link key={product.id} href={'/product/1'}>
+                        <ProductCard product={product} />
                     </Link>
                 ))}
             </div>

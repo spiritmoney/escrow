@@ -69,7 +69,7 @@ export default function ServicesTab() {
 
             <Heading text="TOP SERVICES"/>
 
-            <div className="container mx-auto">
+            <div className="min-w-full container mx-auto">
                 <div className="grid grid-cols-5 gap-6">
                     {servicesTypes.map(service => (
                         <ServiceTypeCard key={service.id} service={service} />
@@ -78,7 +78,7 @@ export default function ServicesTab() {
             </div>
 
             <Heading text="ALL SERVICES" />
-            <div className="container bg-gray-100 p-5 rounded-lg mx-auto">
+            <div className="min-w-full container bg-gray-100 p-5 rounded-lg mx-auto">
                 <div className="grid grid-cols-4 gap-6">
                     {services.map(service => (
                         <Link href={'/service/1'}>

@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link";
 
 export default function Header() {
   return (
@@ -12,9 +13,11 @@ export default function Header() {
               type="search"
               placeholder="Search products or services"
             />
-            <button className="absolute right-2 top-1/2 ml-2 transform -translate-y-1/2 bg-blue-600 p-2 rounded-md">
-              <Image src="/icons/search2.png" alt="search" width={20} height={20} />
-            </button>
+            <Link href={"/search"}>
+              <button className="absolute right-2 top-1/2 ml-2 transform -translate-y-1/2 bg-blue-600 p-2 rounded-md">
+                <Image src="/icons/search2.png" alt="search" width={20} height={20} />
+              </button>
+            </Link>
           </div>
         </div>
       </div>

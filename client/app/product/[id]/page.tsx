@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import { products } from '../../data/Product';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
@@ -46,7 +45,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
                 {/* Similar Products */}
                 <Heading text="SIMILAR PRODUCTS" />
-                <div className="mt-10">
+                <div className="mt-3">
                     <div className="grid grid-cols-4 gap-6">
                         {product.similarProducts.map(similar => (
                             <div key={similar.id} className="p-4 bg-white hover:bg-gray-100 rounded-lg">

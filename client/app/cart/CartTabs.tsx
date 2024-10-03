@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Rating from "./Rating";
-import Checkout from "./Checkout";
+import Rating from "../components/Rating";
+import Checkout from "../components/Checkout";
 
 const products = [
     {
