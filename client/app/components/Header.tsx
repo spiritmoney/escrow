@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Header() {
   return (
     <div className="relative w-full flex justify-center items-center pb-6 banner">
-      <div className="relative w-full max-w-[1485px]">
+      <div className="relative w-full max-w-[1485px] m-10">
         <Image src="/banner.svg" alt="banner" width={1485} height={453.949} className="h-auto" />
         <div className="absolute top-[68%] left-[8.35%] transform -translate-y-1/2 w-[33.33%] max-w-[495px]">
           <div className="bg-white flex rounded-md items-center h-12 w-full relative">

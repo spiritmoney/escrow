@@ -20,14 +20,6 @@ const page = () => {
 
             <div className='bg-white w-full flex items-center justify-center'>
                 <div className="flex items-center justify-center space-x-20">
-                    <Link href={'/'}>
-                        <button
-                            className="py-2 px-4 m-1 rounded-lg text-lg sm:text-xl font-semibold cursor-pointer text-white bg-blue-600"
-                            // onClick={() => handleTabClick("home")}
-                        >
-                            Home
-                        </button>
-                    </Link>
                     <button
                         className={`py-2 px-4 text-lg sm:text-xl font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Orders"
                                 ? "text-blue-600"
