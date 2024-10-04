@@ -6,12 +6,31 @@ import { User } from './entities/users.entity';
 
 @Injectable()
 export class UserService {
-  constructor(
-    @InjectModel('User') private readonly userModel: Model<User>
-  ) {}
+  constructor(@InjectModel('User') private readonly userModel: Model<User>) {}
 
-  async findUserByEmail(email: string): Promise<User> {
+  async findUserByEmail(email: string): Promise<User | null> {
     return this.userModel.findOne({ email }).exec();
+  }
+
+  async getAllUsers(): Promise<User[]> {
+    return this.userModel.find().exec();
+  }
+
+  async getUserById(userId: string): Promise<User | null> {
+    return this.userModel.findById(userId).exec();
+  }
+
+  async getProfile(userId: string): Promise<User | null> {
+    return this.userModel.findById(userId).exec();
+  }
+
+  async updateProfile(
+    userId: string,
+    updateData: Partial<User>,
+  ): Promise<User | null> {
+    return this.userModel
+      .findByIdAndUpdate(userId, updateData, { new: true })
+      .exec();
   }
 
   async findUserByRefreshToken(refreshToken: string): Promise<User | null> {
@@ -22,38 +41,24 @@ export class UserService {
     return this.userModel.findByIdAndUpdate(userId, { refreshToken }).exec();
   }
 
-  async updateUserName(userId: string, newName: string): Promise<User> {
-    return this.userModel.findByIdAndUpdate(userId, { fullName: newName }, { new: true }).exec();
-  }
-
-  async updateUserPhoto(userId: string, photoUrl: string): Promise<User> {
-    return this.userModel.findByIdAndUpdate(userId, { profilePhoto: photoUrl }, { new: true }).exec();
-  }
-
-  async getAllUsers(): Promise<User[]> {
-    return this.userModel.find().exec();
-  }
-
-  async getUserById(userId: string): Promise<User> {
-    return this.userModel.findById(userId).exec();
-  }
-
   async verifyUser(email: string, password: string): Promise<User | null> {
     const user = await this.findUserByEmail(email);
-    if (user && await bcrypt.compare(password, user.password)) {
+    if (user && (await bcrypt.compare(password, user.password))) {
       return user;
     }
     return null;
   }
 
-  async getProfile(userId: string): Promise<User> {
+  async findUserById(userId: string): Promise<User> {
     return this.userModel.findById(userId).exec();
   }
 
-
-
   // Create a new user
-  async createUser(email: string, password: string, fullName: string): Promise<User> {
+  async createUser(
+    email: string,
+    password: string,
+    fullName: string,
+  ): Promise<User> {
     const hashedPassword = await bcrypt.hash(password, 12);
     const newUser = new this.userModel({
       email,

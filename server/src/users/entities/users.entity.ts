@@ -16,4 +16,5 @@ export const UserSchema = new Schema<User>({
   password: { type: String, required: true },
   fullName: { type: String, required: true },
   isVerified: { type: Boolean, default: false },
+  
 }, { timestamps: true });
