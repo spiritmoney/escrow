@@ -11,10 +11,12 @@ export interface User extends Document {
 }
 
 // Define the Mongoose schema
-export const UserSchema = new Schema<User>({
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  fullName: { type: String, required: true },
-  isVerified: { type: Boolean, default: false },
-  
-}, { timestamps: true });
+export const UserSchema = new Schema<User>(
+  {
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    fullName: { type: String, required: true },
+    isVerified: { type: Boolean, required: true, default: false },
+  },
+  { timestamps: true },
+);
