@@ -65,18 +65,33 @@ export default function ServicePage({ params }: { params: { id: string } }) {
                 <div className="relative container bg-white rounded-xl mt-10 mx-auto min-w-full text-black">
                     {booking && <div className="fixed w-full h-full inset-0 bg-black bg-opacity-50 z-40"></div>}
 
-                    <div className="bg-white w-full p-7 rounded-xl flex items-center space-x-8">
+                    <div className="relative bg-white w-full p-7 rounded-xl flex items-center space-x-8">
                         <img src={service.src} alt={service.name} className="rounded-full w-28 h-28" />
 
                         <div className='flex flex-col items-start justify-center h-36'>
-                            <h2 className="text-sm font-semibold">{service.name}</h2> 
+                            <h2 className="text-sm font-semibold">{service.name}</h2>
                             <p className="text-black text-2xl font-medium">{service.service}</p>
-                            <span className='flex items-center py-2 space-x-1'>
+                            <span className='flex items-center pt-2 space-x-2'>
                                 <img src="/icons/location2.png" alt="" width={15} />
                                 <p>Nigeria</p>
                             </span>
+                            <span className='flex items-center space-x-1 text-blue-600'>
+                                <img src="/icons/globelink.png" alt="" width={20} />
+                                <a href="" className=''>https://kingsleyodim.tech/</a>
+                            </span>
+                            <span className='flex items-center pb-2 space-x-2 text-blue-600'>
+                                <img src="/icons/resume.png" alt="" width={15} />
+                                <button>Resume</button>
+                            </span>
                             <Rating />
                         </div>
+
+                        <div className='absolute top-5 right-10'>
+                        <button className="m-6 px-6 py-2 mx-auto bg-blue-700 flex items-center space-x-2 text-white rounded-lg">
+                            <img src="/icons/chat.png" alt="" className='w-6'/>
+                            <p>Send a Message</p>
+                        </button>
+                    </div>
                     </div>
 
                     <div className='px-7 mb-7'>
@@ -92,7 +107,7 @@ export default function ServicePage({ params }: { params: { id: string } }) {
 
                     <p className='p-7'>mi purus at. Nunc faucibus malesuada nunc ac. In faucibus aenean elementum vitae lobortis diam. Sapien nulla senectus vitae enim pellentesque consequat in tortor ut. Nec orci interdum aliquam pellentesque amet sed praesent euismod. Et id a aliquet est turpis. Sapien pulvinar etiam semper et tincidunt semper aliquet sed. Eget eu nibh nulla sapien tortor. Magna ut lacinia arcu maecenas nec mollis. Nulla erat nunc diam proin. Rhoncus erat vitae molestie tempor vitae ipsum est non est. Neque curabitur imperdiet congue vitae mattis. Donec eget bibendum fames odio velit ut in vel leo. Volutpat vestibulum imperdiet risus etiam at sed at morbi. Duis potenti hac aliquet aliquam mauris netus facilisi sed. At morbi sit lorem diam hendrerit ac odio sit. Aliquam nisl laoreet nisi ultrices massa rhoncus faucibus. Mattis eu vel at nulla suscipit at nec sed purus. Vel iaculis massa volutpat suspendisse massa purus amet. Integer sit ut velit id in diam in pulvinar posuere. Sit lacinia consectetur volutpat nunc. Leo pharetra lacinia auctor orci nibh massa nisi sem cursus. Cursus vitae commodo eget dolor in neque. Velit netus etiam diam eget.</p>
 
-                    {/* Projects Section */}
+                    {/* Projects Section
                     <div className="p-6">
                         <h3 className="text-xl font-semibold">PROJECTS</h3>
                         <div className="grid grid-cols-5 gap-4 mt-4">
@@ -102,7 +117,7 @@ export default function ServicePage({ params }: { params: { id: string } }) {
                                 </div>
                             ))}
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className='w-full  flex items-center'>
                         <button
@@ -195,7 +210,7 @@ export default function ServicePage({ params }: { params: { id: string } }) {
                     }
                 </div>
 
-                
+
                 <Heading text="SIMILAR SERVICES" />
 
                 <div className="min-w-full container bg-gray-100 p-5 rounded-lg mx-auto">
