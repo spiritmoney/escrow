@@ -1,60 +1,64 @@
-import { Controller, Post, Body, Get, Param, Patch, UseGuards, UploadedFile, UseInterceptors } from '@nestjs/common';
-import { FileInterceptor } from '@nestjs/platform-express';
+import { Controller, Post, Body, Get, Param, Patch, UseGuards, BadRequestException } from '@nestjs/common';
 import { UserService } from './users.service';
+import { User } from './entities/users.entity';
+
+enum UserRole {
+  GUEST = 'Guest',
+  AUTHENTICATED_USER = 'Authenticated User',
+  FREELANCER = 'Freelancer',
+  VENDOR = 'Vendor',
+}
 
 @Controller('user')
 export class UserController {
   constructor(private userService: UserService) {}
 
   // @Post('register')
-  // async register(@Body() body: { email: string; password: string; fullName: string }) {
-  //   const { email, password, fullName } = body;
+  // async register(@Body() body: { email: string; password: string; fullName: string; role: UserRole }) {
+  //   const { email, password, fullName, role } = body;
+
+  //   if (!email || !password || !fullName || !role) {
+  //     throw new BadRequestException('Missing required fields');
+  //   }
+
   //   const existingUser = await this.userService.findUserByEmail(email);
   //   if (existingUser) {
-  //     throw new Error('User with this email already exists');
+  //     throw new BadRequestException('User with this email already exists');
   //   }
-  //   const user = await this.userService.createUser(email, password, fullName);
-  //   return { id: user.id, email: user.email, fullName: user.fullName };
-  // }
-
-  // @Post('login')
-  // async login(@Body() body: { email: string; password: string }) {
-  //   const user = await this.userService.verifyUser(body.email, body.password);
-  //   if (!user) {
-  //     throw new Error('Invalid credentials!');
-  //   }
-  //   return user;
-
+    
+  //   const user = await this.userService.createUser(email, password, fullName, role);
+  //   return { id: user.id, email: user.email, fullName: user.fullName, role: user.role };
   // }
 
   @Get('profile/:id')
   async getProfile(@Param('id') id: string) {
-    return this.userService.getProfile(id);
+    const user = await this.userService.getProfile(id);
+    if (!user) {
+      throw new BadRequestException('User not found');
+    }
+    return user;
   }
 
-  // New Endpoint: Update user name
-  @Patch('update-name/:id')
-  async updateName(@Param('id') id: string, @Body('name') newName: string) {
-    return this.userService.updateUserName(id, newName);
+  @Patch('profile/:id')
+  async updateProfile(@Param('id') id: string, @Body() updateData: Partial<User>) {
+    const user = await this.userService.updateProfile(id, updateData);
+    if (!user) {
+      throw new BadRequestException('User not found or update failed');
+    }
+    return user;
   }
 
-  // New Endpoint: Upload a profile picture
-  // @Post('upload-photo/:id')
-  // @UseInterceptors(FileInterceptor('file'))
-  // async uploadPhoto(@Param('id') id: string, @UploadedFile() file: Express.Multer.File) {
-  //   return this.userService.updateUserPhoto(id, file.filename);
-  // }
-
-  // New Endpoint: Get all users
   @Get('list')
   async getAllUsers() {
     return this.userService.getAllUsers();
   }
 
-  // New Endpoint: Get single user by ID
   @Get(':id')
   async getUserById(@Param('id') id: string) {
-    return this.userService.getUserById(id);
+    const user = await this.userService.getUserById(id);
+    if (!user) {
+      throw new BadRequestException('User not found');
+    }
+    return user;
   }
 }
-//sendgrid

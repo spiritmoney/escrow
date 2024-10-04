@@ -9,6 +9,7 @@ import { RatingModule } from './rating/rating.module';
 import { DisputeModule } from './dispuite/dispute.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AuthModule } from './users/auth.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { MongooseModule } from '@nestjs/mongoose';
     ProductModule,
     RatingModule,
     DisputeModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],
