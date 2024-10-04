@@ -1,6 +1,7 @@
 import ProductCard, { ProductTypeCard } from '../components/ProductCard';
 import ProductTypes from '../components/ProductTypes';
 import Heading from '../components/Heading';
+import Link from 'next/link';
 
 const productTypes = [
     { id: 1, name: 'GADGETS', src: '/images/gadgets.png' },
@@ -29,8 +30,8 @@ export default function ProductsTab() {
     return (
         <>
             <ProductTypes />
-            
-            <div className="container w-11/12 mx-auto pt-6">
+
+            <div className="container mx-auto pt-6">
                 <div className="grid grid-cols-4 gap-6 p-3 bg-white rounded-lg">
                     {productTypes.map(product => (
                         <ProductTypeCard key={product.id} product={product} />
@@ -39,16 +40,20 @@ export default function ProductsTab() {
             </div>
 
             <Heading text="LATEST PRODUCTS" />
-            <div className="w-11/12 mx-auto grid grid-cols-5 gap-6 rounded-lg">
+            <div className="mx-auto grid grid-cols-5 gap-6 rounded-lg">
                 {products.map(product => (
-                    <ProductCard key={product.id} product={product} />
+                    <Link href={'/product/1'}>
+                        <ProductCard key={product.id} product={product} />
+                    </Link>
                 ))}
             </div>
 
             <Heading text="TOP SELLING ITEMS" />
-            <div className="w-11/12 mx-auto grid grid-cols-5 gap-6 rounded-lg">
+            <div className="mx-auto grid grid-cols-5 gap-6 rounded-lg">
                 {products.map(product => (
-                    <ProductCard key={product.id} product={product} />
+                    <Link href={'/product/1'}>
+                        <ProductCard key={product.id} product={product} />
+                    </Link>
                 ))}
             </div>
         </>
