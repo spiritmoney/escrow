@@ -5,7 +5,7 @@ import Link from 'next/link';
 import React, { useState } from 'react'
 
 const page = () => {
-    const [step, setStep] = useState(1);
+    const [step, setStep] = useState(0);
 
     const nextStep = () => {
         setStep((prevStep) => prevStep + 1);
@@ -18,12 +18,13 @@ const page = () => {
 
     return (
         <div className='w-screen bg-white flex items-center justify-center'>
-            {step === 1 && <Welcome nextStep={nextStep} />}
-            {step === 2 && <Step1 nextStep={nextStep} prevStep={prevStep} />}
-            {step === 3 && <Step2 nextStep={nextStep} prevStep={prevStep} />}
-            {step === 4 && <Step3 nextStep={nextStep} prevStep={prevStep} />}
-            {step === 5 && <Step4 nextStep={nextStep} prevStep={prevStep} />}
-            {step === 6 && <Step5 nextStep={nextStep} prevStep={prevStep} />}
+            {step === 0 && <Welcome nextStep={nextStep} />}
+            {step === 1 && <Step1 nextStep={nextStep} prevStep={prevStep} />}
+            {step === 2 && <Step2 nextStep={nextStep} prevStep={prevStep} />}
+            {step === 3 && <Step3 nextStep={nextStep} prevStep={prevStep} />}
+            {step === 4 && <Step4 nextStep={nextStep} prevStep={prevStep} />}
+            {step === 5 && <Step5 nextStep={nextStep} prevStep={prevStep} />}
+            {step === 6 && <Step6 nextStep={nextStep} prevStep={prevStep} />}
         </div>
     );
 }
@@ -73,7 +74,7 @@ function Step1({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
             <div className=' border-2 border-gray-300 rounded-lg p-7 w-[550px] flex flex-col space-y-3'>
                 <div className='w-full flex items-center justify-between'>
                     <h1 className='text-xl font-semibold'>Expertise</h1>
-                    <p className='text-sm'>1/5</p>
+                    <p className='text-sm'>1/6</p>
                 </div>
 
                 <div>
@@ -88,7 +89,7 @@ function Step1({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
                         <option value="">Category1</option>
                         <option value="">Category2</option>
                     </select>
-                </div> 
+                </div>
 
                 <div>
                     <p className='text-[12px] font-semibold'>What is skills do you offer?</p>
@@ -161,7 +162,7 @@ function Step2({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
             <div className=' border-2 border-gray-300 rounded-lg p-7 w-[550px] flex flex-col space-y-3'>
                 <div className='w-full flex items-center justify-between'>
                     <h1 className='text-xl font-semibold'>Education</h1>
-                    <p className='text-sm'>2/5</p>
+                    <p className='text-sm'>2/6</p>
                 </div>
 
                 <div>
@@ -223,8 +224,47 @@ function Step2({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
     );
 }
 
-// Step 3: Hourly Rate Component
+// Step 3: Resume / Portfolio
 function Step3({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => void }) {
+
+    return (
+        <div className="container bg-white flex items-center justify-center text-black w-full h-screen">
+            <div className=' border-2 border-gray-300 rounded-lg p-7 w-[550px] flex flex-col space-y-3'>
+                <div className='w-full flex items-center justify-between'>
+                    <h1 className='text-xl font-semibold'>Resume</h1>
+                    <p className='text-sm'>3/6</p>
+                </div>
+
+                <div className='w-full'>
+                    <p className='text-[12px] font-semibold'>Upload your CV or Resume</p>
+                    <label htmlFor="resume" className='w-full border-2 border-dashed border-gray-400 rounded-lg p-2 flex items-center justify-center cursor-pointer'>
+                        <img src="/icons/upload.png" alt="" />
+                    </label>
+                    <input type="file" id='resume' className='hidden' />
+                </div>
+                <div>
+                    <p className='text-[12px] font-semibold'>Provide Link to your Portfolio</p>
+                    <input type="text" className='w-full border-2 border-gray-400 rounded-lg p-2' />
+                </div>
+
+                <h1 onClick={nextStep} className='text-sm text-blue-600 cursor-pointer border-b p-3'>Skip this step</h1>
+
+                <div className='w-full flex items-center justify-between'>
+                    <button onClick={prevStep} className='w-44 p-3 text-sm rounded-lg bg-blue-100 text-blue-600'>
+                        Back
+                    </button>
+                    <button onClick={nextStep} className='w-44 p-3 text-sm rounded-lg bg-blue-600 text-white'>
+                        Next
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    );
+}
+
+// Step 3: Hourly Rate Component
+function Step4({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => void }) {
     const [hourlyRate, setHourlyRate] = useState(10); // Default hourly rate
 
     // Function to increment the rate
@@ -243,7 +283,7 @@ function Step3({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
             <div className=' border-2 border-gray-300 rounded-lg p-7 w-[550px] flex flex-col space-y-3'>
                 <div className='w-full flex items-center justify-between'>
                     <h1 className='text-xl font-semibold'>Horly Rate</h1>
-                    <p className='text-sm'>3/5</p>
+                    <p className='text-sm'>4/6</p>
                 </div>
 
                 <div className='pb-20'>
@@ -288,7 +328,7 @@ function Step3({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
 }
 
 // Step 4: Title and Overview Component
-function Step4({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => void }) {
+function Step5({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => void }) {
     const [text, setText] = useState(''); // State to track the input text
     const maxLength = 10; // Maximum number of characters allowed
 
@@ -305,7 +345,7 @@ function Step4({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
             <div className=' border-2 border-gray-300 rounded-lg p-7 w-[550px] flex flex-col space-y-3'>
                 <div className='w-full flex items-center justify-between'>
                     <h1 className='text-xl font-semibold'>Title & Overview</h1>
-                    <p className='text-sm'>4/5</p>
+                    <p className='text-sm'>5/6</p>
                 </div>
 
                 <div>
@@ -345,13 +385,13 @@ function Step4({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
 }
 
 // Step 5: Profile Photo Component
-function Step5({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => void }) {
+function Step6({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => void }) {
     return (
         <div className="container bg-white flex items-center justify-center text-black w-full h-screen">
             <div className=' border-2 border-gray-300 rounded-lg p-7 w-[550px] flex flex-col space-y-3'>
                 <div className='w-full flex items-center justify-between'>
                     <h1 className='text-xl font-semibold'>Profile Photo</h1>
-                    <p className='text-sm'>5/5</p>
+                    <p className='text-sm'>6/6</p>
                 </div>
 
                 <p className='text-sm'>Please upload a professional portrait that clearly shows your face</p>

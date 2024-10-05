@@ -3,7 +3,7 @@
 import Rating from '@/app/components/Rating';
 import { services } from '@/app/data/Service';
 import React, { useState } from 'react'
-import NewOrders, { Active, Cancelled, Completed } from './OrdersTabs';
+import NewOrders, { Active, Cancelled, Completed } from './OrdersTabs'; 
 
 export default function Orders() {
     const [activeTab, setActiveTab] = useState("New Orders");
@@ -342,9 +342,9 @@ export function Messages() {
                                         </div>
                                     </div>
 
-                                    <button 
-                                    onClick={() => {toggleNotify(); toggleNegotiate();}}
-                                    className='text-white rounded-lg bg-blue-600 w-full p-2'>
+                                    <button
+                                        onClick={() => { toggleNotify(); toggleNegotiate(); }}
+                                        className='text-white rounded-lg bg-blue-600 w-full p-2'>
                                         Negotiate
                                     </button>
                                 </div>
@@ -358,12 +358,17 @@ export function Messages() {
 }
 
 export function Analytics() {
+
     return (
-        <div className='w-full'>
+        <div className='w-full '>
             <h1 className='text-black text-2xl font-semibold'>Analytics</h1>
 
-            <div className='w-full flex items-center justify-center'>
-                <img src="/images/coming-soon.png" alt="" className='w-96 h-96' />
+            <div className='w-[500px] bg-white mx-auto p-10 my-16 flex flex-col items-center justify-center rounded-2xl shadow-lg'>
+                <img src="/icons/comingsoon.png" alt="" className='w-52' />
+                <p className='text-black text-2xl'>Coming Soon!</p>
+                <button className='bg-blue-600 w-full text-center p-2 my-7 rounded-lg'>
+                    Back
+                </button>
             </div>
 
         </div>
@@ -375,8 +380,12 @@ export function Earnings() {
         <div className='w-full'>
             <h1 className='text-black text-2xl font-semibold'>Earnings</h1>
 
-            <div className='w-full flex items-center justify-center'>
-                <img src="/images/coming-soon.png" alt="" className='w-96 h-96' />
+            <div className='w-[500px] bg-white mx-auto p-10 my-16 flex flex-col items-center justify-center rounded-2xl shadow-lg'>
+                <img src="/icons/comingsoon.png" alt="" className='w-52' />
+                <p className='text-black text-2xl'>Coming Soon!</p>
+                <button className='bg-blue-600 w-full text-center p-2 my-7 rounded-lg'>
+                    Back
+                </button>
             </div>
         </div>
     )
@@ -402,13 +411,22 @@ export function Profile({ params }: { params: { id: string } }) {
                         <input className='hidden' type="file" id="profile-edit" accept="image/*" />
                     </div>
 
-                    <div className='flex flex-col items-start justify-center h-36'>
+                    <div className='flex flex-col items-start p-1'>
                         <h2 className="text-sm font-semibold">{service.name}</h2>
                         <p className="text-black text-2xl font-medium">{service.service}</p>
-                        <span className='flex items-center py-2 space-x-1'>
+                        <span className='flex items-center pt-2 space-x-1'>
                             <img src="/icons/location2.png" alt="" width={15} />
                             <p>Nigeria</p>
                         </span>
+                        <span className='flex items-center space-x-1 text-blue-600'>
+                            <img src="/icons/globelink.png" alt="" width={20} />
+                            <a href="" className=''>https://kingsleyodim.tech/</a>
+                        </span>
+                        <span className='flex items-center pb-2 space-x-1 text-blue-600'>
+                            <img src="/icons/resume.png" alt="" width={15} />
+                            <button>Resume</button>
+                        </span>
+
                         <Rating />
                     </div>
                     <div className='absolute top-5 right-10'>
@@ -432,7 +450,7 @@ export function Profile({ params }: { params: { id: string } }) {
 
                 <p className='p-7'>mi purus at. Nunc faucibus malesuada nunc ac. In faucibus aenean elementum vitae lobortis diam. Sapien nulla senectus vitae enim pellentesque consequat in tortor ut. Nec orci interdum aliquam pellentesque amet sed praesent euismod. Et id a aliquet est turpis. Sapien pulvinar etiam semper et tincidunt semper aliquet sed. Eget eu nibh nulla sapien tortor. Magna ut lacinia arcu maecenas nec mollis. Nulla erat nunc diam proin. Rhoncus erat vitae molestie tempor vitae ipsum est non est. Neque curabitur imperdiet congue vitae mattis. Donec eget bibendum fames odio velit ut in vel leo. Volutpat vestibulum imperdiet risus etiam at sed at morbi. Duis potenti hac aliquet aliquam mauris netus facilisi sed. At morbi sit lorem diam hendrerit ac odio sit. Aliquam nisl laoreet nisi ultrices massa rhoncus faucibus. Mattis eu vel at nulla suscipit at nec sed purus. Vel iaculis massa volutpat suspendisse massa purus amet. Integer sit ut velit id in diam in pulvinar posuere. Sit lacinia consectetur volutpat nunc. Leo pharetra lacinia auctor orci nibh massa nisi sem cursus. Cursus vitae commodo eget dolor in neque. Velit netus etiam diam eget.</p>
 
-                {/* Projects Section */}
+                {/* Projects Section
                 <div className="p-6">
                     <h3 className="text-xl font-semibold">PROJECTS</h3>
                     <div className="grid grid-cols-5 gap-4 mt-4">
@@ -442,7 +460,7 @@ export function Profile({ params }: { params: { id: string } }) {
                             </div>
                         ))}
                     </div>
-                </div>
+                </div> */}
             </div>
         </div >
     )

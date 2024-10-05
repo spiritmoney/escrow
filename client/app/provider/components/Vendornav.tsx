@@ -285,8 +285,12 @@ export function Messages() {
         <div className='w-full'>
             <h1 className='text-black text-2xl font-semibold'>Messages</h1>
 
-            <div className='w-full flex items-center justify-center'>
-                <img src="/images/coming-soon.png" alt="" className='w-96 h-96' />
+            <div className='w-[500px] bg-white mx-auto p-10 my-16 flex flex-col items-center justify-center rounded-2xl shadow-lg'>
+                <img src="/icons/comingsoon.png" alt="" className='w-52' />
+                <p className='text-black text-2xl'>Coming Soon!</p>
+                <button className='bg-blue-600 w-full text-center p-2 my-7 rounded-lg'>
+                    Back
+                </button>
             </div>
         </div>
     )
@@ -297,8 +301,12 @@ export function Analytics() {
         <div className='w-full'>
             <h1 className='text-black text-2xl font-semibold'>Analytics</h1>
 
-            <div className='w-full flex items-center justify-center'>
-                <img src="/images/coming-soon.png" alt="" className='w-96 h-96' />
+            <div className='w-[500px] bg-white mx-auto p-10 my-16 flex flex-col items-center justify-center rounded-2xl shadow-lg'>
+                <img src="/icons/comingsoon.png" alt="" className='w-52' />
+                <p className='text-black text-2xl'>Coming Soon!</p>
+                <button className='bg-blue-600 w-full text-center p-2 my-7 rounded-lg'>
+                    Back
+                </button>
             </div>
 
         </div>
@@ -310,8 +318,12 @@ export function Earnings() {
         <div className='w-full'>
             <h1 className='text-black text-2xl font-semibold'>Earnings</h1>
 
-            <div className='w-full flex items-center justify-center'>
-                <img src="/images/coming-soon.png" alt="" className='w-96 h-96' />
+            <div className='w-[500px] bg-white mx-auto p-10 my-16 flex flex-col items-center justify-center rounded-2xl shadow-lg'>
+                <img src="/icons/comingsoon.png" alt="" className='w-52' />
+                <p className='text-black text-2xl'>Coming Soon!</p>
+                <button className='bg-blue-600 w-full text-center p-2 my-7 rounded-lg'>
+                    Back
+                </button>
             </div>
         </div>
     )
@@ -322,8 +334,12 @@ export function Profile() {
     return (
         <div className='w-full '>
             <h1 className='text-black text-3xl py-3 font-semibold'>Profile</h1>
-            <div className='w-full flex items-center justify-center'>
-                <img src="/images/coming-soon.png" alt="" className='w-96 h-96' />
+            <div className='w-[500px] bg-white mx-auto p-10 my-16 flex flex-col items-center justify-center rounded-2xl shadow-lg'>
+                <img src="/icons/comingsoon.png" alt="" className='w-52' />
+                <p className='text-black text-2xl'>Coming Soon!</p>
+                <button className='bg-blue-600 w-full text-center p-2 my-7 rounded-lg'>
+                    Back
+                </button>
             </div>
         </div >
     )
