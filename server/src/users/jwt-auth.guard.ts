@@ -4,10 +4,11 @@ import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class JwtAuthGuard extends AuthGuard('jwt') {
-  constructor(private readonly jwtService: JwtService) {
-    super(
-      
-    );
+  protected readonly jwtService: JwtService; // Change to protected
+
+  constructor(jwtService: JwtService) {
+    super();
+    this.jwtService = jwtService; // Initialize in constructor
   }
 
   canActivate(context: ExecutionContext) {
