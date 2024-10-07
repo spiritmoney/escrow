@@ -8,6 +8,7 @@ import { User } from './entities/users.entity';
 export class UserService {
   constructor(@InjectModel('User') private readonly userModel: Model<User>) {}
 
+ 
   async findUserByEmail(email: string): Promise<User | null> {
     return this.userModel.findOne({ email }).exec();
   }

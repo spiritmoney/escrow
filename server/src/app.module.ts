@@ -27,10 +27,10 @@ import { AuthModule } from './users/auth.module';
     // Feature modules (no TypeORM, these will use Mongoose instead)
     EscrowModule,
     TransactionModule,
-    UserModule,
     ProductModule,
     RatingModule,
     DisputeModule,
+    UserModule,
     AuthModule
   ],
   controllers: [AppController],

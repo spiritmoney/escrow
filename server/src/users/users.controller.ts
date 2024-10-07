@@ -1,6 +1,7 @@
-import { Controller, Post, Body, Get, Param, Patch, UseGuards, BadRequestException } from '@nestjs/common';
+import { Controller, Get, Patch, Body, Param, UseGuards, Req, BadRequestException } from '@nestjs/common';
 import { UserService } from './users.service';
-import { User } from './entities/users.entity';
+import { JwtAuthGuard } from './jwt-auth.guard';
+import { UpdateProfileDto } from './update-profile.dto'; // DTO for profile update
 
 enum UserRole {
   GUEST = 'Guest',
@@ -12,53 +13,37 @@ enum UserRole {
 @Controller('user')
 export class UserController {
   constructor(private userService: UserService) {}
-
-  // @Post('register')
-  // async register(@Body() body: { email: string; password: string; fullName: string; role: UserRole }) {
-  //   const { email, password, fullName, role } = body;
-
-  //   if (!email || !password || !fullName || !role) {
-  //     throw new BadRequestException('Missing required fields');
-  //   }
-
-  //   const existingUser = await this.userService.findUserByEmail(email);
-  //   if (existingUser) {
-  //     throw new BadRequestException('User with this email already exists');
-  //   }
+  @UseGuards(JwtAuthGuard)
+  @Get('profile')
+  async getProfile(@Req() req) {
+    const userId = req.user.id;
+    const user = await this.userService.getProfile(userId);
     
-  //   const user = await this.userService.createUser(email, password, fullName, role);
-  //   return { id: user.id, email: user.email, fullName: user.fullName, role: user.role };
-  // }
-
-  @Get('profile/:id')
-  async getProfile(@Param('id') id: string) {
-    const user = await this.userService.getProfile(id);
     if (!user) {
       throw new BadRequestException('User not found');
     }
     return user;
   }
 
-  @Patch('profile/:id')
-  async updateProfile(@Param('id') id: string, @Body() updateData: Partial<User>) {
-    const user = await this.userService.updateProfile(id, updateData);
+  @UseGuards(JwtAuthGuard)
+  @Patch('profile')
+  async updateProfile(@Req() req, @Body() updateData: UpdateProfileDto) {
+    console.log("Req: ", req.user)
+    // Use req.user.userId instead of req.user.id
+    const userId = req.user.userId;
+    
+    const user = await this.userService.updateProfile(userId, updateData);
+    
     if (!user) {
       throw new BadRequestException('User not found or update failed');
     }
+    
     return user;
   }
-
+  
+  // List all users (For admin or future RBAC)
   @Get('list')
   async getAllUsers() {
     return this.userService.getAllUsers();
-  }
-
-  @Get(':id')
-  async getUserById(@Param('id') id: string) {
-    const user = await this.userService.getUserById(id);
-    if (!user) {
-      throw new BadRequestException('User not found');
-    }
-    return user;
   }
 }
