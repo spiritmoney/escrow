@@ -3,7 +3,7 @@ import { UserService } from './users.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { UpdateProfileDto } from './update-profile.dto'; // DTO for profile update
 
-enum UserRole {
+export enum UserRole {
   GUEST = 'Guest',
   AUTHENTICATED_USER = 'Authenticated User',
   FREELANCER = 'Freelancer',

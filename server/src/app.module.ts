@@ -10,6 +10,8 @@ import { DisputeModule } from './dispuite/dispute.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './users/auth.module';
+import { FreelancerModule } from './freelancer/freelancer.module';
+import { VendorModule } from './vendor/vendor.module';
 
 @Module({
   imports: [
@@ -31,7 +33,9 @@ import { AuthModule } from './users/auth.module';
     RatingModule,
     DisputeModule,
     UserModule,
-    AuthModule
+    FreelancerModule,
+    AuthModule,
+    VendorModule
   ],
   controllers: [AppController],
   providers: [AppService],
