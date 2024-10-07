@@ -1,8 +1,10 @@
-import { Injectable, BadRequestException } from '@nestjs/common';
+import { Injectable, BadRequestException, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from './users.service';
 import { User } from './entities/users.entity';
 import * as nodemailer from 'nodemailer';
+// import bcrypt from 'bcryptjs';
+import * as bcrypt from 'bcrypt';
 
 interface VerificationEntry {
   code: string;
@@ -18,7 +20,6 @@ export class AuthService {
     private readonly userService: UserService,
   ) {}
 
-  // Generate 6-digit verification code with 24-hour expiration
   async generateVerificationCode(userId: string): Promise<string> {
     const code = Math.floor(100000 + Math.random() * 900000).toString();
     const expiration = Date.now() + 24 * 60 * 60 * 1000;
@@ -27,6 +28,16 @@ export class AuthService {
     console.log(`Generated code for ${userId}: ${code}`);
     return code;
   }
+  async validateToken(token: string) {
+    try {
+      // Use the JwtService to verify the token
+      const decoded = this.jwtService.verify(token);
+      return decoded;
+    } catch (error) {
+      throw new UnauthorizedException('Invalid or expired token');
+    }
+  }
+
 
   // Send verification email using nodemailer with HTML template
   async sendVerificationEmail(email: string, code: string, fullName: string) {
@@ -63,50 +74,72 @@ export class AuthService {
   }
 
   // Verify the submitted email code
-  async verifyEmailCode(email: string, code: string): Promise<boolean> {
-    console.log('Verification process started');
-
+  async verifyEmailCode(email: string, code: string): Promise<{ accessToken: string }> {
     const user = await this.userService.findUserByEmail(email);
     if (!user) {
       throw new BadRequestException('User not found');
     }
 
     const verificationEntry = this.verificationCodes.get(user.id);
-
     if (!verificationEntry) {
-      throw new BadRequestException(
-        'Verification code not found or already used',
-      );
+      throw new BadRequestException('Verification code not found or already used');
     }
 
-    console.log('Stored code:', verificationEntry.code);
-    console.log('Submitted code:', code);
-
     const { code: storedCode, expiration } = verificationEntry;
-
-    // Check if the code is expired
-    console.log('Expiration:', new Date(expiration));
-    console.log('Current time:', new Date());
     if (Date.now() > expiration) {
-      console.log('Code expired');
       throw new BadRequestException('Verification code has expired');
     }
 
-    // Check if the submitted code matches
     if (storedCode === code) {
       // Mark the user's email as verified
       await this.userService.markEmailAsVerified(user.id);
 
       // Delete the verification code after successful verification
       this.verificationCodes.delete(user.id);
-      console.log('Stored code:', storedCode);
-      console.log('Submitted code:', code);
-      console.log('Expiration:', new Date(expiration));
-      console.log('Current time:', new Date());
 
-      return true;
+      // Generate JWT after email verification
+      const payload = { userId: user.id, email: user.email };
+      const accessToken = this.jwtService.sign(payload);
+
+      return { accessToken };
     } else {
       throw new BadRequestException('Invalid verification code');
     }
   }
+
+   // Generate JWT token with 2-day expiration
+   async generateJwtToken(user: User): Promise<string> {
+    const payload = { userId: user._id, email: user.email }; 
+    return this.jwtService.sign(payload, {
+      expiresIn: '2d', // Token expires after 2 days
+    });
+  }
+
+  // Validate user credentials (email and password)
+
+
+
+  // Validate the user during login
+  async validateUser(email: string, password: string): Promise<any> {
+    const user = await this.userService.findUserByEmail(email);
+  
+    if (!user) {
+      throw new BadRequestException('User not found');  // Clear error message for user not found
+    }
+  
+    if (!user.password) {
+      throw new BadRequestException('Password is missing for this user');
+    }
+  
+    const passwordMatch = await bcrypt.compare(password, user.password);
+  
+    if (!passwordMatch) {
+      throw new BadRequestException('Incorrect password');  // Clearer error message for wrong password
+    }
+  
+    const { passkey, ...result } = user.toObject();
+    return result;
+  }
+  
+  
 }

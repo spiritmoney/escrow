@@ -4,7 +4,8 @@ import * as dotenv from 'dotenv';
 import { ValidationPipe, BadRequestException } from '@nestjs/common';
 import { ValidationError } from 'class-validator';
 
-dotenv.config();
+require('dotenv').config();
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { logger: ['log', 'error', 'warn', 'debug', 'verbose'] });
 

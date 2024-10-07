@@ -1,7 +1,7 @@
 import { Controller, Post, Body, BadRequestException, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { UserService } from './users.service';
-import { RegisterDto, VerifyEmailDto, ResendVerificationDto } from './auth.dto';
+import { RegisterDto, VerifyEmailDto, ResendVerificationDto, LoginDto } from './auth.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -27,6 +27,24 @@ export class AuthController {
     await this.authService.sendVerificationEmail(email, verificationCode, fullName);
 
     return { message: 'User registered successfully. Please check your email to verify your account.' };
+  }
+
+  @Post('login')
+  @UsePipes(new ValidationPipe({ whitelist: true }))
+  async login(@Body() body: LoginDto) {
+    const { email, password } = body;
+
+    // Validate user credentials
+    const user = await this.authService.validateUser(email, password);
+    if (!user) throw new BadRequestException('Invalid credentials');
+
+    // Generate and return a JWT token with a 2-day expiration
+    const token = await this.authService.generateJwtToken(user);
+
+    return { 
+      message: 'Login successful', 
+      accessToken: token 
+    };
   }
 
   @Post('verify-email')
