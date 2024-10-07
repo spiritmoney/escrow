@@ -6,6 +6,9 @@ import { ValidationError } from 'class-validator';
 
 require('dotenv').config();
 
+
+dotenv.config();
+dotenv.config();
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { logger: ['log', 'error', 'warn', 'debug', 'verbose'] });
 
@@ -32,6 +35,9 @@ async function bootstrap() {
 
   const port = process.env.PORT || 3000;  // Default to 3000 if PORT is not set
   await app.listen(port);
+  app.enableCors();
+  await app.listen(3000);
 }
 bootstrap();
+
 
