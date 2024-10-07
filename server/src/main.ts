@@ -4,8 +4,6 @@ import * as dotenv from 'dotenv';
 import { ValidationPipe, BadRequestException } from '@nestjs/common';
 import { ValidationError } from 'class-validator';
 
-require('dotenv').config();
-
 
 dotenv.config();
 dotenv.config();
