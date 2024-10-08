@@ -63,15 +63,19 @@ export class AuthController {
   @Post('resend-verification')
   @UsePipes(new ValidationPipe({ whitelist: true }))
   async resendVerification(@Body() body: ResendVerificationDto) {
+    console.log('Received email:', body.email); // Log the incoming email for debugging
+  
+    // Attempt to find the user
     const user = await this.userService.findUserByEmail(body.email);
     if (!user) {
       throw new BadRequestException('User not found');
     }
-
+  
     // Generate and send a new verification code
     const newCode = await this.authService.generateVerificationCode(user.id);
     await this.authService.sendVerificationEmail(user.email, newCode, user.fullName);
-
+  
     return { message: 'Verification code resent to your email' };
   }
+  
 }

@@ -98,7 +98,7 @@ export class AuthService {
       this.verificationCodes.delete(user.id);
 
       // Generate JWT after email verification
-      const payload = { userId: user.id, email: user.email };
+      const payload = { userId: user.id, email: user.email, role: user.role };
       const accessToken = this.jwtService.sign(payload);
 
       return { accessToken };
@@ -108,12 +108,22 @@ export class AuthService {
   }
 
    // Generate JWT token with 2-day expiration
-   async generateJwtToken(user: User): Promise<string> {
-    const payload = { userId: user._id, email: user.email }; 
+  // Generate JWT token with role
+  async generateJwtToken(user: User): Promise<string> {
+    const payload = { 
+      userId: user._id, 
+      email: user.email, 
+      role: user.role  // Ensure the role is included here
+    };
+    
+    console.log('JWT Payload:', payload);  // Log the payload to ensure role is included
+  
     return this.jwtService.sign(payload, {
       expiresIn: '2d', // Token expires after 2 days
     });
   }
+  
+
 
   // Validate user credentials (email and password)
 
