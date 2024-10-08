@@ -9,8 +9,9 @@ import { AuthModule } from 'src/users/auth.module';
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: Vendor.name, schema: VendorSchema }]),
-    forwardRef(() => UserModule),
+    // forwardRef(() => UserModule),
     forwardRef(() => AuthModule),
+    forwardRef(() => UserModule),  
   ],
   controllers: [VendorController],
   providers: [VendorService],

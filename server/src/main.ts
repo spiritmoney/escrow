@@ -15,6 +15,14 @@ async function bootstrap() {
       forbidNonWhitelisted: true, // Throw an error if non-whitelisted properties are provided
       transform: true, // Automatically transform payloads to their respective DTOs
       exceptionFactory: (validationErrors: ValidationError[] = []) => {
+        if (!validationErrors || validationErrors.length === 0) {
+          throw new BadRequestException({
+            statusCode: 400,
+            error: 'Bad Request',
+            message: 'Request body is missing or improperly formatted',
+          });
+        }
+        
         const errors = validationErrors.map(error => {
           const constraints = Object.values(error.constraints);
           return `${error.property}: ${constraints.join(', ')}`;
@@ -25,7 +33,8 @@ async function bootstrap() {
           message: 'Validation failed',
           validationErrors: errors
         });
-      },
+      }
+      
     }),
   );
 
