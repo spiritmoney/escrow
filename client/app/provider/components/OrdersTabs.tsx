@@ -7,8 +7,43 @@ const orders = [
         total: '180 Espees',
         status: 'New Order',
     },
+    {
+        client: 'Emmanuel Charles',
+        gig: 'Build a Landing Page for my busin...',
+        dueOn: 'Sep 30',
+        total: '180 Espees',
+        status: 'New Order',
+    },
+    {
+        client: 'Emmanuel Charles',
+        gig: 'Build a Landing Page for my busin...',
+        dueOn: 'Sep 30',
+        total: '180 Espees',
+        status: 'New Order',
+    },
+    {
+        client: 'Emmanuel Charles',
+        gig: 'Build a Landing Page for my busin...',
+        dueOn: 'Sep 30',
+        total: '180 Espees',
+        status: 'New Order',
+    },
 ];
 const active = [
+    {
+        client: 'Emmanuel Charles',
+        gig: 'Build a Landing Page for my busin...',
+        dueOn: 'Sep 30',
+        total: '180 Espees',
+        status: 'Active',
+    },
+    {
+        client: 'Emmanuel Charles',
+        gig: 'Build a Landing Page for my busin...',
+        dueOn: 'Sep 30',
+        total: '180 Espees',
+        status: 'Active',
+    },
     {
         client: 'Emmanuel Charles',
         gig: 'Build a Landing Page for my busin...',
@@ -25,8 +60,57 @@ const completed = [
         total: '180 Espees',
         status: 'Completed',
     },
+    {
+        client: 'Emmanuel Charles',
+        gig: 'Build a Landing Page for my busin...',
+        dueOn: 'Sep 30',
+        total: '180 Espees',
+        status: 'Completed',
+    },
+    {
+        client: 'Emmanuel Charles',
+        gig: 'Build a Landing Page for my busin...',
+        dueOn: 'Sep 30',
+        total: '180 Espees',
+        status: 'Completed',
+    },
+    {
+        client: 'Emmanuel Charles',
+        gig: 'Build a Landing Page for my busin...',
+        dueOn: 'Sep 30',
+        total: '180 Espees',
+        status: 'Completed',
+    },
+    {
+        client: 'Emmanuel Charles',
+        gig: 'Build a Landing Page for my busin...',
+        dueOn: 'Sep 30',
+        total: '180 Espees',
+        status: 'Completed',
+    },
 ];
 const cancelled = [
+    {
+        client: 'Emmanuel Charles',
+        gig: 'Build a Landing Page for my busin...',
+        dueOn: 'Sep 30',
+        total: '180 Espees',
+        status: 'Cancelled',
+    },
+    {
+        client: 'Emmanuel Charles',
+        gig: 'Build a Landing Page for my busin...',
+        dueOn: 'Sep 30',
+        total: '180 Espees',
+        status: 'Cancelled',
+    },
+    {
+        client: 'Emmanuel Charles',
+        gig: 'Build a Landing Page for my busin...',
+        dueOn: 'Sep 30',
+        total: '180 Espees',
+        status: 'Cancelled',
+    },
     {
         client: 'Emmanuel Charles',
         gig: 'Build a Landing Page for my busin...',
@@ -56,51 +140,6 @@ export default function NewOrders() {
                         </thead>
 
                         <tbody>
-                            {orders.map((order, index) => (
-                                <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
-                                    <td className="px-6 py-4 flex items-center space-x-1">
-                                        <img src="/icons/star.png" alt="" className="-1" />
-                                        <img src="/images/profile2.png" alt="" />
-                                        <p>{order.client}</p>
-                                    </td>
-                                    <td className="px-6 py-4">{order.gig}</td>
-                                    <td className="px-6 py-4">{order.dueOn}</td>
-                                    <td className="px-6 py-4">{order.total}</td>
-                                    <td className="px-6 py-4">
-                                        <button className="bg-blue-600 py-1 px-2 text-white rounded-md">{order.status}</button>
-                                    </td> 
-                                </tr>
-                            ))}
-                            {orders.map((order, index) => (
-                                <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
-                                    <td className="px-6 py-4 flex items-center space-x-1">
-                                        <img src="/icons/star.png" alt="" className="-1" />
-                                        <img src="/images/profile2.png" alt="" />
-                                        <p>{order.client}</p>
-                                    </td>
-                                    <td className="px-6 py-4">{order.gig}</td>
-                                    <td className="px-6 py-4">{order.dueOn}</td>
-                                    <td className="px-6 py-4">{order.total}</td>
-                                    <td className="px-6 py-4">
-                                        <button className="bg-blue-600 py-1 px-2 text-white rounded-md">{order.status}</button>
-                                    </td> 
-                                </tr>
-                            ))}
-                            {orders.map((order, index) => (
-                                <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
-                                    <td className="px-6 py-4 flex items-center space-x-1">
-                                        <img src="/icons/star.png" alt="" className="-1" />
-                                        <img src="/images/profile2.png" alt="" />
-                                        <p>{order.client}</p>
-                                    </td>
-                                    <td className="px-6 py-4">{order.gig}</td>
-                                    <td className="px-6 py-4">{order.dueOn}</td>
-                                    <td className="px-6 py-4">{order.total}</td>
-                                    <td className="px-6 py-4">
-                                        <button className="bg-blue-600 py-1 px-2 text-white rounded-md">{order.status}</button>
-                                    </td> 
-                                </tr>
-                            ))}
                             {orders.map((order, index) => (
                                 <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
                                     <td className="px-6 py-4 flex items-center space-x-1">
@@ -159,37 +198,6 @@ export function Active() {
                                     </td> 
                                 </tr>
                             ))}
-                            {active.map((active, index) => (
-                                <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
-                                    <td className="px-6 py-4 flex items-center space-x-1">
-                                        <img src="/icons/star.png" alt="" className="-1" />
-                                        <img src="/images/profile2.png" alt="" />
-                                        <p>{active.client}</p>
-                                    </td>
-                                    <td className="px-6 py-4">{active.gig}</td>
-                                    <td className="px-6 py-4">{active.dueOn}</td>
-                                    <td className="px-6 py-4">{active.total}</td>
-                                    <td className="px-6 py-4">
-                                        <button className="bg-blue-600 py-1 px-2 text-white rounded-md">{active.status}</button>
-                                    </td> 
-                                </tr>
-                            ))}
-                            {active.map((active, index) => (
-                                <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
-                                    <td className="px-6 py-4 flex items-center space-x-1">
-                                        <img src="/icons/star.png" alt="" className="-1" />
-                                        <img src="/images/profile2.png" alt="" />
-                                        <p>{active.client}</p>
-                                    </td>
-                                    <td className="px-6 py-4">{active.gig}</td>
-                                    <td className="px-6 py-4">{active.dueOn}</td>
-                                    <td className="px-6 py-4">{active.total}</td>
-                                    <td className="px-6 py-4">
-                                        <button className="bg-blue-600 py-1 px-2 text-white rounded-md">{active.status}</button>
-                                    </td> 
-                                </tr>
-                            ))}
-                            
                         </tbody>
                     </table>
                 </div>
@@ -233,66 +241,6 @@ export function Completed() {
                                     </td> 
                                 </tr>
                             ))}
-                            {completed.map((completed, index) => (
-                                <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
-                                    <td className="px-6 py-4 flex items-center space-x-1">
-                                        <img src="/icons/star.png" alt="" className="-1" />
-                                        <img src="/images/profile2.png" alt="" />
-                                        <p>{completed.client}</p>
-                                    </td>
-                                    <td className="px-6 py-4">{completed.gig}</td>
-                                    <td className="px-6 py-4">{completed.dueOn}</td>
-                                    <td className="px-6 py-4">{completed.total}</td>
-                                    <td className="px-6 py-4">
-                                        <button className="bg-blue-600 py-1 px-2 text-white rounded-md">{completed.status}</button>
-                                    </td> 
-                                </tr>
-                            ))}
-                            {completed.map((completed, index) => (
-                                <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
-                                    <td className="px-6 py-4 flex items-center space-x-1">
-                                        <img src="/icons/star.png" alt="" className="-1" />
-                                        <img src="/images/profile2.png" alt="" />
-                                        <p>{completed.client}</p>
-                                    </td>
-                                    <td className="px-6 py-4">{completed.gig}</td>
-                                    <td className="px-6 py-4">{completed.dueOn}</td>
-                                    <td className="px-6 py-4">{completed.total}</td>
-                                    <td className="px-6 py-4">
-                                        <button className="bg-blue-600 py-1 px-2 text-white rounded-md">{completed.status}</button>
-                                    </td> 
-                                </tr>
-                            ))}
-                            {completed.map((completed, index) => (
-                                <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
-                                    <td className="px-6 py-4 flex items-center space-x-1">
-                                        <img src="/icons/star.png" alt="" className="-1" />
-                                        <img src="/images/profile2.png" alt="" />
-                                        <p>{completed.client}</p>
-                                    </td>
-                                    <td className="px-6 py-4">{completed.gig}</td>
-                                    <td className="px-6 py-4">{completed.dueOn}</td>
-                                    <td className="px-6 py-4">{completed.total}</td>
-                                    <td className="px-6 py-4">
-                                        <button className="bg-blue-600 py-1 px-2 text-white rounded-md">{completed.status}</button>
-                                    </td> 
-                                </tr>
-                            ))}
-                            {completed.map((completed, index) => (
-                                <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
-                                    <td className="px-6 py-4 flex items-center space-x-1">
-                                        <img src="/icons/star.png" alt="" className="-1" />
-                                        <img src="/images/profile2.png" alt="" />
-                                        <p>{completed.client}</p>
-                                    </td>
-                                    <td className="px-6 py-4">{completed.gig}</td>
-                                    <td className="px-6 py-4">{completed.dueOn}</td>
-                                    <td className="px-6 py-4">{completed.total}</td>
-                                    <td className="px-6 py-4">
-                                        <button className="bg-blue-600 py-1 px-2 text-white rounded-md">{completed.status}</button>
-                                    </td> 
-                                </tr>
-                            ))}
                         </tbody>
                     </table>
                 </div>
@@ -320,51 +268,6 @@ export function Cancelled() {
                         </thead>
 
                         <tbody>
-                            {cancelled.map((cancelled, index) => (
-                                <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
-                                    <td className="px-6 py-4 flex items-center space-x-1">
-                                        <img src="/icons/star.png" alt="" className="-1" />
-                                        <img src="/images/profile2.png" alt="" />
-                                        <p>{cancelled.client}</p>
-                                    </td>
-                                    <td className="px-6 py-4">{cancelled.gig}</td>
-                                    <td className="px-6 py-4">{cancelled.dueOn}</td>
-                                    <td className="px-6 py-4">{cancelled.total}</td>
-                                    <td className="px-6 py-4">
-                                        <button className="bg-blue-600 py-1 px-2 text-white rounded-md">{cancelled.status}</button>
-                                    </td> 
-                                </tr>
-                            ))}
-                            {cancelled.map((cancelled, index) => (
-                                <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
-                                    <td className="px-6 py-4 flex items-center space-x-1">
-                                        <img src="/icons/star.png" alt="" className="-1" />
-                                        <img src="/images/profile2.png" alt="" />
-                                        <p>{cancelled.client}</p>
-                                    </td>
-                                    <td className="px-6 py-4">{cancelled.gig}</td>
-                                    <td className="px-6 py-4">{cancelled.dueOn}</td>
-                                    <td className="px-6 py-4">{cancelled.total}</td>
-                                    <td className="px-6 py-4">
-                                        <button className="bg-blue-600 py-1 px-2 text-white rounded-md">{cancelled.status}</button>
-                                    </td> 
-                                </tr>
-                            ))}
-                            {cancelled.map((cancelled, index) => (
-                                <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
-                                    <td className="px-6 py-4 flex items-center space-x-1">
-                                        <img src="/icons/star.png" alt="" className="-1" />
-                                        <img src="/images/profile2.png" alt="" />
-                                        <p>{cancelled.client}</p>
-                                    </td>
-                                    <td className="px-6 py-4">{cancelled.gig}</td>
-                                    <td className="px-6 py-4">{cancelled.dueOn}</td>
-                                    <td className="px-6 py-4">{cancelled.total}</td>
-                                    <td className="px-6 py-4">
-                                        <button className="bg-blue-600 py-1 px-2 text-white rounded-md">{cancelled.status}</button>
-                                    </td> 
-                                </tr>
-                            ))}
                             {cancelled.map((cancelled, index) => (
                                 <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
                                     <td className="px-6 py-4 flex items-center space-x-1">
