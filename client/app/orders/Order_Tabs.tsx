@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Rating from "../components/Rating";
+import Link from "next/link";
 
 const products = [
     {
+        id: 1,
         product: 'Nike Shoes: Pink, Black & White',
         src: '/images/fashion.png',
         category: 'Fashion',
@@ -10,6 +12,7 @@ const products = [
         status: 'Out for Delivery',
     },
     {
+        id: 1,
         product: 'Nike Shoes: Pink, Black & White',
         src: '/images/fashion.png',
         category: 'Fashion',
@@ -17,6 +20,7 @@ const products = [
         status: 'Out for Delivery',
     },
     {
+        id: 1,
         product: 'Nike Shoes: Pink, Black & White',
         src: '/images/fashion.png',
         category: 'Fashion',
@@ -24,6 +28,7 @@ const products = [
         status: 'Out for Delivery',
     },
     {
+        id: 1,
         product: 'Nike Shoes: Pink, Black & White',
         src: '/images/fashion.png',
         category: 'Fashion',
@@ -31,6 +36,7 @@ const products = [
         status: 'Out for Delivery',
     },
     {
+        id: 1,
         product: 'Nike Shoes: Pink, Black & White',
         src: '/images/fashion.png',
         category: 'Fashion',
@@ -38,6 +44,7 @@ const products = [
         status: 'Out for Delivery',
     },
     {
+        id: 1,
         product: 'Nike Shoes: Pink, Black & White',
         src: '/images/fashion.png',
         category: 'Fashion',
@@ -48,6 +55,7 @@ const products = [
 
 const services = [
     {
+        id: 1,
         client: 'Kingsley Odim',
         title: 'Full Stack Developer',
         gig: 'Build a Landing Page for my busin...',
@@ -56,6 +64,7 @@ const services = [
         status: 'In Progress..',
     },
     {
+        id: 1,
         client: 'Kingsley Odim',
         title: 'Full Stack Developer',
         gig: 'Build a Landing Page for my busin...',
@@ -64,6 +73,7 @@ const services = [
         status: 'In Progress..',
     },
     {
+        id: 1,
         client: 'Kingsley Odim',
         title: 'Full Stack Developer',
         gig: 'Build a Landing Page for my busin...',
@@ -72,6 +82,7 @@ const services = [
         status: 'In Progress..',
     },
     {
+        id: 1,
         client: 'Kingsley Odim',
         title: 'Full Stack Developer',
         gig: 'Build a Landing Page for my busin...',
@@ -80,6 +91,7 @@ const services = [
         status: 'In Progress..',
     },
     {
+        id: 1,
         client: 'Kingsley Odim',
         title: 'Full Stack Developer',
         gig: 'Build a Landing Page for my busin...',
@@ -88,6 +100,7 @@ const services = [
         status: 'In Progress..',
     },
     {
+        id: 1,
         client: 'Kingsley Odim',
         title: 'Full Stack Developer',
         gig: 'Build a Landing Page for my busin...',
@@ -198,16 +211,20 @@ export default function ProductOrders() {
         <div className="relative flex flex-col items-center">
             {checkout && <div className="fixed w-full h-full inset-0 bg-black bg-opacity-50 z-40"></div>}
             {products.map((product, index) => (
-                <div key={index} className={`w-full relative p-3 flex items-center space-x-3 rounded-lg my-2 ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
-                    <img src={product.src} alt="" className="w-16 rounded-md" />
+                <div key={index} className={`w-full relative p-3 flex items-center rounded-lg my-2 ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
+                    <Link href={`product/${product.id}`} className="flex items-start space-x-3">
+                        <img src={product.src} alt="" className="w-16 rounded-md" />
 
-                    <span className="flex flex-col items-start">
-                        <p className="text-black font-semibold">{product.product}</p>
-                        <p className="text-black text-sm">{product.store}</p>
-                        <Rating />
-                    </span>
+                        <span className="flex flex-col items-start">
+                            <p className="text-black font-semibold">{product.product}</p>
+                            <p className="text-black text-sm">{product.store}</p>
+                            <Rating />
 
-                    <div className="absolute right-5">
+                            <p className="bg-blue-600 py-1 px-2 mt-2 text-white rounded-md md:hidden">{product.status}</p>
+                        </span>
+                    </Link>
+
+                    <div className="absolute right-5 hidden md:block">
                         <p className="bg-blue-600 py-1 px-2 text-white rounded-md">{product.status}</p>
                     </div>
                 </div>
@@ -222,22 +239,31 @@ export function ServiceOrders() {
                 <tbody className="w-full space-y-2">
                     <div className=" w-full flex flex-col">
                         {services.map((service, index) => (
-                            <tr key={index} className={`text-black flex items-center justify-between my-2 rounded-lg ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
+                            <tr key={index} className={`text-black flex items-start justify-between p-3 my-2 rounded-lg ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
                                 <td>
-                                    <div className="px-6 py-4 flex items-center space-x-4">
-                                        <img src="/images/profile3.png" alt="" className="w-16" />
-                                        <div className="flex flex-col items-start">
-                                            <p className="text-black text-lg font-medium">{service.client}</p>
-                                            <p className="text-black text-[12px]">{service.title}</p>
-                                            <Rating />
+                                    <Link href={`/service/${service.id}`}>
+                                        <div className="py-1 flex items-start space-x-4 cursor-pointer">
+                                            <img src="/images/profile3.png" alt="" className="w-12 pt-1 md:w-16" />
+                                            <div className="flex flex-col items-start">
+                                                <p className="text-black text-sm md:text-lg font-medium">{service.client}</p>
+                                                <p className="text-black text-[12px]">{service.title}</p>
+                                                <Rating />
+                                                <p className="pt-4 text-[12px] text-gray-500 md:hidden">{service.gig}</p>
+                                            </div>
                                         </div>
-                                    </div>
-
+                                    </Link>
                                 </td>
-                                <td className="px-6 py-4">{service.gig}</td>
-                                <td className="px-6 py-4">{service.dueOn}</td>
-                                <td className="px-6 py-4">{service.total}</td>
-                                <td className="px-6 py-4">
+                                <td className="px-6 py-4 hidden md:block">{service.gig}</td>
+
+                                <td className="flex flex-col ml-5 w-32 md:hidden">
+                                    <p className="text-sm font-medium">{service.dueOn}</p>
+                                    <p className="text-sm py-2">{service.total}</p>
+                                    <p className="bg-blue-600 py-1 px-2 text-center text-white text-[12px] rounded-md">{service.status}</p>
+                                </td>
+
+                                <td className="px-6 py-4 hidden md:block">{service.dueOn}</td>
+                                <td className="px-6 py-4 hidden md:block">{service.total}</td>
+                                <td className="px-6 py-4 hidden md:block">
                                     <button className="bg-blue-600 py-1 px-2 text-white rounded-md">{service.status}</button>
                                 </td>
                             </tr>
@@ -250,12 +276,6 @@ export function ServiceOrders() {
     );
 }
 export function History() {
-    const [viewNegotiation, setViewNegotiation] = useState(false);
-
-    function togglePrice() {
-        setViewNegotiation(!viewNegotiation);
-    }
-
     return (
         <div className="w-full">
             <table className="w-full">
@@ -263,96 +283,64 @@ export function History() {
                     <div className="relative w-full flex flex-col">
                         {history.map((item, index) => (
                             item.tag === 'service' ? (
-                                <tr key={index} className={`text-black flex items-center justify-between my-2 rounded-lg bg-gray-100`}>
+                                <tr key={index} className={`w-full text-black flex items-start justify-between p-3 my-2 rounded-lg bg-gray-100`}>
                                     <td>
-                                        <div className="px-6 py-4 flex items-center space-x-4">
-                                            <img src="/images/profile3.png" alt="" className="w-16" />
+                                        <div className="py-1 flex items-start space-x-4 ">
+                                            <Link href={'/service/1'} className="w-14 h-14 pt-1 md:w-16 md:h-16 rounded-lg" >
+                                                <img src="/images/profile3.png" alt="" className="w-12 pt-1 md:w-16" />
+                                            </Link>
                                             <div className="flex flex-col items-start">
-                                                <p className="text-black text-lg font-medium">{item.client}</p>
+                                                <p className="text-black text-sm md:text-lg font-medium">{item.client}</p>
                                                 <p className="text-black text-[12px]">{item.title}</p>
                                                 <Rating />
+                                                <p className="pt-4 text-[12px] text-gray-500 md:hidden">{item.gig}</p>
                                             </div>
                                         </div>
-
                                     </td>
-                                    <td className="px-6 py-4">{item.gig}</td>
-                                    <td className="px-6 py-4">{item.dueOn}</td>
-                                    <td className="px-6 py-4">{item.total}</td>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-4 hidden md:block">{item.gig}</td>
+
+                                    <td className="flex flex-col pl-5 w-28 md:hidden">
+                                        <p className="text-sm font-medium">{item.dueOn}</p>
+                                        <p className="text-sm py-2">{item.total}</p>
+                                        <p className={`py-1 px-2 text-center text-white text-[12px] rounded-md ${item.status === 'Completed' ? 'bg-blue-600' : 'bg-red-700'}`}>{item.status}</p>
+                                    </td>
+
+                                    <td className="px-6 py-4 hidden md:block">{item.dueOn}</td>
+                                    <td className="px-6 py-4 hidden md:block">{item.total}</td>
+                                    <td className="px-6 py-4 hidden md:block">
                                         <p className={`py-1 px-2 w-32 text-center text-white rounded-md ${item.status === 'Completed' ? 'bg-blue-600' : 'bg-red-700'}`}>{item.status}</p>
                                     </td>
                                 </tr>
                             ) : (
-                                <tr key={index} className={`text-black flex items-center justify-between my-2 rounded-lg bg-white`}>
+                                <tr key={index} className={`text-black flex items-start justify-between p-3 my-2 rounded-lg bg-white`}>
                                     <td>
-                                        <div className="px-6 py-4 flex items-center space-x-4">
-                                            <img src={item.src} alt="" className="w-16 rounded-md" />
+                                        <div className="py-1 flex items-start space-x-4">
+                                            <Link href={'/product/1'} className="w-14 h-14 pt-1 md:w-16 md:h-16 rounded-lg" >
+                                                <img src={item.src} alt=""  className="w-full h-full pt-1 rounded-lg" />
+                                            </Link>
                                             <div className="flex flex-col items-start">
-                                                <p className="text-black font-semibold">{item.product}</p>
-                                                <p className="text-black text-sm">{item.store}</p>
+                                                <p className="text-black text-sm md:text-lg font-medium">{item.product}</p>
+                                                <p className="text-black text-[12px]">{item.store}</p>
                                                 <Rating />
                                             </div>
                                         </div>
 
                                     </td>
-                                    <td className="px-6 py-4">{item.date}</td>
-                                    <td className="px-6 py-4">{item.price}</td>
-                                    <td className="px-6 py-4">
+
+                                    <td className="flex flex-col pl-5 w-28 md:hidden">
+                                        <p className="text-sm font-medium">{item.date}</p>
+                                        <p className="text-sm py-2">{item.price}</p>
+                                        <p className={`py-1 px-2 text-center text-white text-[12px] rounded-md ${item.status === 'Delivered' ? 'bg-blue-600' : 'bg-red-700'}`}>{item.status}</p>
+                                    </td>
+                                    
+                                    <td className="px-6 py-4 hidden md:block">{item.date}</td>
+                                    <td className="px-6 py-4 hidden md:block">{item.price}</td>
+                                    <td className="px-6 py-4 hidden md:block">
                                         <p className={`py-1 px-2 w-32 text-center text-white rounded-md ${item.status === 'Delivered' ? 'bg-blue-600' : 'bg-red-700'}`}>{item.status}</p>
                                     </td>
                                 </tr>
                             )
                         ))}
-                        {viewNegotiation &&
-                            <div className='absolute inset-0 mx-auto z-50 bg-white text-gray-700 font-medium rounded-lg w-96 h-96 p-5 flex flex-col space-y-2'>
-                                <span className="flex items-center w-full justify-between">
-                                    <p className="text-2xl font-medium text-black">Negotiation</p>
-                                    <p onClick={togglePrice} className='text-blue-600 text-3xl cursor-pointer'>&times;</p>
-                                </span>
-
-                                <div className='lex flex-col space-y-2 py-5'>
-                                    <p className='font-semibold text-sm'>Timeline</p>
-                                    <div className='flex items-center space-x-2'>
-                                        <span className="w-24 text-sm font-medium"><p>Start Date</p></span>
-                                        <span className="flex items-center space-x-2 text-sm">
-                                            <img src="/icons/calender.png" alt="" />
-                                            <p>24 September 2024</p>
-                                        </span>
-                                    </div>
-
-                                    <div className='flex items-center space-x-2'>
-                                        <span className="w-24 text-sm font-medium"><p>End Date</p></span>
-                                        <span className="flex items-center space-x-2 text-sm">
-                                            <img src="/icons/calender.png" alt="" />
-                                            <p>05 November 2024</p>
-                                        </span>
-                                    </div>
-
-                                    <div className='flex items-center space-x-2'>
-                                        <span className="w-24 text-sm font-medium"><p>Duration</p></span>
-                                        <p className="text-sm">30 Days</p>
-                                    </div>
-                                </div>
-
-                                <p className='font-semibold text-sm'>Price</p>
-                                <span className='flex text-sm items-center space-x-5'>
-                                    <p className='font-medium'>Amount Offer</p>
-                                    <p>400 Espees</p>
-                                </span>
-
-                                <div className='flex items-center justify-between py-5 space-x-2'>
-                                    <button
-                                        className="bg-red-700 py-2 px-5 w-40 text-sm text-white rounded-md">
-                                        Decline
-                                    </button>
-
-                                    <button
-                                        className="bg-green-700 py-2 px-5 w-40 text-sm text-white rounded-md">
-                                        Accept
-                                    </button>
-                                </div>
-                            </div>
-                        }
                     </div>
                 </tbody>
             </table>

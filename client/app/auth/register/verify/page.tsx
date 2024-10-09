@@ -81,16 +81,18 @@ const Page = () => {
   };
 
   return (
-    <main className="bg-white w-screen h-screen flex flex-col">
+    <main className="bg-white w-screen h-screen flex flex-col p-2">
       <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} />
-      <div className="flex flex-col items-center justify-center flex-grow text-black space-y-4">
+
+      <div className="w-full flex flex-col items-center justify-center flex-grow text-black space-y-4">
         <div className="text-[32px] font-bold mb-4">Verify your Email</div>
         <div className="text-center mb-6 text-[22px]">
           We just sent a 6-digit code to your email
           <br />
           Please check your email to access the code
         </div>
-        <div className="flex gap-4 mb-6">
+
+        <div className="flex gap-3 md:gap-4 mb-6">
           {verificationCode.map((digit, index) => (
             <input
               key={index}
@@ -103,15 +105,16 @@ const Page = () => {
               onChange={(e) => handleCodeChange(index, e.target.value)}
               onFocus={() => handleFocus(index)}
               onBlur={() => handleBlur(index)}
-              className="w-[80px] h-[100px] text-center text-2xl border-4 border-gray-500 rounded-xl focus:outline-none"
+              className="w-[50px] h-[70px] md:w-[80px] md:h-[100px] text-center text-2xl border-4 border-gray-500 rounded-xl focus:outline-none"
             />
           ))}
         </div>
-        <div>
-          <Link href={"/provider/freelancer/userInfo"}>
+
+        <div className="w-80 mx-auto">
+          <Link href={"/provider/freelancer/userInfo"} className="w-full">
             <button
               onClick={handleVerify}
-              className="bg-[#035ADC] text-white py-2 px-4 rounded-xl w-[512px] h-[50px] mt-3"
+              className="bg-[#035ADC] text-white py-2 px-4 rounded-xl w-full h-[50px] mt-3"
             >
               Verify Email
             </button>

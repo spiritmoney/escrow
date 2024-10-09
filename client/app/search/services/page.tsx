@@ -124,9 +124,9 @@ export default function ServicesSearch() {
                     </Link>
                 </span>
 
-                <Heading text="Results for Full Stack Developer" />
+                <Heading text="Results for 'Full Stack Developer'" />
                 <div className="min-w-full container bg-gray-100 p-5 mb-20 rounded-lg mx-auto">
-                    <div className="grid grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         {services.map(service => (
                             <Link href={'/service/1'}>
                                 <ServiceCard key={service.id} service={service} />
@@ -138,9 +138,10 @@ export default function ServicesSearch() {
 
                 <Heading text="Related Services" />
                 <div className="min-w-full container bg-gray-100 p-5 mb-20 rounded-lg mx-auto">
-                    <div className="grid grid-cols-4 gap-6">
+                    <div className="mx-auto flex items-center overflow-scroll rounded-lg"
+                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                         {related.map(service => (
-                            <Link href={'/service/1'}>
+                            <Link href={'/service/1'} className="mr-3 min-w-52">
                                 <ServiceCard key={service.id} service={service} />
                             </Link>
                         ))}

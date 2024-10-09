@@ -21,7 +21,7 @@ export async function signUp(
   };
 }
 
-export default async function handler(
+export default async function POST(
   req: NextApiRequest,
   res: NextApiResponse
 ) {

@@ -41,56 +41,6 @@ const products = [
     },
 ];
 
-const services = [
-    {
-        client: 'Kingsley Odim',
-        title: 'Full Stack Developer',
-        gig: 'Build a Landing Page for my busin...',
-        dueOn: 'Sep 30',
-        total: '180 Espees',
-        status: 'In Progress..',
-    },
-    {
-        client: 'Kingsley Odim',
-        title: 'Full Stack Developer',
-        gig: 'Build a Landing Page for my busin...',
-        dueOn: 'Sep 30',
-        total: '180 Espees',
-        status: 'In Progress..',
-    },
-    {
-        client: 'Kingsley Odim',
-        title: 'Full Stack Developer',
-        gig: 'Build a Landing Page for my busin...',
-        dueOn: 'Sep 30',
-        total: '180 Espees',
-        status: 'In Progress..',
-    },
-    {
-        client: 'Kingsley Odim',
-        title: 'Full Stack Developer',
-        gig: 'Build a Landing Page for my busin...',
-        dueOn: 'Sep 30',
-        total: '180 Espees',
-        status: 'In Progress..',
-    },
-    {
-        client: 'Kingsley Odim',
-        title: 'Full Stack Developer',
-        gig: 'Build a Landing Page for my busin...',
-        dueOn: 'Sep 30',
-        total: '180 Espees',
-        status: 'In Progress..',
-    },
-    {
-        client: 'Kingsley Odim',
-        title: 'Full Stack Developer',
-        gig: 'Build a Landing Page for my busin...',
-        dueOn: 'Sep 30',
-        total: '180 Espees',
-        status: 'In Progress..',
-    },
-];
 
 const negotiations = [
     {
@@ -131,6 +81,10 @@ export default function ProductsCart() {
     );
     const [checkout, setCheckout] = useState(false);
 
+    function toggleCheckout() {
+        setCheckout(!checkout);
+    }
+
     // to track quantity for each product
     const [quantities, setQuantities] = useState(new Array(products.length).fill(1));
 
@@ -140,9 +94,7 @@ export default function ProductsCart() {
         setCheckedItems(updatedCheckedItems);
     };
 
-    function toggleCheckout() {
-        setCheckout(!checkout);
-    }
+    
 
     // Increment product quantity
     const incrementQuantity = (index: number) => {
@@ -168,8 +120,8 @@ export default function ProductsCart() {
                 <div key={index} className="w-full relative bg-white p-3 flex items-center space-x-3 rounded-lg my-2">
                     <img src={product.src} alt="" className="w-16 rounded-md" />
 
-                    <span className="flex flex-col items-start">
-                        <p className="text-black font-semibold">{product.product}</p>
+                    <span className="flex flex-col items-start w-48">
+                        <p className="text-sm text-black font-semibold">{product.product}</p>
                         <p className="text-black text-sm">{product.store}</p>
                         <Rating />
                     </span>
@@ -202,40 +154,7 @@ export default function ProductsCart() {
         </div>
     );
 }
-export function ServicesCart() {
-    return (
-        <div className="w-full">
-            <table className="w-full">
-                <tbody className="w-full space-y-2">
-                    <div className=" w-full flex flex-col">
-                        {services.map((service, index) => (
-                            <tr key={index} className={`text-black flex items-center justify-between my-2 rounded-lg ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
-                                <td>
-                                    <div className="px-6 py-4 flex items-center space-x-4">
-                                        <img src="/images/profile3.png" alt="" className="w-16" />
-                                        <div className="flex flex-col items-start">
-                                            <p className="text-black text-lg font-medium">{service.client}</p>
-                                            <p className="text-black text-[12px]">{service.title}</p>
-                                            <Rating />
-                                        </div>
-                                    </div>
 
-                                </td>
-                                <td className="px-6 py-4">{service.gig}</td>
-                                <td className="px-6 py-4">{service.dueOn}</td>
-                                <td className="px-6 py-4">{service.total}</td>
-                                <td className="px-6 py-4">
-                                    <button className="bg-blue-600 py-1 px-2 text-white rounded-md">{service.status}</button>
-                                </td>
-                            </tr>
-                        ))}
-                    </div>
-                </tbody>
-            </table>
-        </div>
-
-    );
-}
 export function Negotiations() {
     const [viewNegotiation, setViewNegotiation] = useState(false);
 
@@ -250,26 +169,26 @@ export function Negotiations() {
                 <tbody className="w-full space-y-2">
                     <div className="relative w-full flex flex-col">
                         {negotiations.map((service, index) => (
-                            <tr key={index} className={` text-black flex items-center justify-between my-2 rounded-lg ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
+                            <tr key={index} className={` text-black flex items-start justify-between my-2 rounded-lg ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
                                 <td>
-                                    <div className="px-6 py-4 flex items-center space-x-4">
-                                        <img src="/images/profile3.png" alt="" className="w-16" />
+                                    <div className="px-6 py-4 flex items-start space-x-4 ">
+                                        <img src="/images/profile3.png" alt="" className="w-12 pt-2 md:w-16" />
                                         <div className="flex flex-col items-start">
-                                            <p className="text-black text-lg font-medium">{service.client}</p>
+                                            <p className="text-black text-sm md:text-lg font-medium">{service.client}</p>
                                             <p className="text-black text-[12px]">{service.title}</p>
                                             <Rating />
+                                            <p className="pt-4 text-[12px] text-gray-500 md:hidden">{service.gig}</p>
                                         </div>
                                     </div>
-
                                 </td>
-                                <td className="px-6 py-4">{service.gig}</td>
-                                <td className="px-6 py-4">
-                                    <button onClick={togglePrice} className="bg-blue-600 py-1 px-2 text-white rounded-md">View Negotiation</button>
+                                <td className="px-6 py-4 hidden md:block">{service.gig}</td>
+                                <td className="p-6">
+                                    <button onClick={togglePrice} className="bg-blue-600 py-1 px-2 text-white rounded-md flex items-center">View<span className="hidden md:flex">&nbsp;Negotiation</span></button>
                                 </td>
                             </tr>
                         ))}
                         {viewNegotiation &&
-                            <div className='absolute inset-0 mx-auto z-50 bg-white text-gray-700 font-medium rounded-lg w-96 h-96 p-5 flex flex-col space-y-2'>
+                            <div className='absolute inset-0 mx-auto z-50 bg-white text-gray-700 font-medium rounded-lg w-80 md:w-96 h-96 p-5 flex flex-col space-y-2'>
                                 <span className="flex items-center w-full justify-between">
                                     <p className="text-2xl font-medium text-black">Negotiation</p>
                                     <p onClick={togglePrice} className='text-blue-600 text-3xl cursor-pointer'>&times;</p>
