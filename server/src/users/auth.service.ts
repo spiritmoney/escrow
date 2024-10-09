@@ -48,15 +48,15 @@ export class AuthService {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'emmaxcharles123@gmail.com', // Your email
-        pass: 'sushqmgebuxipmjx', // Your app password
+        user: 'escrowforespees@gmail.com', // Your email
+        pass: 'uhkwtbvdctyfhtxb', // Your app password
       },
     });
 
     const mailOptions = {
-      from: 'emmaxcharles123@gmail.com', // Sender address
+      from: 'escrowforespees@gmail.com', // Sender address
       to: email, // Receiver address
-      subject: 'Email Verification From Escrows',
+      subject: 'Email Verification From Escrow',
       html: `
       <div style="font-family: Arial, sans-serif; text-align: center;">
         <h2>Welcome to Escrows, ${fullName}!</h2>
