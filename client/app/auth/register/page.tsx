@@ -5,7 +5,6 @@ import React, { useState } from "react";
 import countriesData from "@/countries.json";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
 
 const countries = countriesData.map((country) => ({
   name: country.name,
@@ -40,10 +39,11 @@ const Page = () => {
         onClick={() => handleSelect(type)}
       >
         <div
-          className={`w-[257px] h-[257px] rounded-xl border-2 py-10 font-medium space-y-3 transition-colors duration-300 ${isSelected
-            ? "bg-[#035ADC] border-[#035ADC] text-white"
-            : "bg-white border-[#035ADC] text-[#035ADC] group-hover:bg-[#035ADC] group-hover:text-white"
-            }`}
+          className={`w-[257px] h-[257px] rounded-xl border-2 py-10 font-medium space-y-3 transition-colors duration-300 ${
+            isSelected
+              ? "bg-[#035ADC] border-[#035ADC] text-white"
+              : "bg-white border-[#035ADC] text-[#035ADC] group-hover:bg-[#035ADC] group-hover:text-white"
+          }`}
         >
           <div className="px-8">
             <Image
@@ -94,7 +94,9 @@ const Page = () => {
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -109,12 +111,9 @@ const Page = () => {
 
       if (response.ok) {
         const user = await response.json();
-        // Sign in the user after successful signup
-        await signIn("credentials", {
-          email: user.email,
-          password: "password", // You should implement a proper password flow
-          callbackUrl: "/dashboard",
-        });
+        // Removed NextAuth sign-in
+        // Instead, you might want to redirect the user or update the UI
+        router.push("/dashboard");
       } else {
         // Handle error
         console.error("Signup failed");
@@ -221,9 +220,7 @@ const Page = () => {
           </label>
         </div>
         <Link href={"/auth/register/verify"}>
-          <button
-            className="w-full mt-5 h-[50px] bg-[#035ADC] font-medium text-white rounded-lg"
-          >
+          <button className="w-full mt-5 h-[50px] bg-[#035ADC] font-medium text-white rounded-lg">
             Create Account
           </button>
         </Link>
@@ -250,7 +247,10 @@ const Page = () => {
             >
               {getButtonText()}
             </button>
-            <Link href={"/auth/signin"} className="text-black text-[14px] font-medium">
+            <Link
+              href={"/auth/signin"}
+              className="text-black text-[14px] font-medium"
+            >
               Already have an Account?{" "}
               <span className="text-[#035ADC]">Login</span>
             </Link>
