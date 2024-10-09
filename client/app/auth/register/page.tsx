@@ -1,6 +1,5 @@
 "use client";
 
-import Navbar from "@/app/components/Navbar";
 import Image from "next/image";
 import React, { useState } from "react";
 import countriesData from "@/countries.json";
@@ -41,11 +40,10 @@ const Page = () => {
         onClick={() => handleSelect(type)}
       >
         <div
-          className={`w-[257px] h-[257px] rounded-xl border-2 py-10 font-medium space-y-3 transition-colors duration-300 ${
-            isSelected
-              ? "bg-[#035ADC] border-[#035ADC] text-white"
-              : "bg-white border-[#035ADC] text-[#035ADC] group-hover:bg-[#035ADC] group-hover:text-white"
-          }`}
+          className={`w-[257px] h-[257px] rounded-xl border-2 py-10 font-medium space-y-3 transition-colors duration-300 ${isSelected
+            ? "bg-[#035ADC] border-[#035ADC] text-white"
+            : "bg-white border-[#035ADC] text-[#035ADC] group-hover:bg-[#035ADC] group-hover:text-white"
+            }`}
         >
           <div className="px-8">
             <Image
@@ -222,19 +220,19 @@ const Page = () => {
             .
           </label>
         </div>
-        <button
-          type="submit"
-          className="w-full mt-5 h-[50px] bg-[#035ADC] font-medium text-white rounded-lg"
-        >
-          Create Account
-        </button>
+        <Link href={"/auth/register/verify"}>
+          <button
+            className="w-full mt-5 h-[50px] bg-[#035ADC] font-medium text-white rounded-lg"
+          >
+            Create Account
+          </button>
+        </Link>
       </form>
     );
   };
 
   return (
     <main className="bg-white w-screen h-screen flex flex-col">
-      <Navbar />
       <div className="flex-grow flex flex-col justify-center items-center space-y-8">
         {!showForm ? (
           <>

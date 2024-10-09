@@ -9,6 +9,9 @@ import { RatingModule } from './rating/rating.module';
 import { DisputeModule } from './dispuite/dispute.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AuthModule } from './users/auth.module';
+import { FreelancerModule } from './freelancer/freelancer.module';
+import { VendorModule } from './vendor/vendor.module';
 
 @Module({
   imports: [
@@ -26,10 +29,13 @@ import { MongooseModule } from '@nestjs/mongoose';
     // Feature modules (no TypeORM, these will use Mongoose instead)
     EscrowModule,
     TransactionModule,
-    UserModule,
     ProductModule,
     RatingModule,
     DisputeModule,
+    UserModule,
+    FreelancerModule,
+    AuthModule,
+    VendorModule
   ],
   controllers: [AppController],
   providers: [AppService],
