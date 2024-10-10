@@ -222,12 +222,9 @@ const Page = () => {
           {renderButton("vendor", "cart", "I am a Vendor")}
           <div className="col-span-2 flex justify-center">{renderButton("freelancer", "spanner", "I am a Freelancer")}</div>
         </div>
-        <Link href={"/provider/freelancer/userInfo"} className="w-full">
-          <button
-            className="w-full md:w-96 h-[50px] bg-[#035ADC] font-medium text-white rounded-lg my-5"
-          >
-            {getButtonText()}
-          </button>
+        <Link href={"/provider/freelancer/userInfo"}
+        className="w-full md:w-96 h-[50px] bg-[#035ADC] font-medium text-white rounded-lg my-5">
+          <button className="w-full h-full">{getButtonText()}</button>
         </Link>
 
       </div>
