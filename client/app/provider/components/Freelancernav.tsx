@@ -4,6 +4,7 @@ import Rating from '@/app/components/Rating';
 import { services } from '@/app/data/Service';
 import React, { useState } from 'react'
 import NewOrders, { Active, Cancelled, Completed } from './OrdersTabs';
+import { EditFreelancer } from './editProfile';
 
 export default function Orders() {
     const [activeTab, setActiveTab] = useState("New Orders");
@@ -89,13 +90,15 @@ export function Messages() {
         <div className='w-full'>
             <h1 className='text-black text-2xl font-semibold'>My Messages</h1>
 
-            <div className='w-[320px] md:w-[500px] bg-white mx-auto p-10 my-16 flex flex-col items-center justify-center rounded-2xl shadow-lg'>
-                <img src="/icons/comingsoon.png" alt="" className='w-52' />
-                <p className='text-black text-2xl'>Coming Soon!</p>
-                <button className='bg-blue-600 text-white w-full text-center p-2 my-7 rounded-lg'>
-                    Back
-                </button>
-            </div>
+            <a href="">
+                <div className='w-[320px] md:w-[500px] bg-white mx-auto p-10 my-16 flex flex-col items-center justify-center rounded-2xl shadow-lg'>
+                    <img src="/icons/comingsoon.png" alt="" className='w-52' />
+                    <p className='text-black text-2xl'>Coming Soon!</p>
+                    <button className='bg-blue-600 text-white w-full text-center p-2 my-7 rounded-lg'>
+                        Back
+                    </button>
+                </div>
+            </a>
         </div>
     )
 }
@@ -123,13 +126,15 @@ export function Earnings() {
         <div className='w-full'>
             <h1 className='text-black text-2xl font-semibold'>Earnings</h1>
 
-            <div className='w-[320px] md:w-[500px] bg-white mx-auto p-10 my-16 flex flex-col items-center justify-center rounded-2xl shadow-lg'>
-                <img src="/icons/comingsoon.png" alt="" className='w-52' />
-                <p className='text-black text-2xl'>Coming Soon!</p>
-                <button className='bg-blue-600 text-white w-full text-center p-2 my-7 rounded-lg'>
-                    Back
-                </button>
-            </div>
+            <a href="">
+                <div className='w-[320px] md:w-[500px] bg-white mx-auto p-10 my-16 flex flex-col items-center justify-center rounded-2xl shadow-lg'>
+                    <img src="/icons/comingsoon.png" alt="" className='w-52' />
+                    <p className='text-black text-2xl'>Coming Soon!</p>
+                    <button className='bg-blue-600 text-white w-full text-center p-2 my-7 rounded-lg'>
+                        Back
+                    </button>
+                </div>
+            </a>
         </div>
     )
 }
@@ -137,12 +142,20 @@ export function Earnings() {
 export function Profile({ params }: { params: { id: string } }) {
     const serviceId = params.id;
     const service = services.find((s) => s.id === parseInt(serviceId));
+    const [editProfile, setEditProfile] = useState(false);
 
+    
     if (!service) {
         return <div>Service not found</div>;
     }
+
+    function toggleEdit(){
+        setEditProfile(!editProfile);
+    }
+
     return (
-        <div className='w-full'>
+        <div className='w-full relative'>
+            {editProfile && <div className="fixed w-full h-full inset-0 bg-black bg-opacity-50 z-40"></div>}
             <h1 className='text-black text-3xl py-3 font-semibold'>Profile</h1>
             <div className="container bg-white rounded-xl mx-auto w-full text-black">
                 <div className="relative bg-white w-full pt-5 md:p-7 rounded-xl flex items-start space-x-4 md:space-x-8">
@@ -173,7 +186,9 @@ export function Profile({ params }: { params: { id: string } }) {
                             <Rating />
                         
                             <div className='md:absolute md:top-7 md:right-10'>
-                                <button className="m-6 px-3 py-2 mx-auto bg-blue-700 flex items-center text-white rounded-lg">
+                                <button 
+                                onClick={toggleEdit}
+                                className="m-6 px-3 py-2 mx-auto bg-blue-700 flex items-center text-white rounded-lg">
                                 <img src="/icons/edit.png" alt="" className='w-6' />
                                 <p>Edit Profile</p>
                                 </button>
@@ -182,6 +197,12 @@ export function Profile({ params }: { params: { id: string } }) {
 
                     </div>
                 </div>
+
+                {editProfile && 
+                        <div className='absolute top-0 bg-white inset-x-0 rounded-2xl w-390 md:w-[650px] mx-auto z-50'>
+                            <EditFreelancer toggleEdit={toggleEdit}/>
+                        </div>
+                    }
 
                 <div className='px-7 mb-7'>
                     <div className="flex text-[10px] md:text-sm space-x-2 mt-2 overflow-scroll"

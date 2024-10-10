@@ -6,6 +6,7 @@ import Rating from '@/app/components/Rating';
 import Heading from '@/app/components/Heading';
 import Link from 'next/link';
 import ProductCard from '@/app/components/ProductCard';
+import { EditVendor } from './editProfile';
 
 export default function Listings() {
     const [addNew, setAddNew] = useState(false);
@@ -40,62 +41,62 @@ export default function Listings() {
                         <p className='hidden md:block'>List Product</p>
                     </button>
 
-                </div>
+                </div> 
 
                 <div className="w-11/12 flex items-center mx-auto border-b border-gray-400 overflow-scroll"
                     style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
 
                     <button
-                        className={`w-40 md:w-1/4 py-2 px-4 flex items-center text-sm text-left md:text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "My Products"
+                        className={`w-40 md:w-1/4 py-2 px-4 flex items-center justify-center text-sm text-left md:text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "My Products"
                             ? "text-black border-b-2 border-blue-600"
                             : "text-gray-400 hover:text-blue-400"
                             }`}
                         onClick={() => handleTabClick("My Products")}
                     >
                         <p className='w-24 md:w-32'>My Products</p>
-                        <span className={`ml-2 text-white px-2 rounded-full 
+                        <span className={`text-white px-2 rounded-full 
                         ${activeTab === "My Products" ? "bg-blue-600" : "bg-gray-400"}`}>
                             7
                         </span>
                     </button>
 
                     <button
-                        className={`w-44 md:w-1/4 py-2 px-4 flex items-center text-sm text-left md:text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Active Orders"
+                        className={`w-44 md:w-1/4 py-2 px-4 flex items-center justify-center text-sm text-left md:text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Active Orders"
                             ? "text-black border-b-2 border-blue-600"
                             : "text-gray-400 hover:text-blue-400"
                             }`}
                         onClick={() => handleTabClick("Active Orders")}
                     >
                         <p className='w-32'>Active Orders</p>
-                        <span className={`ml-2 text-white px-2 rounded-full 
+                        <span className={`text-white px-2 rounded-full 
                         ${activeTab === "Active Orders" ? "bg-blue-600" : "bg-gray-400"}`}>
                             3
                         </span>
                     </button>
 
                     <button
-                        className={`w-48 md:w-1/4 py-2 px-4 flex items-center text-sm text-left md:text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Completed Orders"
+                        className={`w-52 md:w-1/4 py-2 px-4 flex items-center justify-center text-sm text-left md:text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Completed Orders"
                             ? "text-black border-b-2 border-blue-600"
                             : "text-gray-400 hover:text-blue-400"
                             }`}
                         onClick={() => handleTabClick("Completed Orders")}
                     >
-                        <p className='w-44 md:w-32 border'>Completed Orders</p>
-                        <span className={`ml-2 text-white px-2 rounded-full 
+                        <p className='w-36 md:w-44'>Completed Orders</p>
+                        <span className={`text-white px-2 rounded-full 
                         ${activeTab === "Completed Orders" ? "bg-blue-600" : "bg-gray-400"}`}>
                             5
                         </span>
                     </button>
 
                     <button
-                        className={`w-36 md:w-1/4 py-2 px-4 flex items-center text-sm text-left md:text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Cancelled Orders"
+                        className={`w-52 md:w-1/4 py-2 px-4 flex items-center justify-center text-sm text-left md:text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Cancelled Orders"
                             ? "text-black border-b-2 border-blue-600"
                             : "text-gray-400 hover:text-blue-400"
                             }`}
                         onClick={() => handleTabClick("Cancelled Orders")}
                     >
-                        Cancelled Orders
-                        <span className={`ml-2 text-white px-2 rounded-full 
+                        <p className='w-36 md:w-44'>Cancelled Orders</p>
+                        <span className={`text-white px-2 rounded-full 
                         ${activeTab === "Cancelled Orders" ? "bg-blue-600" : "bg-gray-400"}`}>
                             4
                         </span>
@@ -294,13 +295,15 @@ export function Messages() {
         <div className='w-full'>
             <h1 className='text-black text-2xl font-semibold'>Messages</h1>
 
-            <div className='w-[320px] md:w-[500px] bg-white mx-auto p-10 my-16 flex flex-col items-center justify-center rounded-2xl shadow-lg'>
-                <img src="/icons/comingsoon.png" alt="" className='w-52' />
-                <p className='text-black text-2xl'>Coming Soon!</p>
-                <button className='bg-blue-600 text-white w-full text-center p-2 my-7 rounded-lg'>
-                    Back
-                </button>
-            </div>
+            <a href="">
+                <div className='w-[320px] md:w-[500px] bg-white mx-auto p-10 my-16 flex flex-col items-center justify-center rounded-2xl shadow-lg'>
+                    <img src="/icons/comingsoon.png" alt="" className='w-52' />
+                    <p className='text-black text-2xl'>Coming Soon!</p>
+                    <button className='bg-blue-600 text-white w-full text-center p-2 my-7 rounded-lg'>
+                        Back
+                    </button>
+                </div>
+            </a>
         </div>
     )
 }
@@ -327,18 +330,26 @@ export function Earnings() {
         <div className='w-full'>
             <h1 className='text-black text-2xl font-semibold'>Earnings</h1>
 
-            <div className='w-[320px] md:w-[500px] bg-white mx-auto p-10 my-16 flex flex-col items-center justify-center rounded-2xl shadow-lg'>
-                <img src="/icons/comingsoon.png" alt="" className='w-52' />
-                <p className='text-black text-2xl'>Coming Soon!</p>
-                <button className='bg-blue-600 text-white w-full text-center p-2 my-7 rounded-lg'>
-                    Back
-                </button>
-            </div>
+            <a href="">
+                <div className='w-[320px] md:w-[500px] bg-white mx-auto p-10 my-16 flex flex-col items-center justify-center rounded-2xl shadow-lg'>
+                    <img src="/icons/comingsoon.png" alt="" className='w-52' />
+                    <p className='text-black text-2xl'>Coming Soon!</p>
+                    <button className='bg-blue-600 text-white w-full text-center p-2 my-7 rounded-lg'>
+                        Back
+                    </button>
+                </div>
+            </a>
         </div>
     )
 }
 
 export function Profile() {
+    const [editProfile, setEditProfile] = useState(false);
+
+    function toggleEdit(){
+        setEditProfile(!editProfile);
+    }
+
     const vendor = [
         {
             id: '1',
@@ -360,7 +371,9 @@ export function Profile() {
     ];
 
     return (
-        <div className='w-full '>
+        <div className='w-full relative'>
+            {editProfile && <div className="fixed w-full h-full inset-0 bg-black bg-opacity-50 z-40"></div>}
+
             <h1 className='text-black text-3xl py-3 font-semibold'>Store</h1>
 
             <div>
@@ -383,12 +396,19 @@ export function Profile() {
                     ))}
 
                     <div className='md:absolute md:top-8 md:right-10'>
-                        <button className="px-3 md:px-6 py-2 mx-auto bg-blue-700 flex items-center space-x-2 text-white rounded-lg">
+                        <button 
+                        onClick={toggleEdit}
+                        className="px-3 md:px-6 py-2 mx-auto bg-blue-700 flex items-center space-x-2 text-white rounded-lg">
                             <img src="/icons/edit.png" alt="" className='w-6' />
                             <p className='hidden md:flex'>Edit Profile</p>
                         </button>
                     </div>
                 </div>
+                    {editProfile && 
+                        <div className='absolute top-0 bg-white inset-x-0 rounded-2xl w-[400] md:w-[650px] mx-auto z-50'>
+                            <EditVendor toggleEdit={toggleEdit}/>
+                        </div>
+                    }
 
                 <Heading text="PRODUCTS" />
                 <div className="mx-auto flex items-center overflow-scroll rounded-lg"

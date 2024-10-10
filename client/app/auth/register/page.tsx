@@ -62,7 +62,7 @@ const Page = () => {
             />
           </div>
           <p className="w-full md:w-[180px] text-[20px] md:text-[32px] text-start md:px-4">{label}</p>
-        </div>  
+        </div>
         <input
           type="radio"
           className="absolute top-2 right-2 w-6 h-6 accent-[#035ADC] bg-white border-[#035ADC] checked:bg-[#035ADC]"
@@ -129,7 +129,7 @@ const Page = () => {
       <form onSubmit={handleSubmit} className="w-[360px] md:w-[512px] space-y-4">
         <div className="text-black text-[14px] space-y-2">
           <label htmlFor="firstName" className="font-medium">
-            First Name
+            Full Name
           </label>
           <input
             type="text"
@@ -140,7 +140,7 @@ const Page = () => {
             className="w-full h-[42px] py-1 px-2 border border-black rounded-lg"
           />
         </div>
-        <div className="text-black text-[14px] space-y-2">
+        {/* <div className="text-black text-[14px] space-y-2">
           <label htmlFor="lastName" className="font-medium">
             Last Name
           </label>
@@ -152,8 +152,8 @@ const Page = () => {
             placeholder="Enter your Last name"
             className="w-full h-[42px] py-1 px-2 border border-black rounded-lg"
           />
-        </div>
-        <div className="text-black text-[14px] space-y-2">
+        </div> */}
+        {/* <div className="text-black text-[14px] space-y-2">
           <label htmlFor="phoneNumber" className="font-medium">
             KingsChat Number
           </label>
@@ -165,7 +165,7 @@ const Page = () => {
             placeholder="Enter your KingsChat Number"
             className="w-full h-[42px] py-1 px-2 border border-black rounded-lg"
           />
-        </div>
+        </div> */}
         <div className="text-black text-[14px] space-y-2">
           <label htmlFor="email" className="font-medium">
             Email Address
@@ -180,6 +180,32 @@ const Page = () => {
           />
         </div>
         <div className="text-black text-[14px] space-y-2">
+          <label htmlFor="email" className="font-medium">
+            Password
+          </label>
+          <input
+            type="password"
+            name="password"
+            value={formData.email}
+            onChange={handleInputChange}
+            placeholder="Enter your Email Address"
+            className="w-full h-[42px] py-1 px-2 border border-black rounded-lg"
+          />
+        </div>
+        <div className="text-black text-[14px] space-y-2">
+          <label htmlFor="email" className="font-medium">
+            Confirm Password
+          </label>
+          <input
+            type="password"
+            name="confirmPassword"
+            value={formData.email}
+            onChange={handleInputChange}
+            placeholder="Enter your Email Address"
+            className="w-full h-[42px] py-1 px-2 border border-black rounded-lg"
+          />
+        </div>
+        {/* <div className="text-black text-[14px] space-y-2">
           <label htmlFor="country" className="font-medium">
             Country
           </label>
@@ -204,7 +230,7 @@ const Page = () => {
               </option>
             ))}
           </select>
-        </div>
+        </div> */}
 
         <div className="flex items-start space-x-2 text-[14px] text-black">
           <input
@@ -234,7 +260,8 @@ const Page = () => {
   return (
     <main className="bg-white w-screen h-screen flex flex-col">
       <div className="flex-grow flex flex-col justify-center items-center space-y-8">
-        {!showForm ? (
+        {/* {!showForm ? (
+
           <div className="w-full flex flex-col items-center p-3">
             <div className="text-[32px] text-black mb-4 font-medium">
               <p>Create an Escrow Account</p>
@@ -252,19 +279,21 @@ const Page = () => {
               {getButtonText()}
             </button>
 
-            <Link href={"/auth/signin"} className="w-full text-center text-black text-[14px] font-medium">
+          </div>
+
+        ) : (
+        )} */}
+
+        <div className="space-y-4 flex flex-col items-center justify-center p-3">
+          <div className="text-[32px] text-black font-medium">
+            Create an Escrow Account
+          </div>
+          {renderForm()}
+          <Link href={"/auth/signin"} className="w-full text-center text-black text-[14px] font-medium">
               Already have an Account?{" "}
               <span className="text-[#035ADC]">Login</span>
-            </Link>
-          </div>
-        ) : (
-          <div className="space-y-4 flex flex-col items-center justify-center p-3">
-            <div className="text-[32px] text-black font-medium">
-              Create an Escrow Account
-            </div>
-            {renderForm()}
-          </div>
-        )}
+          </Link>
+        </div>
       </div>
     </main>
   );

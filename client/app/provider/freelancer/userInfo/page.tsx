@@ -229,9 +229,9 @@ function Step3({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
     const [selectedFile, setSelectedFile] = useState<string | null>(null);
 
     const showUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0]; 
-        setSelectedFile(file ? file.name : null);  
-      };
+        const file = e.target.files?.[0];
+        setSelectedFile(file ? file.name : null);
+    };
 
     return (
         <div className="container bg-white flex items-center justify-center text-black w-full h-screen">
@@ -244,15 +244,15 @@ function Step3({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
                 <div className='w-full'>
                     <p className='text-[12px] font-semibold'>Upload your CV or Resume</p>
                     <label htmlFor="resume" className='w-full border-2 border-dashed border-gray-400 rounded-lg p-2 flex items-center justify-center cursor-pointer'>
-                        <img src="/icons/upload.png" alt="" className={`${selectedFile && 'hidden'}`}/>
+                        <img src="/icons/upload.png" alt="" className={`${selectedFile && 'hidden'}`} />
                         <p className={`text-center text-blue-600 font-semibold ${!selectedFile && 'hidden'}`}>{selectedFile}</p>
                     </label>
-                    <input type="file" id='resume' className='hidden' onInput={showUpload} accept=".pdf,.doc,.docx"/>
+                    <input type="file" id='resume' className='hidden' onInput={showUpload} accept=".pdf,.doc,.docx" />
                 </div>
 
                 <div>
                     <p className='text-[12px] font-semibold'>Provide Link to your Portfolio</p>
-                    <input type="text" className="w-full border-2 border-gray-400 rounded-lg p-2"/>
+                    <input type="text" className="w-full border-2 border-gray-400 rounded-lg p-2" />
                 </div>
 
                 <h1 onClick={nextStep} className='text-sm text-blue-600 cursor-pointer border-b p-3'>Skip this step</h1>
@@ -337,8 +337,8 @@ function Step4({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
 
 // Step 5: Title and Overview Component
 function Step5({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => void }) {
-    const [text, setText] = useState(''); // State to track the input text
-    const maxLength = 10; // Maximum number of characters allowed
+    const [text, setText] = useState('');
+    const maxLength = 10;
 
     // Handler for when the text changes
     const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {

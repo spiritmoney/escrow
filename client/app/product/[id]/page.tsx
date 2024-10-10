@@ -37,7 +37,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                     <div className="w-full flex flex-col items-start">
                         <h1 className="text-3xl md:text-5xl text-black">{product.name}</h1>
 
-                        <Link href={'/product/store/1'}>
+                        <Link href={'/store/1'}>
                             <p className="font-semibold text-black hover:text-blue-600">{product.storeName}</p>
                         </Link>
 

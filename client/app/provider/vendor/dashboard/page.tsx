@@ -27,6 +27,7 @@ const page = () => {
                     <img src="/icons/menu.png" alt="" className='w-10' />
                 </button>
 
+                {/* Hamburger Menu */}
                 <div className={`absolute top-1 left-0 w-72 h-screen bg-white p-4 z-50 transform transition-transform duration-300 ease-in-out ${hamburgerMenu ? 'translate-x-0' : '-translate-x-full'}`}>
                     <ul className='w-full'>
                         <li onClick={toggleMenu} className='w-full flex items-end justify-end'>
@@ -64,7 +65,7 @@ const page = () => {
                                 Messages
                             </button>
                         </li>
-                        <li onClick={toggleMenu} className='py-2 border-b'>
+                        {/* <li onClick={toggleMenu} className='py-2 border-b'>
                             <button
                                 className={`py-2 px-4 text-lg sm:text-xl font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Analytics"
                                     ? "text-blue-600"
@@ -74,7 +75,7 @@ const page = () => {
                             >
                                 Analytics
                             </button>
-                        </li>
+                        </li> */}
                         <li onClick={toggleMenu} className='py-2 border-b'>
                             <button
                                 className={`py-2 px-4 text-lg sm:text-xl font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Earnings"
@@ -127,7 +128,7 @@ const page = () => {
                     >
                         Messages
                     </button>
-                    <button
+                    {/* <button
                         className={`py-2 px-4 text-lg sm:text-xl font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Analytics"
                             ? "text-blue-600"
                             : "text-black hover:text-blue-400"
@@ -135,7 +136,7 @@ const page = () => {
                         onClick={() => handleTabClick("Analytics")}
                     >
                         Analytics
-                    </button>
+                    </button> */}
                     <button
                         className={`py-2 px-4 text-lg sm:text-xl font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Earnings"
                             ? "text-blue-600"
@@ -152,7 +153,7 @@ const page = () => {
                             }`}
                         onClick={() => handleTabClick("Profile")}
                     >
-                        Store
+                        Profile
                     </button>
                 </div>
             </div>
