@@ -8,23 +8,13 @@ import { Escrow } from './entities/escrow.entity';
 export class EscrowService {
   private contract: ethers.Contract;
 
-  constructor(@InjectModel(Escrow.name) private escrowModel: Model<Escrow>) {
+  constructor(
+    @InjectModel(Escrow.name) private escrowModel: Model<Escrow>,
+  ) {
     // Initialize the contract here
     // const provider = new ethers.providers.Web3Provider(window.ethereum);
     // const signer = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
     // this.contract = new ethers.Contract(process.env.CONTRACT_ADDRESS, process.env.ABI, signer);
-  }
-
-  async newAgreement(
-    seller: string,
-    verifier: string,
-    description: string,
-    amount: string,
-  ) {
-    const tx = await this.contract.newAgreement(seller, verifier, description, {
-      value: amount,
-    });
-    return tx.wait();
   }
 
   async requestDelivery(id: string) {
