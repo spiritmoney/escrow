@@ -117,7 +117,7 @@ const Page = () => {
 
           <div className="w-80 mx-auto">
             <button
-              onClick={() => { handleVerify(); checkVerification();}}
+              onClick={() => { handleVerify(); checkVerification(); }}
               className="bg-[#035ADC] text-white py-2 px-4 rounded-xl w-full h-[50px] mt-3"
             >
               Verify Email
@@ -155,14 +155,14 @@ const Page = () => {
       const isSelected = selectedType === type;
 
       return (
-        <button
-          className="relative group"
+        <div
+          className="relative w-44 h-44 md:w-[257px] md:h-[257px] "
           onMouseEnter={() => !selectedType && setSelectedType(type)}
           onMouseLeave={() => !selectedType && setSelectedType(null)}
           onClick={() => handleSelect(type)}
         >
           <div
-            className={`w-44 h-44 md:w-[257px] md:h-[257px] rounded-xl border-2 p-6 md:py-8 flex flex-col items-start font-medium space-y-3 transition-colors duration-300 ${isSelected
+            className={`w-full h-full rounded-xl border-2 p-6 md:py-8 flex flex-col items-start font-medium space-y-3 transition-colors duration-300 ${isSelected
               ? "bg-[#035ADC] border-[#035ADC] text-white"
               : "bg-white border-[#035ADC] text-[#035ADC] group-hover:bg-[#035ADC] group-hover:text-white"
               }`}
@@ -185,15 +185,17 @@ const Page = () => {
             </div>
             <p className="w-full md:w-[180px] text-[20px] md:text-[32px] text-start md:px-4">{label}</p>
           </div>
-          <input
-            type="radio"
-            className="absolute top-2 right-2 w-6 h-6 accent-[#035ADC] bg-white border-[#035ADC] checked:bg-[#035ADC]"
-            name="userType"
-            value={type}
-            checked={isSelected}
-            onChange={() => handleSelect(type)}
-          />
-        </button>
+          <div className="absolute top-2 right-2">
+            <input
+              type="radio"
+              className=" w-6 h-6 accent-[#035ADC] bg-white border-[#035ADC] checked:bg-[#035ADC]"
+              name="userType"
+              value={type}
+              checked={isSelected}
+              onChange={() => handleSelect(type)}
+            />
+          </div>
+        </div>
       );
     };
 
@@ -206,7 +208,7 @@ const Page = () => {
         case "freelancer":
           return "Continue as a Freelancer";
         default:
-          return "Selct Role";
+          return "Select Role";
       }
     };
 
@@ -216,15 +218,16 @@ const Page = () => {
         <div className="text-[32px] text-black mb-4 font-medium">
           <p>Select Your Role</p>
         </div>
-        <div className="md:flex md:space-x-[32px] justify-center w-full 
-            grid grid-cols-2 gap-2 items-center">
-          {renderButton("client", "icon", "I am a Client")}
-          {renderButton("vendor", "cart", "I am a Vendor")}
-          <div className="col-span-2 flex justify-center">{renderButton("freelancer", "spanner", "I am a Freelancer")}</div>
+
+        <div className="md:w-[1000px] md:h-72 grid grid-cols-2 md:grid-cols-3 gap-2">
+          <div className="flex justify-center items-center">{renderButton("client", "icon", "I am a Client")}</div>
+          <div className="flex justify-center items-center">{renderButton("vendor", "cart", "I am a Vendor")}</div>
+          <div className="flex justify-center items-center max-sm:col-span-2 md:col-span-1">{renderButton("freelancer", "spanner", "I am a Freelancer")}</div>
         </div>
+
         <Link href={"/provider/freelancer/userInfo"}
-        className="w-full md:w-96 h-[50px] bg-[#035ADC] font-medium text-white rounded-lg my-5">
-          <button className="w-full h-full">{getButtonText()}</button>
+          className="w-full md:w-96 h-[50px] bg-[#035ADC] font-medium text-white rounded-lg my-5">
+          <button className="w-full h-full">{getButtonText()}</button> 
         </Link>
 
       </div>

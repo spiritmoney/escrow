@@ -4,7 +4,7 @@ export default function page() {
     return (
         <div className='w-screen bg-white flex items-center justify-center'>
             <div className="container bg-white flex items-center justify-center text-black w-full h-screen">
-                <div className='md:border-2 border-gray-300 rounded-lg p-10 w-[380px] md:w-[550px] flex flex-col space-y-3'>
+                <div className='border-2 border-gray-300 rounded-lg p-10 w-[380px] md:w-[550px] flex flex-col space-y-3'>
                     <div className='w-full flex items-center justify-between'>
                         <h1 className='text-2xl font-semibold'>Vendor Profile</h1>
                     </div>

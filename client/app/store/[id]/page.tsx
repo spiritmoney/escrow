@@ -2,7 +2,7 @@ import Footer from "@/app/components/Footer";
 import Heading from "@/app/components/Heading";
 import Navbar from "@/app/components/Navbar";
 import ProductCard from "@/app/components/ProductCard";
-import { products } from '../../../data/Product';
+import { products } from '../../data/Product';
 import Link from "next/link";
 import Rating from "@/app/components/Rating";
 

@@ -180,10 +180,10 @@ export default function ServicePage({ params }: { params: { id: string } }) {
                                         type="text"
                                         value={`${hourlyRate}`}
                                         readOnly
-                                        className='w-96 py-2 px-5 font-semibold outline-none rounded-lg'
+                                        className='w-full py-2 px-5 font-semibold outline-none rounded-lg'
                                     />
 
-                                    <div className='flex flex-col items-end space-y-2 w-40 p-4'>
+                                    <div className='flex flex-col items-end space-y-2 w-full p-4'>
                                         {/* Increment Button */}
                                         <button onClick={incrementRate}>
                                             <img src="/icons/calcUp.png" width={15} alt="" />

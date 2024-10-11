@@ -23,7 +23,7 @@ const page = () => {
             <Navbar />
 
             <div className='relative bg-white w-full h-20 flex items-center justify-center'>
-                <button onClick={toggleMenu} className='absolute left-3 md:hidden'>
+                <button onClick={toggleMenu} className='absolute left-3 lg:hidden'>
                     <img src="/icons/menu.png" alt="" className='w-10' />
                 </button>
 
@@ -101,7 +101,7 @@ const page = () => {
                     </ul>
                 </div>
 
-                <div className="hidden md:flex items-center justify-center space-x-20">
+                <div className="hidden lg:flex items-center justify-center space-x-20">
                     <Link href={'/'}>
                         <button
                             className="py-2 px-4 m-1 rounded-lg text-lg sm:text-xl font-semibold cursor-pointer text-white bg-blue-600"

@@ -17,12 +17,12 @@ export default function FundWallet({ togglePopup }: FundWalletProps) {
     }, []);
 
     return (
-        <div className="absolute top-16 right-0 bg-white shadow-lg text-black z-10 p-4 rounded-3xl flex flex-col
+        <div className="absolute top-16 right-0 w-80 md:w-96 bg-white shadow-lg text-black z-10 p-4 rounded-3xl flex flex-col
         justify-evenly items-center">
             <p className="text-3xl w-full text-center py-3 border-b mb-4">Wallet Information</p>
             <div className='w-full'>
                 <p className="text-sm font-semibold">My Wallet Address:</p>
-                <p className="text-sm py-1">0x123bf43hdf678fh5yhn6lkmhs7jnsdhdjkcdnh7...</p>
+                <p className="text-[12px] md:text-sm py-1">0x123bf43hdf678fh5yhn6lkmhs7jnsdhdjkcdnh7...</p>
                 <span className="flex items-center space-x-2 cursor-pointer text-blue-600">
                     <img src="/icons/copy.png" alt="icon" height={5} />
                     <p className="text-sm">Copy address</p>
@@ -51,7 +51,7 @@ export default function FundWallet({ togglePopup }: FundWalletProps) {
             )}
 
             <button
-                className="bg-blue-600 px-36 py-2 my-3 rounded-lg text-white"
+                className="bg-blue-600 w-full p-2 my-3 rounded-lg text-white"
                 onClick={togglePopup}>
                 Close
             </button>

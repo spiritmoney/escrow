@@ -159,8 +159,9 @@ export default function Listings() {
 
                         <button
                             onClick={toggleAddNew}
-                            className='bg-blue-600 p-2 rounded-md text-sm flex items-center'>
-                            Cancel
+                            className='bg-blue-600 rounded-md text-sm flex items-center'>
+                            <p className='p-2 hidden md:block'>Cancel</p>
+                            <p className='font-semibold md:hidden text-2xl px-2'>&times;</p>
                         </button>
                     </div>
 
@@ -179,18 +180,18 @@ export default function Listings() {
                             <input type="text" className='w-full border-2 border-gray-400 rounded-lg p-2' />
                         </div>
 
-                        <div >
+                        <div>
                             <p className='text-sm font-semibold'>Quantity Available</p>
-                            <div className='flex items-center'>
+                            <div className='flex items-center border-2 border-gray-400 rounded-lg'>
                                 <input
                                     id="hourly-rate"
                                     type="text"
                                     value={`${quantity}`}
                                     readOnly
-                                    className='w-full py-2 px-5 border-y-2 border-l-2 border-gray-400 rounded-l-lg outline-none'
+                                    className='w-full py-2 px-5 rounded-l-lg outline-none'
                                 />
 
-                                <div className='flex flex-col space-y-1 items-end w-40 py-2 px-4 border-y-2 border-r-2 border-gray-400 rounded-r-lg'>
+                                <div className='flex flex-col space-y-1 items-end w-40 py-2 px-4 rounded-r-lg'>
                                     {/* Increment Button */}
                                     <button onClick={incrementQuantity}>
                                         <img src="/icons/calcUp.png" width={15} alt="" />
@@ -204,16 +205,16 @@ export default function Listings() {
                         </div>
                         <div>
                             <p className='text-sm font-semibold'>Price (Espees)</p>
-                            <div className='flex items-center'>
+                            <div className='flex items-center border-2 border-gray-400 rounded-lg'>
                                 <input
                                     id="hourly-rate"
                                     type="text"
                                     value={`${cost}`}
                                     readOnly
-                                    className='w-full py-2 px-5 border-y-2 border-l-2 border-gray-400 rounded-l-lg outline-none'
+                                    className='w-full py-2 px-5 outline-none rounded-l-lg'
                                 />
 
-                                <div className='flex flex-col space-y-1 items-end w-40 py-2 px-4 border-y-2 border-r-2 border-gray-400 rounded-r-lg'>
+                                <div className='flex flex-col space-y-1 items-end w-40 py-2 px-4'>
                                     {/* Increment Button */}
                                     <button onClick={incrementCost}>
                                         <img src="/icons/calcUp.png" width={15} alt="" />

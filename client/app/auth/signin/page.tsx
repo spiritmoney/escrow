@@ -9,7 +9,7 @@ const page = () => {
   return (
     <main className="bg-white w-screen h-screen flex flex-col">
       <div className="flex-1 flex items-center justify-center">
-        <div className="bg-white p-8 rounded-lg shadow-md border-2 border-[#CACACA] w-[380px] md:w-[639px] text-black">
+        <div className="bg-white p-8 rounded-lg md:border-2 border-[#CACACA] w-[380px] md:w-[639px] text-black">
           <h2 className="text-2xl font-semibold mb-6 text-center ">
             Log In to Escrow
           </h2>

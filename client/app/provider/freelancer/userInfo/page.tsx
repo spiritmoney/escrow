@@ -294,9 +294,9 @@ function Step4({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
                     <p className='text-sm'>4/6</p>
                 </div>
 
-                <div className='pb-20'>
+                <div className='w-full pb-20'>
                     <label htmlFor="hourly-rate">What is your hourly rate?</label>
-                    <div className='flex items-center mt-5 border-2 border-gray-400 rounded-lg'>
+                    <div className='w-full flex items-center mt-5 border-2 border-gray-400 rounded-lg'>
 
                         {/* Rate Input */}
                         <input
@@ -304,10 +304,10 @@ function Step4({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
                             type="text"
                             value={`${hourlyRate} Espees`}
                             readOnly
-                            className='w-96 p-5 outline-none rounded-lg'
+                            className='w-full p-5 outline-none rounded-lg'
                         />
 
-                        <div className='flex flex-col items-end space-y-2 w-40 p-4'>
+                        <div className='flex flex-col items-end space-y-2 w-full p-4'>
                             {/* Increment Button */}
                             <button onClick={incrementRate}>
                                 <img src="/icons/calcUp.png" width={15} alt="" />
