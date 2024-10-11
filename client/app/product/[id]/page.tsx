@@ -1,13 +1,22 @@
-import { useRouter } from 'next/router';
+"use client";
+
 import { products } from '../../data/Product';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 import Rating from '@/app/components/Rating';
 import Heading from '@/app/components/Heading';
+import { useState } from 'react';
+import Checkout from '@/app/components/Checkout';
+import Link from 'next/link';
 
 export default function ProductPage({ params }: { params: { id: string } }) {
     const productId = params.id;
     const product = products.find((s) => parseInt(s.id) === parseInt(productId));
+    const [checkout, setCheckout] = useState(false);
+
+    function toggleCheckout() {
+        setCheckout(!checkout);
+    }
 
     if (!product) {
         return <div>Product not found</div>;
@@ -16,18 +25,22 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     return (
         <>
             <Navbar />
-            <div className="container mx-auto p-5">
-                <div className=" bg-white flex justify-evenly items-center p-7 space-x-7 rounded-lg">
+            <div className="relaive container mx-auto p-5">
+                {checkout && <div className="fixed w-full h-full inset-0 bg-black bg-opacity-50 z-40"></div>}
+                <div className=" bg-white md:flex justify-evenly items-center p-7 space-y-3 md:space-x-7 rounded-lg">
                     {/* Product Image */}
                     <div>
                         <img src={product.image} alt={product.name} width={1000} className="rounded-lg" />
                     </div>
 
                     {/* Product Info */}
-                    <div className="flex flex-col items-start">
-                        <h1 className="text-5xl text-black">{product.name}</h1>
-                        <p className="font-semibold text-black">{product.storeName}</p>
-                
+                    <div className="w-full flex flex-col items-start">
+                        <h1 className="text-3xl md:text-5xl text-black">{product.name}</h1>
+
+                        <Link href={'/store/1'}>
+                            <p className="font-semibold text-black hover:text-blue-600">{product.storeName}</p>
+                        </Link>
+
                         <div className='py-2'>
                             <Rating />
                         </div>
@@ -37,22 +50,29 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                         <p className="text-sm text-gray-800">Quantity Available: {product.stock}</p>
                         <p className="text-sm text-gray-800">Price: {product.price} Espres</p>
 
-                        <div className="flex flex-col space-y-4 py-3">
-                            <button className="bg-blue-600 text-white px-4 py-2 w-96 rounded-lg">Buy Product</button>
-                            <button className="bg-blue-600 text-white px-4 py-2 w-96 rounded-lg">Add to Cart</button>
+                        <div className="w-full flex flex-col space-y-4 py-3">
+                            <button onClick={toggleCheckout} className="bg-blue-600 text-white px-4 py-2 w-full md:w-96 rounded-lg">Buy Product</button>
+                            <button className="bg-blue-600 text-white px-4 py-2 w-full md:w-96 rounded-lg">Add to Cart</button>
                         </div>
                     </div>
+
+                    {checkout &&
+                        <div>
+                            <Checkout toggleCheckout={toggleCheckout} />
+                        </div>
+                    }
                 </div>
 
                 {/* Similar Products */}
                 <Heading text="SIMILAR PRODUCTS" />
-                <div className="mt-10">
-                    <div className="grid grid-cols-4 gap-6">
+                <div className="mt-3">
+                    <div className="mx-auto flex items-center overflow-scroll rounded-lg"
+                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                         {product.similarProducts.map(similar => (
-                            <div key={similar.id} className="p-4 bg-white hover:bg-gray-100 rounded-lg">
+                            <div key={similar.id} className="min-w-52 p-4 mr-4 bg-white hover:bg-gray-100 rounded-lg">
                                 <img src={similar.image} alt={similar.name} className="rounded-lg shadow-md mb-2" />
                                 <p className="text-gray-700 font-semibold">{similar.name}</p>
-                                <p className="text-sm text-gray-500 font-semibold">{similar.price} Espres</p>
+                                <p className="text-sm text-gray-500 font-semibold">{similar.price}</p>
                             </div>
                         ))}
                     </div>

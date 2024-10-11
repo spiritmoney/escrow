@@ -45,6 +45,4 @@ export default function RootLayout({
 
 // Updates_ Features
 // - Search Results page
-// - Navbar Dropdowns
-// - Connect Wallet popup
 // .
