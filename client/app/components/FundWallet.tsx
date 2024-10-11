@@ -17,7 +17,7 @@ export default function FundWallet({ togglePopup }: FundWalletProps) {
     }, []);
 
     return (
-        <div className="absolute top-16 right-2 bg-white shadow-lg text-black z-10 p-4 rounded-3xl flex flex-col
+        <div className="absolute top-16 right-0 bg-white shadow-lg text-black z-10 p-4 rounded-3xl flex flex-col
         justify-evenly items-center">
             <p className="text-3xl w-full text-center py-3 border-b mb-4">Wallet Information</p>
             <div className='w-full'>

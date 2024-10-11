@@ -4,6 +4,7 @@ import { useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import ProductOrders, { History, ServiceOrders } from "./Order_Tabs";
+import Link from "next/link";
 
 export default function page() {
 
@@ -18,7 +19,13 @@ export default function page() {
             <Navbar />
             <div className="w-11/12 mx-auto">
 
-                <h1 className="text-black text-2xl py-5 font-medium">My Orders</h1>
+                <span className="w-full flex items-center justify-between pb-5">
+                    <h1 className="text-black text-2xl py-5 font-medium">My Orders</h1>
+
+                    <Link href={"/"}>
+                        <button className="text-blue-600 p-2">Close</button>
+                    </Link>
+                </span>
 
                 <div className="relative max-w-[1485px] mx-auto flex">
                     <div className="flex">

@@ -23,7 +23,10 @@ const products = [
     { id: 2, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
     { id: 3, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
     { id: 4, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-    { id: 5, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' }
+    { id: 5, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
+    { id: 6, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
+    { id: 7, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
+    { id: 8, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
 ];
 
 export default function ProductsTab() {
@@ -32,7 +35,7 @@ export default function ProductsTab() {
             <ProductTypes />
 
             <div className="w-full container mx-auto pt-6">
-                <div className="min-w-full grid grid-cols-4 gap-6 p-3 bg-white rounded-lg">
+                <div className="min-w-full grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-6 bg-white rounded-lg">
                     {productTypes.map(product => (
                         <ProductTypeCard key={product.id} product={product} />
                     ))}
@@ -40,16 +43,18 @@ export default function ProductsTab() {
             </div>
 
             <Heading text="LATEST PRODUCTS" />
-            <div className="mx-auto grid grid-cols-5 gap-6 rounded-lg">
+            <div className="mx-auto flex items-center overflow-scroll rounded-lg"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                 {products.map(product => (
                     <Link key={product.id} href={'/product/1'}>
                         <ProductCard product={product} />
                     </Link>
                 ))}
-            </div>
+            </div> 
 
             <Heading text="TOP SELLING ITEMS" />
-            <div className="mx-auto grid grid-cols-5 gap-6 rounded-lg">
+            <div className="mx-auto flex items-center overflow-scroll rounded-lg"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                 {products.map(product => (
                     <Link key={product.id} href={'/product/1'}>
                         <ProductCard product={product} />

@@ -1,6 +1,7 @@
 export const products = [
     {
         id: '1',
+        vendor: 'Kingsley Odim',
         name: 'Nike Sneakers: Pink, Black & White',
         storeName: "Vinick's Fashion Store",
         category: "Fashion",
