@@ -1,36 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Escrow Application for Espees
+
+## Project Overview
+
+The Escrow Application is designed to facilitate safe and secure trading of goods and services using Espees as the currency. By acting as an intermediary, the platform ensures that transactions between buyers and sellers are fair, transparent, and secure. This application aims to promote the use of Espees in everyday transactions, thereby increasing its adoption and integration into daily life.
+
+## Table of Contents
+
+- [Tech Stack](#tech-stack)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Running the Project](#running-the-project)
+- [API Endpoints](#api-endpoints)
+- [Architecture](#architecture)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Tech Stack
+
+### Frontend
+- Next.js 14 with TypeScript
+- React for UI components
+- Tailwind CSS for styling
+- React Query for state management and data fetching
+
+### Backend
+- API Routes in Next.js for serverless functions
+- TypeORM for database interactions
+- PostgreSQL for Database
+- NextAuth.js for authentication
+
+### Blockchain Integration
+- Ethers.js for blockchain interactions
+
+### DevOps
+- Vercel for deployment
+- GitHub Actions for CI/CD
+
+## Features
+
+- User Registration/Login
+- Product and Service Listing
+- Escrow Service
+- Transaction Management
+- Dispute Resolution
+- Rating System
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Set up environment variables (create a `.env.local` file)
+4. Set up the database:
+   ```
+   npm prisma migrate dev
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Running the Project
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To run the Next.js project, follow these steps:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Start the development server:
+   ```
+   npm dev
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. For production, build and start the server:
+   ```
+   npm build
+   npm start
+   ```
 
-## Learn More
+3. Run tests:
+   ```
+   npm test
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+4. Check code linting:
+   ```
+   npm lint
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. Format code:
+   ```
+   npm format
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Make sure you have the necessary environment variables set up before running the project.
 
-## Deploy on Vercel
+## API Endpoints
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### User Endpoints
+- `POST /api/auth/register`: Register a new user
+- `POST /api/auth/login`: Authenticate a user
+- `GET /api/user/profile`: Retrieve user profile information
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Product Endpoints
+- `POST /api/products`: Create a new product listing
+- `PUT /api/products/[id]`: Edit product listing
+- `DELETE /api/products/[id]`: Delete product listing
+- `GET /api/products`: Retrieve all product listings
+- `GET /api/products/[id]`: Retrieve details of a specific product
+
+### Transaction Endpoints
+- `POST /api/transactions`: Initiate a new transaction
+- `GET /api/transactions`: Retrieve all transactions for a user
+- `GET /api/transactions/[id]`: Retrieve details of a specific transaction
+
+### Escrow Endpoints
+- `POST /api/escrow`: Create a new escrow contract
+- `GET /api/escrow/[id]`: Retrieve details of a specific escrow contract
+- `POST /api/escrow/[id]/release`: Release funds from escrow
+- `POST /api/escrow/[id]/dispute`: Initiate a dispute resolution process
+
+## Architecture
+
+The system architecture consists of:
+- Frontend: Next.js 14 application with App Router for server-side and client-side rendered React components
+- Backend: API Routes in Next.js for serverless functions, with Prisma ORM for database interactions
+- Blockchain: Ethereum blockchain for smart contracts handling Espees transactions
+- Database: PostgreSQL for storing user profiles, product listings, and transaction history
+
+## Contributing
+
+(Add guidelines for contributing to the project)
+
+## License
+
+(Add license information)
