@@ -41,17 +41,20 @@ export default function ProductsSearch() {
                     </Link>
                 </span>
 
-                <Heading text="Results for Nike Sneakers" />
-                <div className="mx-auto grid grid-cols-4 gap-6 mb-20 rounded-lg">
-                    {products.map(product => (
-                        <Link key={product.id} href={'/product/1'}>
-                            <ProductCard product={product} />
-                        </Link>
-                    ))}
+                <Heading text="Results for 'Nike Sneakers'" />
+                <div className="min-w-full container bg-gray-100 p-5 mb-20 rounded-lg mx-auto flex items-center justify-center">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-20 rounded-lg">
+                        {products.map(product => (
+                            <Link key={product.id} href={'/product/1'}>
+                                <ProductCard product={product} />
+                            </Link>
+                        ))}
+                    </div>
                 </div>
 
                 <Heading text="Related Products" />
-                <div className="mx-auto grid grid-cols-5 gap-6 mb-20 rounded-lg">
+                <div className="mx-auto flex items-center overflow-scroll rounded-lg"
+                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                     {related.map(product => (
                         <Link key={product.id} href={'/product/1'}>
                             <ProductCard product={product} />

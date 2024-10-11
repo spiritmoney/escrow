@@ -40,12 +40,12 @@ const Page = () => {
         onClick={() => handleSelect(type)}
       >
         <div
-          className={`w-[257px] h-[257px] rounded-xl border-2 py-10 font-medium space-y-3 transition-colors duration-300 ${isSelected
+          className={`w-44 h-44 md:w-[257px] md:h-[257px] rounded-xl border-2 p-6 md:py-8 flex flex-col items-start font-medium space-y-3 transition-colors duration-300 ${isSelected
             ? "bg-[#035ADC] border-[#035ADC] text-white"
             : "bg-white border-[#035ADC] text-[#035ADC] group-hover:bg-[#035ADC] group-hover:text-white"
             }`}
         >
-          <div className="px-8">
+          <div className="md:px-4">
             <Image
               src={isSelected ? `/${icon}.svg` : `/${icon}-blue.svg`}
               alt="icon"
@@ -61,7 +61,7 @@ const Page = () => {
               className="hidden group-hover:block"
             />
           </div>
-          <div className="w-[180px] text-[32px] text-start px-8">{label}</div>
+          <p className="w-full md:w-[180px] text-[20px] md:text-[32px] text-start md:px-4">{label}</p>
         </div>
         <input
           type="radio"
@@ -126,10 +126,10 @@ const Page = () => {
 
   const renderForm = () => {
     return (
-      <form onSubmit={handleSubmit} className="w-[512px] space-y-4">
+      <form onSubmit={handleSubmit} className="w-[360px] md:w-[512px] space-y-4">
         <div className="text-black text-[14px] space-y-2">
           <label htmlFor="firstName" className="font-medium">
-            First Name
+            Full Name
           </label>
           <input
             type="text"
@@ -137,10 +137,10 @@ const Page = () => {
             value={formData.firstName}
             onChange={handleInputChange}
             placeholder="Enter your first name"
-            className="w-full h-[48px] p-2 border border-black rounded-lg"
+            className="w-full h-[42px] py-1 px-2 border border-black rounded-lg"
           />
         </div>
-        <div className="text-black text-[14px] space-y-2">
+        {/* <div className="text-black text-[14px] space-y-2">
           <label htmlFor="lastName" className="font-medium">
             Last Name
           </label>
@@ -150,10 +150,10 @@ const Page = () => {
             value={formData.lastName}
             onChange={handleInputChange}
             placeholder="Enter your Last name"
-            className="w-full h-[48px] p-2 border border-black rounded-lg"
+            className="w-full h-[42px] py-1 px-2 border border-black rounded-lg"
           />
-        </div>
-        <div className="text-black text-[14px] space-y-2">
+        </div> */}
+        {/* <div className="text-black text-[14px] space-y-2">
           <label htmlFor="phoneNumber" className="font-medium">
             KingsChat Number
           </label>
@@ -163,9 +163,9 @@ const Page = () => {
             value={formData.kingsChat}
             onChange={handleInputChange}
             placeholder="Enter your KingsChat Number"
-            className="w-full h-[48px] p-2 border border-black rounded-lg"
+            className="w-full h-[42px] py-1 px-2 border border-black rounded-lg"
           />
-        </div>
+        </div> */}
         <div className="text-black text-[14px] space-y-2">
           <label htmlFor="email" className="font-medium">
             Email Address
@@ -176,10 +176,36 @@ const Page = () => {
             value={formData.email}
             onChange={handleInputChange}
             placeholder="Enter your Email Address"
-            className="w-full h-[48px] p-2 border border-black rounded-lg"
+            className="w-full h-[42px] py-1 px-2 border border-black rounded-lg"
           />
         </div>
         <div className="text-black text-[14px] space-y-2">
+          <label htmlFor="email" className="font-medium">
+            Password
+          </label>
+          <input
+            type="password"
+            name="password"
+            value={formData.email}
+            onChange={handleInputChange}
+            placeholder="Enter your Email Address"
+            className="w-full h-[42px] py-1 px-2 border border-black rounded-lg"
+          />
+        </div>
+        <div className="text-black text-[14px] space-y-2">
+          <label htmlFor="email" className="font-medium">
+            Confirm Password
+          </label>
+          <input
+            type="password"
+            name="confirmPassword"
+            value={formData.email}
+            onChange={handleInputChange}
+            placeholder="Enter your Email Address"
+            className="w-full h-[42px] py-1 px-2 border border-black rounded-lg"
+          />
+        </div>
+        {/* <div className="text-black text-[14px] space-y-2">
           <label htmlFor="country" className="font-medium">
             Country
           </label>
@@ -188,7 +214,7 @@ const Page = () => {
             name="country"
             value={formData.country}
             onChange={handleInputChange}
-            className="w-full h-[48px] p-2 border border-black rounded-lg"
+            className="w-full h-[42px] py-1 px-2 border border-black rounded-lg"
           >
             <option value="">Select your country</option>
             {countries.map((country) => (
@@ -204,7 +230,7 @@ const Page = () => {
               </option>
             ))}
           </select>
-        </div>
+        </div> */}
 
         <div className="flex items-start space-x-2 text-[14px] text-black">
           <input
@@ -234,35 +260,40 @@ const Page = () => {
   return (
     <main className="bg-white w-screen h-screen flex flex-col">
       <div className="flex-grow flex flex-col justify-center items-center space-y-8">
-        {!showForm ? (
-          <>
+        {/* {!showForm ? (
+
+          <div className="w-full flex flex-col items-center p-3">
             <div className="text-[32px] text-black mb-4 font-medium">
-              Create an Escrow Account
+              <p>Create an Escrow Account</p>
             </div>
-            <div className="flex space-x-[32px]">
+            <div className="md:flex md:space-x-[32px] justify-center w-full 
+            grid grid-cols-2 gap-2 items-center">
               {renderButton("client", "icon", "I am a Client")}
               {renderButton("vendor", "cart", "I am a Vendor")}
-              {renderButton("freelancer", "spanner", "I am a Freelancer")}
+              <div className="col-span-2 flex justify-center">{renderButton("freelancer", "spanner", "I am a Freelancer")}</div>
             </div>
             <button
-              className="w-[512px] h-[50px] bg-[#035ADC] font-medium text-white rounded-lg"
+              className="w-full md:w-96 h-[50px] bg-[#035ADC] font-medium text-white rounded-lg my-5"
               onClick={handleSignUp}
             >
               {getButtonText()}
             </button>
-            <Link href={"/auth/signin"} className="text-black text-[14px] font-medium">
+
+          </div>
+
+        ) : (
+        )} */}
+
+        <div className="space-y-4 flex flex-col items-center justify-center p-3">
+          <div className="text-[32px] text-black font-medium">
+            Create an Escrow Account
+          </div>
+          {renderForm()}
+          <Link href={"/auth/signin"} className="w-full text-center text-black text-[14px] font-medium">
               Already have an Account?{" "}
               <span className="text-[#035ADC]">Login</span>
-            </Link>
-          </>
-        ) : (
-          <div className="space-y-4 flex flex-col items-center justify-center">
-            <div className="text-[32px] text-black font-medium">
-              Create an Escrow Account
-            </div>
-            {renderForm()}
-          </div>
-        )}
+          </Link>
+        </div>
       </div>
     </main>
   );
