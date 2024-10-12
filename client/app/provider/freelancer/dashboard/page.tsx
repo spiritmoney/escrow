@@ -9,6 +9,11 @@ import Link from 'next/link';
 const page = () => {
 
     const [activeTab, setActiveTab] = useState("Orders");
+    const [hamburgerMenu, setHamburgerMenu] = useState(false);
+
+    function toggleMenu() {
+      setHamburgerMenu(!hamburgerMenu);
+    }
 
     const handleTabClick = (tab: "Orders" | "Messages" | "Analytics" | "Earnings" | "Profile") => {
         setActiveTab(tab);
