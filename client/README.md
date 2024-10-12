@@ -25,7 +25,7 @@ The Escrow Application is designed to facilitate safe and secure trading of good
 
 ### Backend
 - API Routes in Next.js for serverless functions
-- TypeORM for database interactions
+- Prisma ORM for database interactions
 - PostgreSQL for Database
 - NextAuth.js for authentication
 
@@ -39,7 +39,7 @@ The Escrow Application is designed to facilitate safe and secure trading of good
 ## Features
 
 - User Registration/Login
-- Product and Service Listing
+- Product Listing
 - Escrow Service
 - Transaction Management
 - Dispute Resolution
