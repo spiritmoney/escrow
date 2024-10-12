@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import countriesData from "@/countries.json";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
+import { useMutation } from "@tanstack/react-query";
 
 const countries = countriesData.map((country) => ({
   name: country.name,
@@ -13,15 +13,27 @@ const countries = countriesData.map((country) => ({
   flag: country.flag,
 }));
 
+interface FormData {
+  firstName: string;
+  lastName: string;
+  kingsChat: string;
+  email: string;
+  country: string;
+  password: string;
+  confirmPassword: string;
+}
+
 const Page = () => {
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
     kingsChat: "",
     email: "",
     country: "",
+    password: "",
+    confirmPassword: "",
   });
   const router = useRouter();
 
@@ -40,10 +52,11 @@ const Page = () => {
         onClick={() => handleSelect(type)}
       >
         <div
-          className={`w-44 h-44 md:w-[257px] md:h-[257px] rounded-xl border-2 p-6 md:py-8 flex flex-col items-start font-medium space-y-3 transition-colors duration-300 ${isSelected
-            ? "bg-[#035ADC] border-[#035ADC] text-white"
-            : "bg-white border-[#035ADC] text-[#035ADC] group-hover:bg-[#035ADC] group-hover:text-white"
-            }`}
+          className={`w-44 h-44 md:w-[257px] md:h-[257px] rounded-xl border-2 p-6 md:py-8 flex flex-col items-start font-medium space-y-3 transition-colors duration-300 ${
+            isSelected
+              ? "bg-[#035ADC] border-[#035ADC] text-white"
+              : "bg-white border-[#035ADC] text-[#035ADC] group-hover:bg-[#035ADC] group-hover:text-white"
+          }`}
         >
           <div className="md:px-4">
             <Image
@@ -61,7 +74,9 @@ const Page = () => {
               className="hidden group-hover:block"
             />
           </div>
-          <p className="w-full md:w-[180px] text-[20px] md:text-[32px] text-start md:px-4">{label}</p>
+          <p className="w-full md:w-[180px] text-[20px] md:text-[32px] text-start md:px-4">
+            {label}
+          </p>
         </div>
         <input
           type="radio"
@@ -94,34 +109,49 @@ const Page = () => {
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const registerMutation = useMutation({
+    mutationFn: async (userData: {
+      email: string;
+      password: string;
+      fullName: string;
+    }) => {
+      const response = await fetch(
+        "http://ec2-13-51-200-33.eu-north-1.compute.amazonaws.com/auth/register",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(userData),
+        }
+      );
+      if (!response.ok) {
+        throw new Error(await response.text());
+      }
+      return response.json();
+    },
+    onSuccess: (data) => {
+      alert(data.message);
+      router.push(`/auth/register/verify?email=${encodeURIComponent(formData.email)}`);
+    },
+    onError: (error: Error) => {
+      alert(error.message || "Registration failed. Please try again.");
+    },
+  });
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      const response = await fetch("/api/auth/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, userType: selectedType }),
-      });
-
-      if (response.ok) {
-        const user = await response.json();
-        // Sign in the user after successful signup
-        await signIn("credentials", {
-          email: user.email,
-          password: "password", // You should implement a proper password flow
-          callbackUrl: "/dashboard",
-        });
-      } else {
-        // Handle error
-        console.error("Signup failed");
-      }
-    } catch (error) {
-      console.error("Error during signup:", error);
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match");
+      return;
     }
+    registerMutation.mutate({
+      email: formData.email,
+      password: formData.password,
+      fullName: formData.firstName,
+    });
   };
 
   const renderForm = () => {
@@ -136,8 +166,9 @@ const Page = () => {
             name="firstName"
             value={formData.firstName}
             onChange={handleInputChange}
-            placeholder="Enter your first name"
+            placeholder="Enter your full name"
             className="w-full h-[42px] py-1 px-2 border border-black rounded-lg"
+            required
           />
         </div>
         {/* <div className="text-black text-[14px] space-y-2">
@@ -177,6 +208,7 @@ const Page = () => {
             onChange={handleInputChange}
             placeholder="Enter your Email Address"
             className="w-full h-[42px] py-1 px-2 border border-black rounded-lg"
+            required
           />
         </div>
         <div className="text-black text-[14px] space-y-2">
@@ -186,10 +218,11 @@ const Page = () => {
           <input
             type="password"
             name="password"
-            value={formData.email}
+            value={formData.password}
             onChange={handleInputChange}
-            placeholder="Enter your Email Address"
+            placeholder="Enter your password"
             className="w-full h-[42px] py-1 px-2 border border-black rounded-lg"
+            required
           />
         </div>
         <div className="text-black text-[14px] space-y-2">
@@ -199,10 +232,11 @@ const Page = () => {
           <input
             type="password"
             name="confirmPassword"
-            value={formData.email}
+            value={formData.confirmPassword}
             onChange={handleInputChange}
-            placeholder="Enter your Email Address"
+            placeholder="Confirm your password"
             className="w-full h-[42px] py-1 px-2 border border-black rounded-lg"
+            required
           />
         </div>
         {/* <div className="text-black text-[14px] space-y-2">
@@ -246,13 +280,15 @@ const Page = () => {
             .
           </label>
         </div>
-        <Link href={"/auth/register/verify"}>
-          <button
-            className="w-full mt-5 h-[50px] bg-[#035ADC] font-medium text-white rounded-lg"
-          >
-            Create Account
-          </button>
-        </Link>
+        <button
+          type="submit"
+          className="w-full mt-5 h-[50px] bg-[#035ADC] font-medium text-white rounded-lg"
+          disabled={registerMutation.isPending}
+        >
+          {registerMutation.isPending
+            ? "Creating Account..."
+            : "Create Account"}
+        </button>
       </form>
     );
   };
@@ -289,9 +325,12 @@ const Page = () => {
             Create an Escrow Account
           </div>
           {renderForm()}
-          <Link href={"/auth/signin"} className="w-full text-center text-black text-[14px] font-medium">
-              Already have an Account?{" "}
-              <span className="text-[#035ADC]">Login</span>
+          <Link
+            href={"/auth/signin"}
+            className="w-full text-center text-black text-[14px] font-medium"
+          >
+            Already have an Account?{" "}
+            <span className="text-[#035ADC]">Login</span>
           </Link>
         </div>
       </div>

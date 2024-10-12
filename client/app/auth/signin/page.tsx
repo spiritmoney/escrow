@@ -3,9 +3,49 @@
 import Navbar from "@/app/components/Navbar";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 
 const page = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+
+  const loginMutation = useMutation({
+    mutationFn: async (credentials: { email: string; password: string }) => {
+      const response = await fetch(
+        "http://ec2-13-51-200-33.eu-north-1.compute.amazonaws.com/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(credentials),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Login failed");
+      }
+
+      return response.json();
+    },
+    onSuccess: (data) => {
+      localStorage.setItem("accessToken", data.accessToken);
+      router.push("/");
+    },
+    onError: (error) => {
+      console.error("Login error:", error);
+      // You might want to add some state to show an error message to the user
+    },
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    loginMutation.mutate({ email, password });
+  };
+
   return (
     <main className="bg-white w-screen h-screen flex flex-col">
       <div className="flex-1 flex items-center justify-center">
@@ -13,7 +53,7 @@ const page = () => {
           <h2 className="text-2xl font-semibold mb-6 text-center ">
             Log In to Escrow
           </h2>
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="space-y-2">
               <label
                 htmlFor="email"
@@ -25,7 +65,9 @@ const page = () => {
                 type="email"
                 id="email"
                 name="email"
-                className=" block w-full h-[50px] rounded-md border-2 border-[#CACACA] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="block w-full h-[50px] rounded-md border-2 border-[#CACACA] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                 required
               />
             </div>
@@ -40,7 +82,9 @@ const page = () => {
                 type="password"
                 id="password"
                 name="password"
-                className=" block w-full h-[50px] rounded-md border-2 border-[#CACACA] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="block w-full h-[50px] rounded-md border-2 border-[#CACACA] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                 required
               />
               <div className="text-sm mb-4">
@@ -49,14 +93,13 @@ const page = () => {
                 </a>
               </div>
             </div>
-            <Link href={"/"}>
-              <button
-                type="submit"
-                className="w-full h-[50px] bg-blue-600 text-white py-2 px-4 mt-4 rounded-md hover:bg-[#035ADC] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-              >
-                Login
-              </button>
-            </Link>
+            <button
+              type="submit"
+              disabled={loginMutation.isPending}
+              className="w-full h-[50px] bg-blue-600 text-white py-2 px-4 mt-4 rounded-md hover:bg-[#035ADC] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 disabled:opacity-50"
+            >
+              {loginMutation.isPending ? "Logging in..." : "Login"}
+            </button>
           </form>
           <div className="mt-4 text-center flex justify-around items-center space-x-2">
             <div className="w-full h-[2px] bg-[#CACACA] "></div>
@@ -75,7 +118,10 @@ const page = () => {
           </button>
           <div className="mt-6 text-center text-sm font-semibold">
             <span className="text-gray-600">Don't have an account? </span>
-            <Link href={'/auth/register'} className="text-[#035ADC] hover:underline">
+            <Link
+              href={"/auth/register"}
+              className="text-[#035ADC] hover:underline"
+            >
               Sign Up
             </Link>
           </div>

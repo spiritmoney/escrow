@@ -8,6 +8,13 @@ import { ValidationError } from 'class-validator';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { logger: ['log', 'error', 'warn', 'debug', 'verbose'] });
 
+  // Enable CORS
+  app.enableCors({
+    origin: ['http://localhost:3001', 'http://localhost:3000', 'https://escrow-eta.vercel.app/', 'http://ec2-13-51-200-33.eu-north-1.compute.amazonaws.com'],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    credentials: true,
+  });
+
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true, // Strip away non-whitelisted properties
@@ -40,8 +47,6 @@ async function bootstrap() {
 
   const port = process.env.PORT || 5000;  // Default to 3000 if PORT is not set
   await app.listen(port);
-  app.enableCors();
+  console.log(`Application is running on: ${await app.getUrl()}`);
 }
 bootstrap();
-
-
