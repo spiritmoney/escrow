@@ -4,13 +4,22 @@ import * as dotenv from 'dotenv';
 import { ValidationPipe, BadRequestException } from '@nestjs/common';
 import { ValidationError } from 'class-validator';
 
-
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, { logger: ['log', 'error', 'warn', 'debug', 'verbose'] });
+  const app = await NestFactory.create(AppModule, {
+    logger: ['log', 'error', 'warn', 'debug', 'verbose'],
+  });
 
   // Enable CORS
   app.enableCors({
-    origin: ['http://localhost:3001', 'http://localhost:3000', 'https://escrow-eta.vercel.app/', 'http://ec2-13-51-200-33.eu-north-1.compute.amazonaws.com', 'https://api.uno-finance.com'],
+    origin: [
+      'http://localhost:3001',
+      'http://localhost:3000',
+      'http://localhost',
+      'https://escrow-eta.vercel.app',
+      'http://ec2-13-51-200-33.eu-north-1.compute.amazonaws.com',
+      'https://api.uno-finance.com',
+      'https://escrow-eta.vercel.app',
+    ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
   });
@@ -28,8 +37,8 @@ async function bootstrap() {
             message: 'Request body is missing or improperly formatted',
           });
         }
-        
-        const errors = validationErrors.map(error => {
+
+        const errors = validationErrors.map((error) => {
           const constraints = Object.values(error.constraints);
           return `${error.property}: ${constraints.join(', ')}`;
         });
@@ -37,15 +46,13 @@ async function bootstrap() {
           statusCode: 400,
           error: 'Bad Request',
           message: 'Validation failed',
-          validationErrors: errors
+          validationErrors: errors,
         });
-      }
-      
+      },
     }),
   );
 
-
-  const port = process.env.PORT || 5000;  // Default to 3000 if PORT is not set
+  const port = process.env.PORT || 5000; // Default to 3000 if PORT is not set
   await app.listen(port);
   console.log(`Application is running on: ${await app.getUrl()}`);
 }
