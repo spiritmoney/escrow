@@ -4,7 +4,7 @@ export const services = [
         name: 'Kingsley Odim',
         service: 'Full Stack Developer',
         desc: 'I will build your website using Next.js and build the backend using Nest.js',
-        rate: '10.5 Espees',
+        rate: '10.5 Espees', 
         src: '/images/profile.png',
         rating: 4.2,
         tags: ['React.js', 'Javascript', 'CSS', 'Html', 'Python', 'Nest.js', '+7'],

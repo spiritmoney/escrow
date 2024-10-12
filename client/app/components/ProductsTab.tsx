@@ -46,7 +46,7 @@ export default function ProductsTab() {
             <div className="mx-auto flex items-center overflow-scroll rounded-lg"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                 {products.map(product => (
-                    <Link key={product.id} href={'/product/1'}>
+                    <Link key={product.id} href={'/store/product/1'}>
                         <ProductCard product={product} />
                     </Link>
                 ))}
@@ -56,7 +56,7 @@ export default function ProductsTab() {
             <div className="mx-auto flex items-center overflow-scroll rounded-lg"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                 {products.map(product => (
-                    <Link key={product.id} href={'/product/1'}>
+                    <Link key={product.id} href={'/store/product/1'}>
                         <ProductCard product={product} />
                     </Link>
                 ))}

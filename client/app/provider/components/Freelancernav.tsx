@@ -18,7 +18,7 @@ export default function Orders() {
 
             <div className="mx-4 md:w-11/12 h-14 flex items-center md:mx-auto border-b border-gray-400 overflow-scroll"
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                    
+
                 <button
                     className={`w-40 md:w-1/4 h-full py-2 px-4 text-sm flex items-center text-left md:text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "New Orders"
                         ? "text-black border-b-2 border-blue-600"
@@ -144,12 +144,12 @@ export function Profile({ params }: { params: { id: string } }) {
     const service = services.find((s) => s.id === parseInt(serviceId));
     const [editProfile, setEditProfile] = useState(false);
 
-    
+
     if (!service) {
         return <div>Service not found</div>;
     }
 
-    function toggleEdit(){
+    function toggleEdit() {
         setEditProfile(!editProfile);
     }
 
@@ -184,13 +184,13 @@ export function Profile({ params }: { params: { id: string } }) {
                                 <button className='text-[10px] md:text-sm'>Resume</button>
                             </span>
                             <Rating />
-                        
+
                             <div className='md:absolute md:top-7 md:right-10'>
-                                <button 
-                                onClick={toggleEdit}
-                                className="m-6 px-3 py-2 mx-auto bg-blue-700 flex items-center text-white rounded-lg">
-                                <img src="/icons/edit.png" alt="" className='w-6' />
-                                <p>Edit Profile</p>
+                                <button
+                                    onClick={toggleEdit}
+                                    className="m-6 px-3 py-2 mx-auto bg-blue-700 flex items-center text-white rounded-lg">
+                                    <img src="/icons/edit.png" alt="" className='w-6' />
+                                    <p>Edit Profile</p>
                                 </button>
                             </div>
                         </div>
@@ -198,15 +198,15 @@ export function Profile({ params }: { params: { id: string } }) {
                     </div>
                 </div>
 
-                {editProfile && 
-                        <div className='absolute top-0 bg-white inset-x-0 rounded-2xl w-390 md:w-[650px] mx-auto z-50'>
-                            <EditFreelancer toggleEdit={toggleEdit}/>
-                        </div>
-                    }
+                {editProfile &&
+                    <div className='absolute top-0 bg-white inset-x-0 rounded-2xl w-390 md:w-[650px] mx-auto z-50'>
+                        <EditFreelancer toggleEdit={toggleEdit}/>
+                    </div>
+                }
 
                 <div className='px-7 mb-7'>
                     <div className="flex text-[10px] md:text-sm space-x-2 mt-2 overflow-scroll"
-                            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                         {service.tags.map((tag, index) => (
                             <span key={index} className="text-sm bg-gray-200 px-2 py-1 rounded-2xl">{tag}</span>
                         ))}

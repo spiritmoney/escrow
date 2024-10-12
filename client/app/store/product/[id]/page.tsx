@@ -1,6 +1,6 @@
 "use client";
 
-import { products } from '../../data/Product';
+import { products } from '../../../data/Product';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 import Rating from '@/app/components/Rating';

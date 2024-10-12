@@ -126,7 +126,7 @@ const Page = () => {
 
   const renderForm = () => {
     return (
-      <form onSubmit={handleSubmit} className="w-[360px] md:w-[512px] space-y-4">
+      <form onSubmit={handleSubmit} className="w-full md:w-[512px] space-y-4">
         <div className="text-black text-[14px] space-y-2">
           <label htmlFor="firstName" className="font-medium">
             Full Name
@@ -284,8 +284,8 @@ const Page = () => {
         ) : (
         )} */}
 
-        <div className="space-y-4 flex flex-col items-center justify-center p-3">
-          <div className="text-[32px] text-black font-medium">
+        <div className="space-y-4 flex flex-col items-center justify-center p-3 md:py-5 md:px-8 rounded-lg md:border-2 border-[#CACACA]">
+          <div className="text-[32px] text-black font-medium text-center">
             Create an Escrow Account
           </div>
           {renderForm()}

@@ -212,7 +212,7 @@ export default function ProductOrders() {
             {checkout && <div className="fixed w-full h-full inset-0 bg-black bg-opacity-50 z-40"></div>}
             {products.map((product, index) => (
                 <div key={index} className={`w-full relative p-3 flex items-center rounded-lg my-2 ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
-                    <Link href={`product/${product.id}`} className="flex items-start space-x-3">
+                    <Link href={`/store/product/${product.id}`} className="flex items-start space-x-3">
                         <img src={product.src} alt="" className="w-16 rounded-md" />
 
                         <span className="flex flex-col items-start">

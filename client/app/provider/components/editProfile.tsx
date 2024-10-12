@@ -193,6 +193,7 @@ export function EditVendor({ toggleEdit }: EditProps) {
 }
 
 export function EditFreelancer({ toggleEdit }: EditProps) {
+
     const [formData, setFormData] = useState({
         firstName: 'Kingsley',
         lastName: 'Odim',
@@ -200,6 +201,7 @@ export function EditFreelancer({ toggleEdit }: EditProps) {
         kingschatNumber: '+123 456 7890',
         emailAddress: 'kingsleyodim@email.com',
         country: 'Nigeria',
+        tags: ['React.js', 'Javascript', 'CSS', 'Html', 'Python', 'Nest.js', '+7'],
     });
 
     const [hourlyRate, setHourlyRate] = useState(10); // Default hourly rate
@@ -374,11 +376,17 @@ export function EditFreelancer({ toggleEdit }: EditProps) {
                 <div>
                     <p className='text-[12px] font-semibold'>What Skills do you offer?</p>
 
+                    <div className="flex flex-wrap gap-2 w-full">
+                        {formData.tags.map((tag, index) => (
+                            <span key={index} className="text-sm bg-gray-200 px-2 py-1 rounded-2xl">{tag}</span>
+                        ))}
+                    </div>
+
                     <button className='text-sm text-blue-600'>+ Add Another Skill</button>
                 </div>
 
                 <div className='flex flex-col space-y-2 pb-4'>
-                    <p>What is your expertise level</p>
+                    <p className='text-[12px] font-semibold'>What is your expertise level</p>
 
                     <span className='flex items-center space-x-2'>
                         <input
@@ -488,19 +496,19 @@ export function EditFreelancer({ toggleEdit }: EditProps) {
 
                 <div>
                     <div className='w-full'>
-                    <p className='text-[12px] font-semibold'>CV / Resume</p>
-                    <label htmlFor="resume" className='w-full border-2 border-dashed border-gray-400 rounded-lg p-2 flex items-center justify-center cursor-pointer'>
-                        <img src="/icons/upload.png" alt="" className={`${selectedFile && 'hidden'}`} />
-                        <p className={`text-center text-blue-600 font-semibold ${selectedFile && 'hidden'}`}>Upload New</p>
-                        <p className={`text-center text-blue-600 font-semibold ${!selectedFile && 'hidden'}`}>{selectedFile}</p>
-                    </label>
-                    <input type="file" id='resume' className='hidden' onInput={showUpload} accept=".pdf,.doc,.docx" />
-                    <img src="/icons/docs.png" alt=""  className='py-3'/>
+                        <p className='text-[12px] font-semibold'>CV / Resume</p>
+                        <label htmlFor="resume" className='w-full border-2 border-dashed border-gray-400 rounded-lg p-2 flex items-center justify-center cursor-pointer'>
+                            <img src="/icons/upload.png" alt="" className={`${selectedFile && 'hidden'}`} />
+                            <p className={`text-center text-blue-600 font-semibold ${selectedFile && 'hidden'}`}>Upload New</p>
+                            <p className={`text-center text-blue-600 font-semibold ${!selectedFile && 'hidden'}`}>{selectedFile}</p>
+                        </label>
+                        <input type="file" id='resume' className='hidden' onInput={showUpload} accept=".pdf,.doc,.docx" />
+                        <img src="/icons/docs.png" alt="" className='py-3' />
+                    </div>
+
                 </div>
-                
-                </div>
-                
-                <div className='pt-3 pb-7 w-full'>    
+
+                <div className='pt-3 pb-7 w-full'>
                     <button
                         onClick={toggleEdit}
                         className='w-full p-3 text-sm rounded-lg bg-blue-600 text-white'
