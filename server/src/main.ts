@@ -38,7 +38,7 @@ async function bootstrap() {
   );
 
 
-  const port = process.env.PORT || 3000;  // Default to 3000 if PORT is not set
+  const port = process.env.PORT || 5000;  // Default to 3000 if PORT is not set
   await app.listen(port);
   app.enableCors();
 }
