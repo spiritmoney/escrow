@@ -17,7 +17,7 @@ async function bootstrap() {
       'http://localhost',
       'https://escrow-eta.vercel.app',
       'http://ec2-13-51-200-33.eu-north-1.compute.amazonaws.com',
-      'https://api.uno-finance.com',
+      'https://api.uno-finance.com/auth/register',
       'https://escrow-eta.vercel.app',
     ],
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
