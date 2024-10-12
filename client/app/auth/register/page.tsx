@@ -120,7 +120,7 @@ const Page = () => {
       fullName: string;
     }) => {
       const response = await fetch(
-        "http://ec2-13-51-200-33.eu-north-1.compute.amazonaws.com/auth/register",
+        "https://api.uno-finance.com/auth/register",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

@@ -39,7 +39,7 @@ const VerifyContent = () => {
   const verifyEmailMutation = useMutation({
     mutationFn: async (verificationCode: string) => {
       const response = await fetch(
-        "http://ec2-13-51-200-33.eu-north-1.compute.amazonaws.com/auth/verify-email",
+        "https://api.uno-finance.com/auth/verify-email",
         {
           method: "POST",
           headers: {
@@ -72,7 +72,7 @@ const VerifyContent = () => {
   const resendVerificationMutation = useMutation({
     mutationFn: async (email: string) => {
       const response = await fetch(
-        "http://ec2-13-51-200-33.eu-north-1.compute.amazonaws.com/auth/resend-verification",
+        "https://api.uno-finance.com/auth/resend-verification",
         {
           method: "POST",
           headers: {

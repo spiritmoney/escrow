@@ -10,7 +10,7 @@ async function bootstrap() {
 
   // Enable CORS
   app.enableCors({
-    origin: ['http://localhost:3001', 'http://localhost:3000', 'https://escrow-eta.vercel.app/', 'http://ec2-13-51-200-33.eu-north-1.compute.amazonaws.com'],
+    origin: ['http://localhost:3001', 'http://localhost:3000', 'https://escrow-eta.vercel.app/', 'http://ec2-13-51-200-33.eu-north-1.compute.amazonaws.com', 'https://api.uno-finance.com'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
   });
