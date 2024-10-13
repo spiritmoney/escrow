@@ -23,16 +23,15 @@ export default function Listings() {
 
     return (
         <>
-            {addNew === false && <MyListings />}
-            {addNew === true && <ListNew />}
+            {addNew ? <ListNew /> : <MyListings />}
         </>
     );
 
     function MyListings() {
         return (
             <div className='w-full flex flex-col items-center'>
-                <div className='w-11/12 mx-auto flex items-center space-x-4 justify-between py-5'>
-                    <h1 className='text-black text-3xl font-semibold'>Product Listings</h1>
+                <div className='w-full mx-auto flex items-center space-x-4 justify-between py-5'>
+                    <h1 className='text-black text-2xl font-semibold'>Product Listings</h1>
 
                     <button
                         onClick={toggleAddNew}
@@ -43,7 +42,7 @@ export default function Listings() {
 
                 </div> 
 
-                <div className="w-11/12 flex items-center mx-auto border-b border-gray-400 overflow-scroll"
+                <div className="w-full flex items-center mx-auto border-b border-gray-400 overflow-scroll"
                     style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
 
                     <button
@@ -103,7 +102,7 @@ export default function Listings() {
                     </button>
                 </div>
 
-                <div className="w-11/12 mx-auto mt-4">
+                <div className="w-full mx-auto mt-4">
                     {activeTab === "My Products" && <Products />}
                     {activeTab === "Active Orders" && <Active />}
                     {activeTab === "Completed Orders" && <Completed />}
@@ -154,14 +153,14 @@ export default function Listings() {
             };
             return (
                 <div className='w-full bg-white pb-10'>
-                    <div className='w-11/12 mx-auto flex items-center justify-between py-5'>
-                        <h1 className='text-black text-3xl font-semibold'>List New Product</h1>
+                    <div className='w-full mx-auto flex items-center justify-between py-5'>
+                        <h1 className='text-black text-2xl font-semibold'>List New Product</h1>
 
                         <button
                             onClick={toggleAddNew}
                             className='bg-blue-600 rounded-md text-sm flex items-center'>
                             <p className='p-2 hidden md:block'>Cancel</p>
-                            <p className='font-semibold md:hidden text-2xl px-2'>&times;</p>
+                            <p className='font-semibold md:hidden text-3xl px-3'>&times;</p>
                         </button>
                     </div>
 
@@ -247,14 +246,15 @@ export default function Listings() {
 
         function ProductInfo2() {
             return (
-                <div className='w-full bg-white pb-10'>
-                    <div className='w-11/12 mx-auto flex items-center justify-between py-5'>
-                        <h1 className='text-black text-3xl font-semibold'>List New Product</h1>
+                <div className='w-full bg-white p-3 pb-10'>
+                    <div className='w-full mx-auto flex items-center justify-between py-5'>
+                        <h1 className='text-black text-2xl font-semibold'>List New Product</h1>
 
                         <button
                             onClick={toggleAddNew}
-                            className='bg-blue-600 p-2 rounded-md text-sm flex items-center'>
-                            Cancel
+                            className='bg-blue-600 rounded-md text-sm flex items-center'>
+                            <p className='p-2 hidden md:block'>Cancel</p>
+                            <p className='font-semibold md:hidden text-3xl px-3'>&times;</p>
                         </button>
                     </div>
 
@@ -361,21 +361,21 @@ export function Profile() {
     ];
 
     const productList = [
-        { id: 1, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-        { id: 2, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-        { id: 3, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-        { id: 4, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-        { id: 5, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-        { id: 6, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-        { id: 7, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-        { id: 8, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
+        { id: 1, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+        { id: 2, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+        { id: 3, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+        { id: 4, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+        { id: 5, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+        { id: 6, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+        { id: 7, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+        { id: 8, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
     ];
 
     return (
         <div className='w-full relative'>
             {editProfile && <div className="fixed w-full h-full inset-0 bg-black bg-opacity-50 z-40"></div>}
 
-            <h1 className='text-black text-3xl py-3 font-semibold'>Store</h1>
+            <h1 className='text-black text-2xl py-3 font-semibold'>Store</h1>
 
             <div>
                 <div className="md:relative bg-white w-full rounded-lg flex items-start justify-between p-5 mb-10">
@@ -417,7 +417,7 @@ export function Profile() {
                     {productList.map(product => (
                         <Link href={'/product/1'}>
                             <ProductCard key={product.id} product={product} />
-                        </Link>
+                        </Link> 
                     ))}
                 </div>
             </div>

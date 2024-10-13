@@ -14,9 +14,9 @@ export default function Orders() {
     };
     return (
         <div className='w-full'>
-            <h1 className='w-11/12 mx-auto text-black text-3xl py-3 font-semibold'>Orders</h1>
+            <h1 className='mx-auto text-black text-2xl py-3 font-semibold'>Orders</h1>
 
-            <div className="mx-4 md:w-11/12 h-14 flex items-center md:mx-auto border-b border-gray-400 overflow-scroll"
+            <div className="mx-4 h-14 flex items-center md:mx-auto border-b border-gray-400 overflow-scroll"
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
 
                 <button
@@ -73,7 +73,7 @@ export default function Orders() {
                 </button>
             </div>
 
-            <div className="w-11/12 mx-auto mt-4">
+            <div className="mx-auto mt-4">
                 {activeTab === "New Orders" && <NewOrders />}
                 {activeTab === "Active" && <Active />}
                 {activeTab === "Completed" && <Completed />}
@@ -156,7 +156,7 @@ export function Profile({ params }: { params: { id: string } }) {
     return (
         <div className='w-full relative'>
             {editProfile && <div className="fixed w-full h-full inset-0 bg-black bg-opacity-50 z-40"></div>}
-            <h1 className='text-black text-3xl py-3 font-semibold'>Profile</h1>
+            <h1 className='text-black text-2xl py-3 font-semibold'>Profile</h1>
             <div className="container bg-white rounded-xl mx-auto w-full text-black">
                 <div className="relative bg-white w-full pt-5 md:p-7 rounded-xl flex items-start space-x-4 md:space-x-8">
                     <div className='relative flex items-center justify-center w-24 h-24  md:w-32 md:h-32'>

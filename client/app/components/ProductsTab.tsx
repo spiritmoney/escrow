@@ -19,14 +19,14 @@ const productTypes = [
 ];
 
 const products = [
-    { id: 1, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-    { id: 2, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-    { id: 3, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-    { id: 4, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-    { id: 5, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-    { id: 6, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-    { id: 7, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-    { id: 8, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
+    { id: 1, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+    { id: 2, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+    { id: 3, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+    { id: 4, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+    { id: 5, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+    { id: 6, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+    { id: 7, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+    { id: 8, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
 ];
 
 export default function ProductsTab() {
@@ -35,7 +35,7 @@ export default function ProductsTab() {
             <ProductTypes />
 
             <div className="w-full container mx-auto pt-6">
-                <div className="min-w-full grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-6 bg-white rounded-lg">
+                <div className="min-w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-6 bg-white rounded-lg">
                     {productTypes.map(product => (
                         <ProductTypeCard key={product.id} product={product} />
                     ))}

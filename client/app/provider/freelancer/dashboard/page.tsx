@@ -25,7 +25,7 @@ const page = () => {
 
             <div className='relative bg-white w-full h-20 flex items-center justify-center'>
                 <button onClick={toggleMenu} className='absolute left-3 lg:hidden'>
-                    <img src="/icons/menu.png" alt="" className='w-10' />
+                    <img src="/icons/menu.png" alt="" className='w-8' />
                 </button>
 
                 {/* Hamburger Menu */}
@@ -159,7 +159,7 @@ const page = () => {
                 </div>
             </div>
 
-            <div className="max-w-full px-4 md:px-8 mx-auto mt-4">
+            <div className="w-11/12 md:w-full md:px-8 mx-auto mt-4">
                 {activeTab === "Orders" && <Orders />}
                 {activeTab === "Messages" && <Messages />}
                 {activeTab === "Analytics" && <Analytics />}

@@ -72,7 +72,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                             <div key={similar.id} className="min-w-52 p-4 mr-4 bg-white hover:bg-gray-100 rounded-lg">
                                 <img src={similar.image} alt={similar.name} className="rounded-lg shadow-md mb-2" />
                                 <p className="text-gray-700 font-semibold">{similar.name}</p>
-                                <p className="text-sm text-gray-500 font-semibold">{similar.price}</p>
+                                <p className="text-sm text-gray-500 font-semibold">{similar.store}</p>
+                                <p className="text-sm text-gray-700 font-semibold">{similar.price}</p>
                             </div>
                         ))}
                     </div>

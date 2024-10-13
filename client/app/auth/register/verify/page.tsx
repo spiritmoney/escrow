@@ -65,9 +65,6 @@ const Page = () => {
 
   const handleResend = () => {
     // Implement resend logic here
-    console.log("Resending verification code");
-    setResendTimer(59);
-    setCanResend(false);
     toast.success('Email Sent!', {
       className: "text-white, bg-blue-600",
       position: "top-right",
@@ -78,6 +75,9 @@ const Page = () => {
       draggable: true,
       progress: undefined,
     });
+    // console.log("Resending verification code");
+    // setResendTimer(59);
+    // setCanResend(false);
   };
 
   function checkVerification() {
@@ -90,14 +90,14 @@ const Page = () => {
         <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} />
 
         <div className="w-full flex flex-col items-center justify-center flex-grow text-black space-y-4">
-          <div className="text-[32px] font-bold mb-4">Verify your Email</div>
-          <div className="text-center mb-6 text-[22px]">
+          <div className="text-2xl font-semibold md:mb-4">Verify your Email</div>
+          <div className="text-center mb-6 text-[14px]">
             We just sent a 6-digit code to your email
             <br />
             Please check your email to access the code
           </div>
 
-          <div className="flex gap-3 md:gap-4 mb-6">
+          <div className="flex gap-2 md:gap-4 mb-6">
             {verificationCode.map((digit, index) => (
               <input
                 key={index}
@@ -110,7 +110,7 @@ const Page = () => {
                 onChange={(e) => handleCodeChange(index, e.target.value)}
                 onFocus={() => handleFocus(index)}
                 onBlur={() => handleBlur(index)}
-                className="w-[50px] h-[70px] md:w-[80px] md:h-[100px] text-center text-2xl border-4 border-gray-500 rounded-xl focus:outline-none"
+                className="w-[45px] h-[60px] md:w-[80px] md:h-[100px] text-center text-2xl border-4 border-gray-500 rounded-xl focus:outline-none"
               />
             ))}
           </div>
@@ -215,7 +215,7 @@ const Page = () => {
 
     return (
       <div className="w-full h-screen flex flex-col items-center bg-white justify-center p-3">
-        <div className="text-[32px] text-black mb-4 font-medium">
+        <div className="text-2xl text-black mb-4 font-semibold">
           <p>Select Your Role</p>
         </div>
 

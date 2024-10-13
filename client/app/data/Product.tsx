@@ -10,10 +10,10 @@ export const products = [
         stock: 15,
         image: '/images/fashion.png',
         similarProducts: [
-            { id: '2', name: 'Nike Sneakers', price: '10.5 Espees', image: '/images/fashion.png' },
-            { id: '3', name: 'Nike Sneakers', price: '10.5 Espees', image: '/images/fashion.png' },
-            { id: '4', name: 'Nike Sneakers', price: '10.5 Espees', image: '/images/fashion.png' },
-            { id: '5', name: 'Nike Sneakers', price: '10.5 Espees', image: '/images/fashion.png' },
+            { id: '2', name: 'Nike Sneakers', store:'Vinicks Fashion Store', price: '10.5 Espees', image: '/images/fashion.png' },
+            { id: '3', name: 'Nike Sneakers', store:'Vinicks Fashion Store', price: '10.5 Espees', image: '/images/fashion.png' },
+            { id: '4', name: 'Nike Sneakers', store:'Vinicks Fashion Store', price: '10.5 Espees', image: '/images/fashion.png' },
+            { id: '5', name: 'Nike Sneakers', store:'Vinicks Fashion Store', price: '10.5 Espees', image: '/images/fashion.png' },
         ]
     }
 ];

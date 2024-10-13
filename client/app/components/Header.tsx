@@ -9,9 +9,9 @@ export default function Header() {
 
         <img src="/images/banner2.png" alt="" className="lg:hidden"/>
         <div className="absolute top-[64%] left-[5%] md:top-[68%] md:left-[8.35%] transform -translate-y-1/2 w-[71%] md:w-[33.33%]">
-          <div className="bg-white flex rounded-md items-center h-8 w-full relative">
+          <div className="p-3 bg-white flex rounded-md items-center w-full relative">
             <input
-              className="p-2 pr-12 w-full h-[52px] text-black outline-none rounded-md"
+              className="pr-12 w-full text-black outline-none rounded-md"
               type="search"
               placeholder="Search products or services"
             />
