@@ -16,7 +16,7 @@ export default function Orders() {
         <div className='w-full'>
             <h1 className='mx-auto text-black text-2xl py-3 font-semibold'>Orders</h1>
 
-            <div className="mx-4 h-14 flex items-center md:mx-auto border-b border-gray-400 overflow-scroll"
+            <div className="w-full h-14 flex items-center md:mx-auto border-b border-gray-400 overflow-scroll"
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
 
                 <button
@@ -73,7 +73,7 @@ export default function Orders() {
                 </button>
             </div>
 
-            <div className="mx-auto mt-4">
+            <div className="min-w-full mx-auto mt-4">
                 {activeTab === "New Orders" && <NewOrders />}
                 {activeTab === "Active" && <Active />}
                 {activeTab === "Completed" && <Completed />}

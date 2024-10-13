@@ -88,7 +88,7 @@ export default function Navbar() {
           )}
           {isOptionsVisible && (
             <ul className='absolute top-12 right-0 z-10 w-48 mt-2 p-4 flex flex-col items-center rounded-b-lg shadow-lg bg-gray-50'>
-              <Link href={'/provider/freelancer/dashboard'} className="cursor-pointer w-full border-b px-4 py-2 text-gray-500 font-semibold 
+              <Link href={'/provider/vendor/dashboard'} className="cursor-pointer w-full border-b px-4 py-2 text-gray-500 font-semibold 
                 hover:bg-gray-100">
                 <li>
                   My Profile

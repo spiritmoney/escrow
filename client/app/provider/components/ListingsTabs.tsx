@@ -161,7 +161,7 @@ export default function Products() {
                                 {listings.map((listing, index) => (
                                     <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
                                         <td className="px-6 py-4 flex items-center space-x-2">
-                                            <img src="/icons/star.png" alt="" className="w-4" />
+                                            
                                             <img onClick={toggleView} src={listing.src} alt="" className="w-10 rounded-md cursor-pointer" />
                                             <p>{listing.product}</p>
                                         </td>
@@ -180,7 +180,7 @@ export default function Products() {
                             {listings.map((listing, index) => (
                                 <div onClick={toggleView} key={index} className={`border p-4 rounded-lg shadow-sm ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
                                     <div className="flex items-center space-x-2">
-                                        <img src="/icons/star.png" alt="" className="w-4" />
+                                        
                                         <img src={listing.src} alt="" className="w-10 rounded-md cursor-pointer" />
                                         <p className="font-medium">{listing.product}</p>
                                     </div>
@@ -275,7 +275,7 @@ export function Active() {
                             {active.map((active, index) => (
                                 <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
                                     <td className="px-6 py-4 flex items-center space-x-2">
-                                        <img src="/icons/star.png" alt="" className="w-4" />
+                                        
                                         <img src="/images/fashion.png" alt="" className="w-10 rounded-md" />
                                         <p>{active.product}</p>
                                     </td>
@@ -294,7 +294,7 @@ export function Active() {
                         {active.map((active, index) => (
                             <div key={index} className={`border p-4 rounded-lg shadow-sm ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
                                 <div className="flex items-center space-x-2">
-                                    <img src="/icons/star.png" alt="" className="w-4" />
+                                    
                                     <img src="/images/fashion.png" alt="" className="w-10 rounded-md" />
                                     <p className="font-medium">{active.product}</p>
                                 </div>
@@ -334,7 +334,7 @@ export function Completed() {
                             {completed.map((completed, index) => (
                                 <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
                                     <td className="px-6 py-4 flex items-center space-x-2">
-                                        <img src="/icons/star.png" alt="" className="w-4" />
+                                        
                                         <img src="/images/fashion.png" alt="" className="w-10 rounded-md" />
                                         <p>{completed.product}</p>
                                     </td>
@@ -353,7 +353,7 @@ export function Completed() {
                         {completed.map((completed, index) => (
                             <div key={index} className={`border p-4 rounded-lg shadow-sm ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
                                 <div className="flex items-center space-x-2">
-                                    <img src="/icons/star.png" alt="" className="w-4" />
+                                    
                                     <img src="/images/fashion.png" alt="" className="w-10 rounded-md" />
                                     <p className="font-medium">{completed.product}</p>
                                 </div>
@@ -392,7 +392,7 @@ export function Cancelled() {
                             {cancelled.map((cancelled, index) => (
                                 <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
                                     <td className="px-6 py-4 flex items-center space-x-2">
-                                        <img src="/icons/star.png" alt="" className="w-4" />
+                                        
                                         <img src="/images/fashion.png" alt="" className="w-10 rounded-md" />
                                         <p>{cancelled.product}</p>
                                     </td>
@@ -411,7 +411,7 @@ export function Cancelled() {
                         {cancelled.map((cancelled, index) => (
                             <div key={index} className={`border p-4 rounded-lg shadow-sm ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
                                 <div className="flex items-center space-x-2">
-                                    <img src="/icons/star.png" alt="" className="w-4" />
+                                    
                                     <img src="/images/fashion.png" alt="" className="w-10 rounded-md" />
                                     <p className="font-medium">{cancelled.product}</p>
                                 </div>

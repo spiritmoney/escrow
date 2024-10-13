@@ -152,7 +152,7 @@ export default function Listings() {
                 }
             };
             return (
-                <div className='w-full bg-white pb-10'>
+                <div className='w-full p-3 bg-white pb-10'>
                     <div className='w-full mx-auto flex items-center justify-between py-5'>
                         <h1 className='text-black text-2xl font-semibold'>List New Product</h1>
 
