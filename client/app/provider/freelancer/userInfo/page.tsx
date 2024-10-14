@@ -1,11 +1,10 @@
 "use client";
 
-import next from 'next';
 import Link from 'next/link';
 import React, { useState } from 'react'
 
 const page = () => {
-    const [step, setStep] = useState(1);
+    const [step, setStep] = useState(0);
 
     const nextStep = () => {
         setStep((prevStep) => prevStep + 1);
@@ -18,12 +17,14 @@ const page = () => {
 
     return (
         <div className='w-screen bg-white flex items-center justify-center'>
-            {step === 1 && <Welcome nextStep={nextStep} />}
-            {step === 2 && <Step1 nextStep={nextStep} prevStep={prevStep} />}
-            {step === 3 && <Step2 nextStep={nextStep} prevStep={prevStep} />}
-            {step === 4 && <Step3 nextStep={nextStep} prevStep={prevStep} />}
-            {step === 5 && <Step4 nextStep={nextStep} prevStep={prevStep} />}
-            {step === 6 && <Step5 nextStep={nextStep} prevStep={prevStep} />}
+
+            {step === 0 && <Welcome nextStep={nextStep} />}
+            {step === 1 && <Step1 nextStep={nextStep} prevStep={prevStep} />}
+            {step === 2 && <Step2 nextStep={nextStep} prevStep={prevStep} />}
+            {step === 3 && <Step3 nextStep={nextStep} prevStep={prevStep} />}
+            {step === 4 && <Step4 nextStep={nextStep} prevStep={prevStep} />}
+            {step === 5 && <Step5 nextStep={nextStep} prevStep={prevStep} />}
+            {step === 6 && <Step6 nextStep={nextStep} prevStep={prevStep} />}
         </div>
     );
 }
@@ -31,9 +32,9 @@ const page = () => {
 function Welcome({ nextStep }: { nextStep: () => void }) {
     return (
         <div className="container bg-white flex flex-col items-center justify-center text-black w-full h-screen">
-            <div className=' border-2 border-gray-300 rounded-lg p-7 w-[550px] flex flex-col space-y-3'>
+            <div className=' border-2 border-gray-300 rounded-lg p-7 w-[380px] md:w-[550px] flex flex-col space-y-3'>
                 <div className='w-full flex flex-col items-center space-y-3'>
-                    <h1 className='text-2xl font-semibold'>Fill out your profile as a <span className='text-blue-600'>Freelancer</span> </h1>
+                    <h1 className='text-2xl text-center font-semibold'>Fill out your profile as a <span className='text-blue-600'>Freelancer</span> </h1>
                     <p className='w-96 text-center'>Fill out your profile to provide a high quality experience for all clients</p>
                 </div>
 
@@ -70,10 +71,10 @@ function Step1({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
 
     return (
         <div className="container bg-white flex items-center justify-center text-black w-full h-screen">
-            <div className=' border-2 border-gray-300 rounded-lg p-7 w-[550px] flex flex-col space-y-3'>
+            <div className=' border-2 border-gray-300 rounded-lg p-7 w-[380px] md:w-[550px] flex flex-col space-y-3'>
                 <div className='w-full flex items-center justify-between'>
                     <h1 className='text-xl font-semibold'>Expertise</h1>
-                    <p className='text-sm'>1/5</p>
+                    <p className='text-sm'>1/6</p>
                 </div>
 
                 <div>
@@ -84,11 +85,11 @@ function Step1({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
                 <div>
                     <p className='text-[12px] font-semibold'>What is the category of the service you offer?</p>
                     <select name="category" className='w-full border-2 border-gray-400 rounded-lg p-2 text-gray-400'>
-                        <option value="">Category</option>
+                        <option value=""><p className='w-80'>Category</p></option>
                         <option value="">Category1</option>
                         <option value="">Category2</option>
                     </select>
-                </div> 
+                </div>
 
                 <div>
                     <p className='text-[12px] font-semibold'>What is skills do you offer?</p>
@@ -129,10 +130,10 @@ function Step1({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
                 </div>
 
                 <div className='w-full flex items-center justify-between'>
-                    <button onClick={prevStep} className='w-44 p-3 text-sm rounded-lg bg-blue-100 text-blue-600'>
+                    <button onClick={prevStep} className='w-32 md:w-44 p-3 text-sm rounded-lg bg-blue-100 text-blue-600'>
                         Back
                     </button>
-                    <button onClick={nextStep} className='w-44 p-3 text-sm rounded-lg bg-blue-600 text-white'>
+                    <button onClick={nextStep} className='w-32 md:w-44 p-3 text-sm rounded-lg bg-blue-600 text-white'>
                         Next
                     </button>
                 </div>
@@ -158,10 +159,10 @@ function Step2({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
     };
     return (
         <div className="container bg-white flex items-center justify-center text-black w-11/12 h-screen">
-            <div className=' border-2 border-gray-300 rounded-lg p-7 w-[550px] flex flex-col space-y-3'>
+            <div className=' border-2 border-gray-300 rounded-lg p-7 w-[380px] md:w-[550px] flex flex-col space-y-3'>
                 <div className='w-full flex items-center justify-between'>
                     <h1 className='text-xl font-semibold'>Education</h1>
-                    <p className='text-sm'>2/5</p>
+                    <p className='text-sm'>2/6</p>
                 </div>
 
                 <div>
@@ -181,7 +182,7 @@ function Step2({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
                     <label>Dates Attended (Optional)</label>
                     <div className='flex items-center justify-between w-full'>
                         {/* From Year Dropdown */}
-                        <select className='border-2 border-gray-400 w-56 p-3 rounded-lg text-gray-500' value={fromYear} onChange={(e) => setFromYear(e.target.value)}>
+                        <select className='border-2 border-gray-400 w-36 md:w-56 p-3 rounded-lg text-gray-500' value={fromYear} onChange={(e) => setFromYear(e.target.value)}>
                             <option value="">From</option>
                             {generateYears().map((year) => (
                                 <option key={year} value={year}>
@@ -191,7 +192,7 @@ function Step2({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
                         </select>
 
                         {/* To Year Dropdown */}
-                        <select className='border-2 border-gray-400 w-56 p-3 rounded-lg text-gray-500' value={toYear} onChange={(e) => setToYear(e.target.value)}>
+                        <select className='border-2 border-gray-400 w-36 md:w-56 p-3 rounded-lg text-gray-500' value={toYear} onChange={(e) => setToYear(e.target.value)}>
                             <option value="">To</option>
                             {generateYears().map((year) => (
                                 <option key={year} value={year}>
@@ -210,10 +211,10 @@ function Step2({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
                 <h1 onClick={nextStep} className='text-sm text-blue-600 cursor-pointer border-b p-3'>Skip this step</h1>
 
                 <div className='w-full flex items-center justify-between'>
-                    <button onClick={prevStep} className='w-44 p-3 text-sm rounded-lg bg-blue-100 text-blue-600'>
+                    <button onClick={prevStep} className='w-32 md:w-44 p-3 text-sm rounded-lg bg-blue-100 text-blue-600'>
                         Back
                     </button>
-                    <button onClick={nextStep} className='w-44 p-3 text-sm rounded-lg bg-blue-600 text-white'>
+                    <button onClick={nextStep} className='w-32 md:w-44 p-3 text-sm rounded-lg bg-blue-600 text-white'>
                         Next
                     </button>
                 </div>
@@ -223,8 +224,55 @@ function Step2({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
     );
 }
 
-// Step 3: Hourly Rate Component
+// Step 3: Resume / Portfolio
 function Step3({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => void }) {
+    const [selectedFile, setSelectedFile] = useState<string | null>(null);
+
+    const showUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        setSelectedFile(file ? file.name : null);
+    };
+
+    return (
+        <div className="container bg-white flex items-center justify-center text-black w-full h-screen">
+            <div className=' border-2 border-gray-300 rounded-lg p-7 w-[380px] md:w-[550px] flex flex-col space-y-3'>
+                <div className='w-full flex items-center justify-between'>
+                    <h1 className='text-xl font-semibold'>Resume</h1>
+                    <p className='text-sm'>3/6</p>
+                </div>
+
+                <div className='w-full'>
+                    <p className='text-[12px] font-semibold'>Upload your CV or Resume</p>
+                    <label htmlFor="resume" className='w-full border-2 border-dashed border-gray-400 rounded-lg p-2 flex items-center justify-center cursor-pointer'>
+                        <img src="/icons/upload.png" alt="" className={`${selectedFile && 'hidden'}`} />
+                        <p className={`text-center text-blue-600 font-semibold ${!selectedFile && 'hidden'}`}>{selectedFile}</p>
+                    </label>
+                    <input type="file" id='resume' className='hidden' onInput={showUpload} accept=".pdf,.doc,.docx" />
+                </div>
+
+                <div>
+                    <p className='text-[12px] font-semibold'>Provide Link to your Portfolio</p>
+                    <input type="text" className="w-full border-2 border-gray-400 rounded-lg p-2" />
+                </div>
+
+                <h1 onClick={nextStep} className='text-sm text-blue-600 cursor-pointer border-b p-3'>Skip this step</h1>
+
+                <div className='w-full flex items-center justify-between'>
+                    <button onClick={prevStep} className='w-32 md:w-44 p-3 text-sm rounded-lg bg-blue-100 text-blue-600'>
+                        Back
+                    </button>
+                    <button onClick={nextStep} className='w-32 md:w-44 p-3 text-sm rounded-lg bg-blue-600 text-white'>
+                        Next
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    );
+}
+
+// Step 4: Hourly Rate Component
+function Step4({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => void }) {
     const [hourlyRate, setHourlyRate] = useState(10); // Default hourly rate
 
     // Function to increment the rate
@@ -240,10 +288,10 @@ function Step3({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
     };
     return (
         <div className="container bg-white flex items-center justify-center text-black w-full h-screen">
-            <div className=' border-2 border-gray-300 rounded-lg p-7 w-[550px] flex flex-col space-y-3'>
+            <div className=' border-2 border-gray-300 rounded-lg p-7 w-[380px] md:w-[550px] flex flex-col space-y-3'>
                 <div className='w-full flex items-center justify-between'>
                     <h1 className='text-xl font-semibold'>Horly Rate</h1>
-                    <p className='text-sm'>3/5</p>
+                    <p className='text-sm'>4/6</p>
                 </div>
 
                 <div className='pb-20'>
@@ -274,10 +322,10 @@ function Step3({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
                 </div>
 
                 <div className='w-full flex items-center justify-between'>
-                    <button onClick={prevStep} className='w-44 p-3 text-sm rounded-lg bg-blue-100 text-blue-600'>
+                    <button onClick={prevStep} className='w-32 md:w-44 p-3 text-sm rounded-lg bg-blue-100 text-blue-600'>
                         Back
                     </button>
-                    <button onClick={nextStep} className='w-44 p-3 text-sm rounded-lg bg-blue-600 text-white'>
+                    <button onClick={nextStep} className='w-32 md:w-44 p-3 text-sm rounded-lg bg-blue-600 text-white'>
                         Next
                     </button>
                 </div>
@@ -287,10 +335,10 @@ function Step3({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
     );
 }
 
-// Step 4: Title and Overview Component
-function Step4({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => void }) {
-    const [text, setText] = useState(''); // State to track the input text
-    const maxLength = 10; // Maximum number of characters allowed
+// Step 5: Title and Overview Component
+function Step5({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => void }) {
+    const [text, setText] = useState('');
+    const maxLength = 10;
 
     // Handler for when the text changes
     const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -302,10 +350,10 @@ function Step4({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
     };
     return (
         <div className="container bg-white flex items-center justify-center text-black w-full h-screen">
-            <div className=' border-2 border-gray-300 rounded-lg p-7 w-[550px] flex flex-col space-y-3'>
+            <div className=' border-2 border-gray-300 rounded-lg p-7 w-[380px] md:w-[550px] flex flex-col space-y-3'>
                 <div className='w-full flex items-center justify-between'>
                     <h1 className='text-xl font-semibold'>Title & Overview</h1>
-                    <p className='text-sm'>4/5</p>
+                    <p className='text-sm'>5/6</p>
                 </div>
 
                 <div>
@@ -331,10 +379,10 @@ function Step4({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
 
 
                 <div className='w-full flex items-center justify-between'>
-                    <button onClick={prevStep} className='w-44 p-3 text-sm rounded-lg bg-blue-100 text-blue-600'>
+                    <button onClick={prevStep} className='w-32 md:w-44 p-3 text-sm rounded-lg bg-blue-100 text-blue-600'>
                         Back
                     </button>
-                    <button onClick={nextStep} className='w-44 p-3 text-sm rounded-lg bg-blue-600 text-white'>
+                    <button onClick={nextStep} className='w-32 md:w-44 p-3 text-sm rounded-lg bg-blue-600 text-white'>
                         Next
                     </button>
                 </div>
@@ -344,14 +392,14 @@ function Step4({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
     );
 }
 
-// Step 5: Profile Photo Component
-function Step5({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => void }) {
+// Step 6: Profile Photo Component
+function Step6({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => void }) {
     return (
         <div className="container bg-white flex items-center justify-center text-black w-full h-screen">
-            <div className=' border-2 border-gray-300 rounded-lg p-7 w-[550px] flex flex-col space-y-3'>
+            <div className=' border-2 border-gray-300 rounded-lg p-7 w-[380px] md:w-[550px] flex flex-col space-y-3'>
                 <div className='w-full flex items-center justify-between'>
                     <h1 className='text-xl font-semibold'>Profile Photo</h1>
-                    <p className='text-sm'>5/5</p>
+                    <p className='text-sm'>6/6</p>
                 </div>
 
                 <p className='text-sm'>Please upload a professional portrait that clearly shows your face</p>
@@ -367,12 +415,12 @@ function Step5({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
                 </Link>
 
                 <div className='w-full flex py-4 items-center justify-between'>
-                    <button onClick={prevStep} className='w-44 p-3 text-sm rounded-lg bg-blue-100 text-blue-600'>
+                    <button onClick={prevStep} className='w-32 md:w-44 p-3 text-sm rounded-lg bg-blue-100 text-blue-600'>
                         Back
                     </button>
 
                     <Link href={'/provider/freelancer/dashboard'}>
-                        <button className='w-44 p-3 text-sm rounded-lg bg-blue-600 text-white'>
+                        <button className='w-32 md:w-44 p-3 text-sm rounded-lg bg-blue-600 text-white'>
                             Save
                         </button>
                     </Link>
