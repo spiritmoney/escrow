@@ -8,16 +8,19 @@ export interface User extends Document {
   isVerified: boolean;
   phoneNumber?: string;
   address?: string;
-  role: string; // Role should be non-nullable
+  role: string;
   createdAt: Date;
   updatedAt: Date;
+  walletAddress: string;
 }
+
 
 // Define the Mongoose schema
 export const UserSchema = new Schema<User>({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },  // Password is required
   fullName: { type: String, required: true },
+  walletAddress: { type: String, required: true },
   isVerified: { type: Boolean, required: true, default: false },
   phoneNumber: { type: String, required: false },
   address: { type: String, required: false },

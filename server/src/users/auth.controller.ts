@@ -3,6 +3,8 @@ import { AuthService } from './auth.service';
 import { UserService } from './users.service';
 import { RegisterDto, VerifyEmailDto, ResendVerificationDto, LoginDto } from './auth.dto';
 
+
+
 @Controller('auth')
 export class AuthController {
   constructor(
@@ -19,15 +21,23 @@ export class AuthController {
     const existingUser = await this.userService.findUserByEmail(email);
     if (existingUser) throw new BadRequestException('User with this email already exists');
 
-    // Create user with a temporary status (unverified)
+    // Create user and generate wallet
     const user = await this.userService.createUser(email, password, fullName);
+
+    // Fund the user's wallet with Ether
+    const txHash = await this.userService.fundWallet(user.walletAddress);
 
     // Generate a 6-digit verification code and send it via email
     const verificationCode = await this.authService.generateVerificationCode(user.id);
     await this.authService.sendVerificationEmail(email, verificationCode, fullName);
 
-    return { message: 'User registered successfully. Please check your email to verify your account.' };
+    return {
+      message: 'User registered successfully. Please check your email to verify your account.',
+      walletAddress: user.walletAddress,
+      transactionHash: txHash, // Provide transaction hash as confirmation
+    };
   }
+
 
   @Post('login')
   @UsePipes(new ValidationPipe({ whitelist: true }))
