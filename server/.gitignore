@@ -3,6 +3,10 @@
 node_modules
 /build
 
+# package manager
+package-lock.json
+yarn.lock
+
 # Logs
 logs
 *.log
