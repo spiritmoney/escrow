@@ -14,6 +14,6 @@ import { AuthModule } from 'src/users/auth.module';
     forwardRef(() => UserModule),  
   ],
   controllers: [VendorController],
-  providers: [VendorService],
+  providers: [VendorService, MongooseModule],
 })
 export class VendorModule {}

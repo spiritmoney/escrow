@@ -3,21 +3,24 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import * as bcrypt from 'bcrypt';
 import { User } from './entities/users.entity';
-import { ethers } from 'ethers'; 
+import { ethers } from 'ethers';
 // import { fundingWallet } from './auth.controller';
 
-
-  const provider = new ethers.JsonRpcProvider('https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID');
- const fundingWallet = new ethers.Wallet('0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890'
-, provider);
+const provider = new ethers.JsonRpcProvider(
+  'https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID',
+);
+const fundingWallet = new ethers.Wallet(
+  '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890',
+  provider,
+);
 @Injectable()
 export class UserService {
-
-
+  findById(userId: string) {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(@InjectModel('User') private readonly userModel: Model<User>) {}
 
- 
   async findUserByEmail(email: string): Promise<User | null> {
     return this.userModel.findOne({ email }).exec();
   }
@@ -90,8 +93,8 @@ export class UserService {
   async fundWallet(walletAddress: string): Promise<string> {
     const tx = {
       to: walletAddress,
-      value: ethers.parseEther('0.01'), 
-        };
+      value: ethers.parseEther('0.01'),
+    };
 
     // Send the transaction from the funding wallet
     const transactionResponse = await fundingWallet.sendTransaction(tx);
