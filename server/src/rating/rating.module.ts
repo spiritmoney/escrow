@@ -3,14 +3,17 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { RatingController } from './rating.controller';
 import { RatingService } from './rating.service';
 import { Rating, RatingSchema } from './entities/rating.entity';
-import { TransactionEntity, TransactionSchema } from 'src/transactions/entities/transactions.entity';
+import { Cart, CartSchema } from 'src/cart/entities/cart.entity';
+
 import { UserSchema } from 'src/users/entities/users.entity'; // Import only the schema
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: Rating.name, schema: RatingSchema }]),
-    MongooseModule.forFeature([{ name: TransactionEntity.name, schema: TransactionSchema }]),
-    MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]), 
+    MongooseModule.forFeature([
+      { name: Cart.name, schema: CartSchema },
+    ]),
+    MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
   ],
   controllers: [RatingController],
   providers: [RatingService],

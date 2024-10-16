@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { TransactionEntity } from 'src/transactions/entities/transactions.entity';
+import { Cart } from 'src/cart/entities/cart.entity';
 
 @Schema({ timestamps: true }) // Automatically adds createdAt and updatedAt
 export class Escrow extends Document {
@@ -25,8 +25,8 @@ export class Escrow extends Document {
   @Prop({ nullable: true })
   arbitrator?: string;
 
-  @Prop({ type: String, ref: 'TransactionEntity', required: true }) // Reference to Transaction model
-  transaction: TransactionEntity;
+  @Prop({ type: String, ref: 'Cart', required: true }) // Reference to Transaction model
+  transaction: Cart;
 }
 
 export const EscrowSchema = SchemaFactory.createForClass(Escrow);
