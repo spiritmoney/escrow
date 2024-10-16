@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./styles/globals.css";
 import { Poppins } from "next/font/google"
+import { ToastContainer } from "react-toastify";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -35,7 +36,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className}>
+        {children}
+        <div className="z-50"><ToastContainer position="top-right" autoClose={5000} hideProgressBar={false}/>  </div>
+      </body>
     </html>
   );
 }
@@ -43,6 +47,6 @@ export default function RootLayout({
 
 
 
-// Updates_ Features
-// - Search Results page
+// Future_Updates_
+// - Custom Popup notifications
 // .

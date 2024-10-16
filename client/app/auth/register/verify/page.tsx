@@ -5,7 +5,6 @@ import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import ToastNotification from "@/app/components/ToastNotification";
 
 const Page = () => {
   const [verificationCode, setVerificationCode] = useState([
@@ -16,10 +15,9 @@ const Page = () => {
     "",
     "",
   ]);
-  const [resendTimer, setResendTimer] = useState(59);
+  const [resendTimer, setResendTimer] = useState(10);
   const [canResend, setCanResend] = useState(false);
   const [verified, setVerified] = useState(false);
-  const [notify, setNotify] = useState(false);
 
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
@@ -68,16 +66,22 @@ const Page = () => {
   const handleResend = () => {
     // Implement resend logic here
     console.log("Resending verification code");
-    setResendTimer(59);
+    setResendTimer(10);
     setCanResend(false);
-    setNotify(!notify);
 
-    setTimeout(() => {
-      setNotify(!notify);
-    }, 10000);
+    toast.success("Code was Sent!", {
+      className: "text-white bg-blue-600",
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
-  
+
   function checkVerification() {
     setVerified(!verified);
   }
@@ -85,10 +89,6 @@ const Page = () => {
   function Verify() {
     return (
       <main className="bg-white w-screen h-screen flex flex-col p-2">
-        {/* <ToastContainer  /> */}
-
-        {notify && <ToastNotification message="Code was Sent"/>}
-
         <div className="w-full flex flex-col items-center justify-center flex-grow text-black space-y-4">
           <div className="text-2xl font-semibold md:mb-4">Verify your Email</div>
           <div className="text-center mb-6 text-[14px]">
@@ -227,7 +227,7 @@ const Page = () => {
 
         <Link href={"/provider/freelancer/userInfo"}
           className="w-full md:w-96 h-[50px] bg-[#035ADC] font-medium text-white rounded-lg my-5">
-          <button className="w-full h-full">{getButtonText()}</button> 
+          <button className="w-full h-full">{getButtonText()}</button>
         </Link>
 
       </div>

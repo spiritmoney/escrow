@@ -8,6 +8,8 @@ import Heading from '@/app/components/Heading';
 import { useState } from 'react';
 import Checkout from '@/app/components/Checkout';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function ProductPage({ params }: { params: { id: string } }) {
     const productId = params.id;
@@ -18,8 +20,21 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         setCheckout(!checkout);
     }
 
+    const addToCart = () => {
+        toast.success("Product Added Successfully!", {
+            // className: "text-white bg-blue-600",
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+    }
+
     if (!product) {
-        return <div>Product not found</div>;
+        return <div>Product not found</div>; 
     }
 
     return (
@@ -52,7 +67,11 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
                         <div className="w-full flex flex-col space-y-4 py-3">
                             <button onClick={toggleCheckout} className="bg-blue-600 text-white px-4 py-2 w-full md:w-96 rounded-lg">Buy Product</button>
-                            <button className="bg-blue-600 text-white px-4 py-2 w-full md:w-96 rounded-lg">Add to Cart</button>
+                            <button 
+                            onClick={addToCart}
+                            className="bg-blue-600 text-white px-4 py-2 w-full md:w-96 rounded-lg">
+                                Add to Cart
+                            </button>
                         </div>
                     </div>
 
