@@ -10,22 +10,22 @@ async function bootstrap() {
   });
 
   // Enable CORS
-  app.enableCors({
-    origin: [
-      'http://localhost:3001',
-      'http://localhost:3000',
-      'http://localhost',
-      'https://escrow-eta.vercel.app',
-      'http://ec2-13-51-200-33.eu-north-1.compute.amazonaws.com',
-      'https://api.uno-finance.com/auth/register',
-      'https://escrow-eta.vercel.app',
-    ],
-    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
-  });
+  // app.enableCors({
+  //   origin: [
+  //     'http://localhost:3001',
+  //     'http://localhost:3000',
+  //     'http://localhost',
+  //     'https://escrow-eta.vercel.app',
+  //     'http://ec2-13-51-200-33.eu-north-1.compute.amazonaws.com',
+  //     'https://api.uno-finance.com/auth/register',
+  //     'https://escrow-eta.vercel.app',
+  //   ],
+  //   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
+  //   allowedHeaders: ['Content-Type', 'Authorization'],
+  //   credentials: true,
+  //   preflightContinue: false,
+  //   optionsSuccessStatus: 204,
+  // });
 
   app.useGlobalPipes(
     new ValidationPipe({
