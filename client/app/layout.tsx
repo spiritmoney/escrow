@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./styles/globals.css";
 import { Poppins } from "next/font/google"
+import { ToastContainer } from "react-toastify";
 import Providers from "./Providers";
 
 const poppins = Poppins({
@@ -37,12 +38,19 @@ export default function RootLayout({
       <body className={poppins.className}>
         <Providers>
           {children}
+          <div className="z-50">
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+            />{" "}
+          </div>
         </Providers>
       </body>
     </html>
   );
 }
 
-// Updates_ Features
-// - Search Results page
+// Future_Updates_
+// - Custom Popup notifications
 // .

@@ -62,10 +62,10 @@ export default function ServicePage({ params }: { params: { id: string } }) {
         <>
             <Navbar />
             <div className='w-11/12 mx-auto'>
-                <div className="relative container bg-white rounded-xl mt-10 mx-auto min-w-full text-black">
+                <div className="relative container bg-white rounded-xl mt-10 px-3 mx-auto min-w-full text-black">
                     {booking && <div className="fixed w-full h-full inset-0 bg-black bg-opacity-50 z-40"></div>}
 
-                    <div className="md:relative bg-white w-full p-7 rounded-xl flex items-start space-x-5">
+                    <div className="md:relative bg-white w-full p-3 md:p-7 rounded-xl flex items-start space-x-5">
                         <img src={service.src} alt={service.name} className="rounded-full w-14 h-14 md:w-28 md:h-28" />
 
                         <div>
@@ -97,7 +97,7 @@ export default function ServicePage({ params }: { params: { id: string } }) {
                         </div>
                     </div>
 
-                    <div className='px-7 mb-7'>
+                    <div className='px-3 md:px-7 mb-7'>
                         <div className="flex items-center text-[10px] md:text-sm space-x-2 mt-2 overflow-scroll"
                             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                             {service.tags.map((tag, index) => (
@@ -123,7 +123,7 @@ export default function ServicePage({ params }: { params: { id: string } }) {
                         </div>
                     </div> */}
 
-                    <div className='w-full  flex items-center'>
+                    <div className='w-full flex items-center'>
                         <button
                             onClick={bookNow}
                             className="m-6 px-6 py-2 mx-auto w-80 bg-blue-700 text-white rounded-lg">Book Now</button>

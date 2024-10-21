@@ -321,7 +321,7 @@ const Page = () => {
         )} */}
 
         <div className="space-y-4 flex flex-col items-center justify-center p-3 md:py-5 md:px-8 rounded-lg md:border-2 border-[#CACACA]">
-          <div className="text-[32px] text-black font-medium text-center">
+          <div className="text-2xl text-black font-semibold text-center">
             Create an Escrow Account
           </div>
           {renderForm()}

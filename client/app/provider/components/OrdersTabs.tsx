@@ -148,13 +148,13 @@ export default function NewOrders() {
     };
 
     return (
-        <div className='w-full'>
+        <div className='min-w-full'>
             {viewNotification && <div className="fixed w-full h-full inset-0 bg-black bg-opacity-50 z-20"></div>}
 
-            <div className='relative container w-full mb-16 text-black'>
+            <div className='relative container min-w-full mb-16 text-black'>
                 {/* Table */}
-                <div className="overflow-x-auto">
-                    <h1 className="w-full text-lg font-semibold border-b bg-white border-gray-300 p-3">NEW ORDERS</h1>
+                <div className="min-w-full overflow-x-auto">
+                    <h1 className="min-w-full text-lg font-semibold border-b bg-white border-gray-300 p-3">NEW ORDERS</h1>
 
                     {/* Table for medium to large screens */}
                     <table className="min-w-full table-auto bg-white border-collapse hidden md:table">
@@ -376,7 +376,7 @@ export function Active() {
                             {active.map((active, index) => (
                                 <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
                                     <td className="px-6 py-4 flex items-center space-x-1">
-                                        <img src="/icons/star.png" alt="" className="w-6 h-6" />
+                                        
                                         <img src="/images/profile2.png" alt="" className="w-8 h-8 rounded-full" />
                                         <p>{active.client}</p>
                                     </td>
@@ -396,7 +396,7 @@ export function Active() {
                         {active.map((active, index) => (
                             <div key={index} className={`border flex flex-col p-4 rounded-lg shadow-sm ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
                                 <div className="flex items-center space-x-2">
-                                    <img src="/icons/star.png" alt="" className="w-6 h-6" />
+                                    
                                     <img src="/images/profile2.png" alt="" className="w-8 h-8 rounded-full" />
                                     <p className="font-medium">{active.client}</p>
                                 </div>
@@ -440,7 +440,7 @@ export function Completed() {
                             {completed.map((completed, index) => (
                                 <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
                                     <td className="px-6 py-4 flex items-center space-x-1">
-                                        <img src="/icons/star.png" alt="" className="w-6 h-6" />
+                                        
                                         <img src="/images/profile2.png" alt="" className="w-8 h-8 rounded-full" />
                                         <p>{completed.client}</p>
                                     </td>
@@ -460,7 +460,7 @@ export function Completed() {
                         {completed.map((completed, index) => (
                             <div key={index} className={`border p-4 rounded-lg flex flex-col shadow-sm ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
                                 <div className="flex items-center space-x-2">
-                                    <img src="/icons/star.png" alt="" className="w-6 h-6" />
+                                    
                                     <img src="/images/profile2.png" alt="" className="w-8 h-8 rounded-full" />
                                     <p className="font-medium">{completed.client}</p>
                                 </div>
@@ -503,7 +503,7 @@ export function Cancelled() {
                             {cancelled.map((cancelled, index) => (
                                 <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
                                     <td className="px-6 py-4 flex items-center space-x-1">
-                                        <img src="/icons/star.png" alt="" className="w-6 h-6" />
+                                        
                                         <img src="/images/profile2.png" alt="" className="w-8 h-8 rounded-full" />
                                         <p>{cancelled.client}</p>
                                     </td>
@@ -523,7 +523,7 @@ export function Cancelled() {
                         {cancelled.map((cancelled, index) => (
                             <div key={index} className={`border p-4 flex flex-col rounded-lg shadow-sm ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
                                 <div className="flex items-center space-x-2">
-                                    <img src="/icons/star.png" alt="" className="w-6 h-6" />
+                                    
                                     <img src="/images/profile2.png" alt="" className="w-8 h-8 rounded-full" />
                                     <p className="font-medium">{cancelled.client}</p>
                                 </div>

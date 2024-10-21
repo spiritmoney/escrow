@@ -7,14 +7,14 @@ import Link from "next/link";
 import Rating from "@/app/components/Rating";
 
 const productList = [
-    { id: 1, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-    { id: 2, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-    { id: 3, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-    { id: 4, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-    { id: 5, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-    { id: 6, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-    { id: 7, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-    { id: 8, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
+    { id: 1, name: 'Nike Sneakers', store:'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+    { id: 2, name: 'Nike Sneakers', store:'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+    { id: 3, name: 'Nike Sneakers', store:'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+    { id: 4, name: 'Nike Sneakers', store:'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+    { id: 5, name: 'Nike Sneakers', store:'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+    { id: 6, name: 'Nike Sneakers', store:'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+    { id: 7, name: 'Nike Sneakers', store:'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+    { id: 8, name: 'Nike Sneakers', store:'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
 ];
 
 export default function VenoreProfle({ params }: { params: { id: string } }) {
@@ -25,7 +25,7 @@ export default function VenoreProfle({ params }: { params: { id: string } }) {
         return <div>Product not found</div>;
     }
 
-    return (
+    return ( 
         <>
             <Navbar />
 
@@ -58,9 +58,7 @@ export default function VenoreProfle({ params }: { params: { id: string } }) {
                 <div className="mx-auto flex items-center overflow-scroll rounded-lg"
                     style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                     {productList.map(product => (
-                        <Link href={'/product/1'}>
-                            <ProductCard key={product.id} product={product} />
-                        </Link>
+                        <ProductCard key={product.id} product={product} />
                     ))}
                 </div>
             </div>

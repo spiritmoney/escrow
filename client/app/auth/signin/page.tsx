@@ -1,6 +1,6 @@
 "use client";
 
-import Navbar from "@/app/components/Navbar";
+import Maintenance from "@/app/components/Maintenance";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -8,6 +8,12 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
 const page = () => {
+  const [construction, setConstruction] = useState(false);
+
+  function toggleConstruction() {
+    setConstruction(!construction);
+  }
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
@@ -44,9 +50,11 @@ const page = () => {
   };
 
   return (
-    <main className="bg-white w-screen h-screen flex flex-col">
+    <main className="relative bg-white w-screen h-screen flex flex-col justify-center items-center">
+      {construction && <div className="fixed w-full h-full inset-0 bg-black bg-opacity-90 z-40"></div>}
+
       <div className="flex-1 flex items-center justify-center">
-        <div className="bg-white p-8 rounded-lg md:border-2 border-[#CACACA] w-[380px] md:w-[639px] text-black">
+        <div className="bg-white p-8 rounded-lg md:border-2 border-[#CACACA] w-full md:w-[639px] text-black">
           <h2 className="text-2xl font-semibold mb-6 text-center ">
             Log In to Escrow
           </h2>
@@ -84,11 +92,13 @@ const page = () => {
                 className="block w-full h-[50px] rounded-md border-2 border-[#CACACA] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                 required
               />
-              <div className="text-sm mb-4">
-                <a href="#" className="text-[#035ADC] font-semibold ">
-                  Forgot Password?
-                </a>
-              </div>
+
+              <p
+                onClick={toggleConstruction}
+                className="text-blue-600 font-semibold text-sm mb-4 cursor-pointer">
+                Forgot Password?
+              </p>
+
             </div>
             <button
               type="submit"
@@ -124,6 +134,10 @@ const page = () => {
           </div>
         </div>
       </div>
+
+      {construction &&
+        <Maintenance toggleConstruction={toggleConstruction} />
+      }
     </main>
   );
 };

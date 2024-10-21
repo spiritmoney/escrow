@@ -32,7 +32,7 @@ const page = () => {
 function Welcome({ nextStep }: { nextStep: () => void }) {
     return (
         <div className="container bg-white flex flex-col items-center justify-center text-black w-full h-screen">
-            <div className=' border-2 border-gray-300 rounded-lg p-7 w-[380px] md:w-[550px] flex flex-col space-y-3'>
+            <div className='md:border-2 border-gray-300 rounded-lg p-7 w-[380px] md:w-[550px] flex flex-col space-y-3'>
                 <div className='w-full flex flex-col items-center space-y-3'>
                     <h1 className='text-2xl text-center font-semibold'>Fill out your profile as a <span className='text-blue-600'>Freelancer</span> </h1>
                     <p className='w-96 text-center'>Fill out your profile to provide a high quality experience for all clients</p>
@@ -71,7 +71,7 @@ function Step1({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
 
     return (
         <div className="container bg-white flex items-center justify-center text-black w-full h-screen">
-            <div className=' border-2 border-gray-300 rounded-lg p-7 w-[380px] md:w-[550px] flex flex-col space-y-3'>
+            <div className='md:border-2 border-gray-300 rounded-lg p-7 w-[380px] md:w-[550px] flex flex-col space-y-3'>
                 <div className='w-full flex items-center justify-between'>
                     <h1 className='text-xl font-semibold'>Expertise</h1>
                     <p className='text-sm'>1/6</p>
@@ -159,7 +159,7 @@ function Step2({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
     };
     return (
         <div className="container bg-white flex items-center justify-center text-black w-11/12 h-screen">
-            <div className=' border-2 border-gray-300 rounded-lg p-7 w-[380px] md:w-[550px] flex flex-col space-y-3'>
+            <div className='md:border-2 border-gray-300 rounded-lg p-7 w-[380px] md:w-[550px] flex flex-col space-y-3'>
                 <div className='w-full flex items-center justify-between'>
                     <h1 className='text-xl font-semibold'>Education</h1>
                     <p className='text-sm'>2/6</p>
@@ -235,7 +235,7 @@ function Step3({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
 
     return (
         <div className="container bg-white flex items-center justify-center text-black w-full h-screen">
-            <div className=' border-2 border-gray-300 rounded-lg p-7 w-[380px] md:w-[550px] flex flex-col space-y-3'>
+            <div className='md:border-2 border-gray-300 rounded-lg p-7 w-[380px] md:w-[550px] flex flex-col space-y-3'>
                 <div className='w-full flex items-center justify-between'>
                     <h1 className='text-xl font-semibold'>Resume</h1>
                     <p className='text-sm'>3/6</p>
@@ -288,7 +288,7 @@ function Step4({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
     };
     return (
         <div className="container bg-white flex items-center justify-center text-black w-full h-screen">
-            <div className=' border-2 border-gray-300 rounded-lg p-7 w-[380px] md:w-[550px] flex flex-col space-y-3'>
+            <div className='md:border-2 border-gray-300 rounded-lg p-7 w-[380px] md:w-[550px] flex flex-col space-y-3'>
                 <div className='w-full flex items-center justify-between'>
                     <h1 className='text-xl font-semibold'>Horly Rate</h1>
                     <p className='text-sm'>4/6</p>
@@ -350,7 +350,7 @@ function Step5({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
     };
     return (
         <div className="container bg-white flex items-center justify-center text-black w-full h-screen">
-            <div className=' border-2 border-gray-300 rounded-lg p-7 w-[380px] md:w-[550px] flex flex-col space-y-3'>
+            <div className='md:border-2 border-gray-300 rounded-lg p-7 w-[380px] md:w-[550px] flex flex-col space-y-3'>
                 <div className='w-full flex items-center justify-between'>
                     <h1 className='text-xl font-semibold'>Title & Overview</h1>
                     <p className='text-sm'>5/6</p>
@@ -396,7 +396,7 @@ function Step5({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => v
 function Step6({ nextStep, prevStep }: { nextStep: () => void, prevStep: () => void }) {
     return (
         <div className="container bg-white flex items-center justify-center text-black w-full h-screen">
-            <div className=' border-2 border-gray-300 rounded-lg p-7 w-[380px] md:w-[550px] flex flex-col space-y-3'>
+            <div className='md:border-2 border-gray-300 rounded-lg p-7 w-[380px] md:w-[550px] flex flex-col space-y-3'>
                 <div className='w-full flex items-center justify-between'>
                     <h1 className='text-xl font-semibold'>Profile Photo</h1>
                     <p className='text-sm'>6/6</p>

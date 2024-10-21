@@ -9,13 +9,18 @@ import ProductCard from '@/app/components/ProductCard';
 import { EditVendor } from './editProfile';
 
 export default function Listings() {
+    const [activeTab, setActiveTab] = useState("My Products");
     const [addNew, setAddNew] = useState(false);
+    const [staticState, setStaticState] = useState(true);
+
+    function toggleStatic() {
+        setStaticState(!staticState);
+    }
 
     function toggleAddNew() {
         setAddNew(!addNew);
     }
 
-    const [activeTab, setActiveTab] = useState("My Products");
 
     const handleTabClick = (tab: "My Products" | "Active Orders" | "Completed Orders" | "Cancelled Orders") => {
         setActiveTab(tab);
@@ -23,31 +28,30 @@ export default function Listings() {
 
     return (
         <>
-            {addNew === false && <MyListings />}
-            {addNew === true && <ListNew />}
+            {addNew ? <ListNew /> : <MyListings />}
         </>
     );
 
     function MyListings() {
         return (
-            <div className='w-full flex flex-col items-center'>
-                <div className='w-11/12 mx-auto flex items-center space-x-4 justify-between py-5'>
-                    <h1 className='text-black text-3xl font-semibold'>Product Listings</h1>
+            <div className='min-w-full'>
+                <span className='w-full mx-auto flex items-center space-x-4 justify-between py-5'>
+                    <h1 className='text-black text-2xl font-semibold'>Product Listings</h1>
 
                     <button
-                        onClick={toggleAddNew}
+                        onClick={() => {toggleAddNew(); toggleStatic();}}
                         className='bg-blue-600 p-2 rounded-md text-sm flex space-x-1 items-center justify-center'>
                         <img src="/icons/plus-circle.png" alt="" className='w-7 md:w-5' />
                         <p className='hidden md:block'>List Product</p>
                     </button>
 
-                </div> 
+                </span>
 
-                <div className="w-11/12 flex items-center mx-auto border-b border-gray-400 overflow-scroll"
+                <div className="min-w-full h-16 flex items-center md:mx-auto border-b border-gray-400 overflow-auto mt-1"
                     style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
 
                     <button
-                        className={`w-40 md:w-1/4 py-2 px-4 flex items-center justify-center text-sm text-left md:text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "My Products"
+                        className={`w-40 lg:w-1/4 h-full py-2 px-4 flex-grow flex items-center justify-center text-sm text-left lg:text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "My Products"
                             ? "text-black border-b-2 border-blue-600"
                             : "text-gray-400 hover:text-blue-400"
                             }`}
@@ -59,9 +63,8 @@ export default function Listings() {
                             7
                         </span>
                     </button>
-
                     <button
-                        className={`w-44 md:w-1/4 py-2 px-4 flex items-center justify-center text-sm text-left md:text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Active Orders"
+                        className={`w-44 lg:w-1/4 h-full py-2 px-4 flex-grow flex items-center justify-center text-sm text-left lg:text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Active Orders"
                             ? "text-black border-b-2 border-blue-600"
                             : "text-gray-400 hover:text-blue-400"
                             }`}
@@ -73,9 +76,8 @@ export default function Listings() {
                             3
                         </span>
                     </button>
-
                     <button
-                        className={`w-52 md:w-1/4 py-2 px-4 flex items-center justify-center text-sm text-left md:text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Completed Orders"
+                        className={`w-52 lg:w-1/4 h-full py-2 px-4 flex-grow flex items-center justify-center text-sm text-left lg:text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Completed Orders"
                             ? "text-black border-b-2 border-blue-600"
                             : "text-gray-400 hover:text-blue-400"
                             }`}
@@ -87,9 +89,8 @@ export default function Listings() {
                             5
                         </span>
                     </button>
-
                     <button
-                        className={`w-52 md:w-1/4 py-2 px-4 flex items-center justify-center text-sm text-left md:text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Cancelled Orders"
+                        className={`w-52 lg:w-1/4 h-full py-2 px-4 flex-grow flex items-center justify-center text-sm text-left lg:text-lg font-semibold cursor-pointer transition-colors duration-200 ${activeTab === "Cancelled Orders"
                             ? "text-black border-b-2 border-blue-600"
                             : "text-gray-400 hover:text-blue-400"
                             }`}
@@ -103,11 +104,12 @@ export default function Listings() {
                     </button>
                 </div>
 
-                <div className="w-11/12 mx-auto mt-4">
-                    {activeTab === "My Products" && <Products />}
-                    {activeTab === "Active Orders" && <Active />}
-                    {activeTab === "Completed Orders" && <Completed />}
-                    {activeTab === "Cancelled Orders" && <Cancelled />}
+
+                <div className="min-w-full mx-auto mt-4">
+                    {activeTab === "My Products" && <Products toggleAddNew={toggleAddNew} staticState={staticState}/>}
+                    {activeTab === "Active Orders" && <Active staticState={staticState}/>}
+                    {activeTab === "Completed Orders" && <Completed staticState={staticState}/>}
+                    {activeTab === "Cancelled Orders" && <Cancelled staticState={staticState}/>}
                 </div>
 
             </div>
@@ -153,15 +155,15 @@ export default function Listings() {
                 }
             };
             return (
-                <div className='w-full bg-white pb-10'>
-                    <div className='w-11/12 mx-auto flex items-center justify-between py-5'>
-                        <h1 className='text-black text-3xl font-semibold'>List New Product</h1>
+                <div className='w-full p-3 bg-white pb-10'>
+                    <div className='w-full mx-auto flex items-center justify-between py-5'>
+                        <h1 className='text-black text-2xl font-semibold'>List New Product</h1>
 
                         <button
                             onClick={toggleAddNew}
                             className='bg-blue-600 rounded-md text-sm flex items-center'>
                             <p className='p-2 hidden md:block'>Cancel</p>
-                            <p className='font-semibold md:hidden text-2xl px-2'>&times;</p>
+                            <p className='font-semibold md:hidden text-3xl px-3'>&times;</p>
                         </button>
                     </div>
 
@@ -247,14 +249,15 @@ export default function Listings() {
 
         function ProductInfo2() {
             return (
-                <div className='w-full bg-white pb-10'>
-                    <div className='w-11/12 mx-auto flex items-center justify-between py-5'>
-                        <h1 className='text-black text-3xl font-semibold'>List New Product</h1>
+                <div className='w-full bg-white p-3 pb-10'>
+                    <div className='w-full mx-auto flex items-center justify-between py-5'>
+                        <h1 className='text-black text-2xl font-semibold'>List New Product</h1>
 
                         <button
                             onClick={toggleAddNew}
-                            className='bg-blue-600 p-2 rounded-md text-sm flex items-center'>
-                            Cancel
+                            className='bg-blue-600 rounded-md text-sm flex items-center'>
+                            <p className='p-2 hidden md:block'>Cancel</p>
+                            <p className='font-semibold md:hidden text-3xl px-3'>&times;</p>
                         </button>
                     </div>
 
@@ -347,7 +350,7 @@ export function Earnings() {
 export function Profile() {
     const [editProfile, setEditProfile] = useState(false);
 
-    function toggleEdit(){
+    function toggleEdit() {
         setEditProfile(!editProfile);
     }
 
@@ -361,28 +364,28 @@ export function Profile() {
     ];
 
     const productList = [
-        { id: 1, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-        { id: 2, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-        { id: 3, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-        { id: 4, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-        { id: 5, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-        { id: 6, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-        { id: 7, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
-        { id: 8, name: 'Nike Sneakers', price: '10.5 Espees', src: '/images/fashion.png' },
+        { id: 1, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+        { id: 2, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+        { id: 3, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+        { id: 4, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+        { id: 5, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+        { id: 6, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+        { id: 7, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
+        { id: 8, name: 'Nike Sneakers', store: 'Vinicks Fashion Store', price: '10.5 Espees', src: '/images/fashion.png' },
     ];
 
     return (
         <div className='w-full relative'>
             {editProfile && <div className="fixed w-full h-full inset-0 bg-black bg-opacity-50 z-40"></div>}
 
-            <h1 className='text-black text-3xl py-3 font-semibold'>Store</h1>
+            <h1 className='text-black text-2xl py-3 font-semibold'>Store</h1>
 
             <div>
                 <div className="md:relative bg-white w-full rounded-lg flex items-start justify-between p-5 mb-10">
 
                     {vendor.map(detail => (
                         <div className="flex items-start md:items-center space-x-3 md:space-x-10">
-                            <img src={detail.image} alt="image" className="w-16 md:w-24"/>
+                            <img src={detail.image} alt="image" className="w-16 md:w-24" />
 
                             <div className="flex flex-col items-start space-y-1">
                                 <h1 className="text-sm font-medium text-black">{detail.name}</h1>
@@ -397,19 +400,19 @@ export function Profile() {
                     ))}
 
                     <div className='md:absolute md:top-8 md:right-10'>
-                        <button 
-                        onClick={toggleEdit}
-                        className="px-3 md:px-6 py-2 mx-auto bg-blue-700 flex items-center space-x-2 text-white rounded-lg">
+                        <button
+                            onClick={toggleEdit}
+                            className="px-3 md:px-6 py-2 mx-auto bg-blue-700 flex items-center space-x-2 text-white rounded-lg">
                             <img src="/icons/edit.png" alt="" className='w-6' />
                             <p className='hidden md:flex'>Edit Profile</p>
                         </button>
                     </div>
                 </div>
-                    {editProfile && 
-                        <div className='absolute top-0 bg-white inset-x-0 rounded-2xl w-[400] md:w-[650px] mx-auto z-50'>
-                            <EditVendor toggleEdit={toggleEdit}/>
-                        </div>
-                    }
+                {editProfile &&
+                    <div className='absolute top-0 bg-white inset-x-0 rounded-2xl w-[400] md:w-[650px] mx-auto z-50'>
+                        <EditVendor toggleEdit={toggleEdit} />
+                    </div>
+                }
 
                 <Heading text="PRODUCTS" />
                 <div className="mx-auto flex items-center overflow-scroll rounded-lg"
