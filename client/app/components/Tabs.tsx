@@ -12,7 +12,7 @@ export default function Tabs() {
   };
 
   return (
-    <div className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
       <div className="relative">
 
         {/* <div className="absolute inset-x-0 bottom-0 border-b border-gray-400" /> */}

@@ -1,13 +1,16 @@
+"use client";
+
 import Image from "next/image"
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Header() {
   return (
     <div className="relative w-full flex justify-center items-center pb-6 banner">
       <div className="relative w-full max-w-[1485px]">
         <Image src="/banner2.svg" alt="banner" width={1485} height={453.949} className="hidden lg:block" />
-        <img src="/images/banner3.png" alt="" className="hidden md:flex lg:hidden w-full"/>
-        <img src="/images/banner2.png" alt="" className="md:hidden lg:hidden w-full"/>
+        <img src="/images/banner3.png" alt="" className="hidden md:flex lg:hidden w-full" />
+        <img src="/images/banner2.png" alt="" className="md:hidden lg:hidden w-full" />
         <div className="absolute top-[64%] left-[5%] lg:top-[68%] md:left-[8.35%] transform -translate-y-1/2 w-[71%] md:w-[53.33%] lg:w-[33.33%]">
           <div className="p-3 bg-white flex rounded-md items-center w-full relative">
             <input
@@ -22,6 +25,95 @@ export default function Header() {
             </Link>
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+export function GuestHeader() {
+  const [hamburgerMenu, setHamburgerMenu] = useState(false);
+
+  function toggleMenu() {
+    setHamburgerMenu(!hamburgerMenu);
+  }
+
+  return (
+    <div className="relative w-full overflow-hidden">
+      <img src="/images/banner4.png" alt="" className="hidden lg:flex" />
+      <img src="/images/banner5.png" alt="" className="lg:hidden w-full" />
+
+      {/* Hamburger Menu */}
+      <div className={`absolute top-0 right-0 w-64 h-screen bg-white p-4 z-50 transform transition-transform duration-300 ease-in-out ${hamburgerMenu ? 'translate-x-0' : 'translate-x-full'}`}>
+        <ul className='w-full'>
+          <li onClick={toggleMenu} className='w-full flex items-end justify-end mb-8'>
+            <p className='text-3xl text-blue-600 text-center font-semibold cursor-pointer bg-blue-100 border px-3 py-1 w-12 rounded-lg'>&times;</p>
+          </li>
+          <li className='py-2 w-full'>
+            <Link href={'/auth/signin'}>
+              <button
+                className="w-full py-2 px-4 m-1 rounded-lg text-lg sm:text-xl font-semibold cursor-pointer text-white bg-blue-600"
+              // onClick={() => handleTabClick("home")}
+              >
+                Sign In
+              </button>
+            </Link>
+          </li>
+          <li className='py-2 w-full'>
+            <Link href={'/auth/register'}>
+              <button
+                className="w-full py-2 px-4 m-1 rounded-lg text-lg sm:text-xl font-semibold cursor-pointer text-white bg-blue-600"
+              // onClick={() => handleTabClick("home")}
+              >
+                Create Account
+              </button>
+            </Link>
+          </li>
+        </ul>
+      </div>
+
+
+      <div className="w-full absolute top-0 flex justify-between items-center py-3 lg:py-8 px-5 lg:px-14">
+        <h1 className="text-lg lg:text-2xl font-semibold">ESCROW</h1>
+
+        <button onClick={toggleMenu} className='lg:hidden'>
+          <img src="/icons/menu2.png" alt="" className='' />
+        </button>
+
+        <div className="hidden lg:flex items-center space-x-4">
+          <Link href={"/auth/signin"}>
+            <button className="bg-white rounded-lg w-40 p-3 text-blue-600">
+              Sign In
+            </button>
+          </Link>
+          <Link href={"/auth/register"}>
+            <button className="bg-white rounded-lg w-40 p-3 text-blue-600">
+              Create Account
+            </button>
+          </Link>
+        </div>
+      </div>
+
+      <div className="absolute top-24 md:top[50%] lg:top-[25%] left-4 lg:left-32 w-11/12 lg:w-[540px] flex flex-col space-y-3 lg:space-y-5">
+        <h1 className="w-full text-3xl lg:text-6xl max-md:text-center font-medium">Trade your goods and services with Espees</h1>
+
+        <p className="w-full text-[12px] max-md:text-center lg:text-sm">
+          Experience secure and seamless trading of goods and services with Espees, the future of digital
+          currency. Our cutting-edge Escrow platform harnesses the power of blockchain technology,
+          ensuring transparency, fairness, and protection for every transaction. Whether you're buying or
+          selling, we provide a trusted space for secure, reliable digital exchanges.
+        </p>
+
+        <Link href={"/auth/register"}>
+          <button className="bg-white max-md:text-sm rounded-md w-full p-2 lg:p-4 text-blue-600">
+            Get Started
+          </button>
+        </Link>
+
+        <Link href={"/auth/signin"}>
+          <button className="bg-white max-md:text-sm rounded-md w-full p-2 lg:p-4 text-blue-600">
+            Sign In
+          </button>
+        </Link>
       </div>
     </div>
   );

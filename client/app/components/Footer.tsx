@@ -2,11 +2,11 @@ export default function Footer() {
   return (
     <footer className="mt-10">
       {/* Main Footer Section */}
-      <div className="w-screen bg-blue-700 text-white py-10">
-        <div className="container w-full mx-auto px-10 sm:px-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="w-full lg:h-[400px] bg-blue-700 text-white py-10 flex items-center">
+        <div className="container w-full mx-auto px-10 sm:px-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-20">
           
           {/* Contact Information */}
-          <div className="text-sm w-full mx-auto">
+          <div className="text-sm lg:text-base w-full mx-auto">
             <h3 className="font-semibold mb-4">Contact Information</h3>
             <ul>
               <li className="flex items-center mb-2">
@@ -25,7 +25,7 @@ export default function Footer() {
           </div>
           
           {/* Navigation Links */}
-          <div className="text-sm w-full  mx-auto">
+          <div className="text-sm lg:text-base w-full  mx-auto">
             <h3 className="font-semibold mb-4">Navigation Links</h3>
             <ul className="space-y-2">
               <li><a href="#" className="hover:underline">Products</a></li>
@@ -37,7 +37,7 @@ export default function Footer() {
           </div>
           
           {/* Newsletter Subscription */}
-          <div className=" w-full mx-auto flex flex-col">
+          <div className=" lg:text-base w-full mx-auto flex flex-col">
             <h3 className="font-semibold mb-4">Newsletter Subscription</h3>
             <input
               type="email"

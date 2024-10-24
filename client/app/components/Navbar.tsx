@@ -36,11 +36,11 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="relative bg-white p-4 h-24 flex justify-center  w-screen border-b border-gray-300">
+    <nav className="relative bg-white p-4 h-24 flex justify-center w-full border-b border-gray-300">
       {construction && <div className="w-full h-full fixed inset-0 z-40 bg-black bg-opacity-90"></div>}
       <div className="container w-full flex justify-between md:justify-center items-center md:space-x-5">
-        <Link href="/" legacyBehavior>
-          <a className="text-blue-600 md:flex-1 text-lg font-bold" >ESCROW</a>
+        <Link href="/home" legacyBehavior>
+          <a className="text-blue-600 md:flex-1 text-lg font-bold" >ESCROW</a> 
         </Link>
 
         <div className='hidden md:flex relative items-center border border-gray-400 p-1 rounded-md '>
@@ -117,7 +117,7 @@ export default function Navbar() {
               hover:bg-gray-100">
                 Support
               </li>
-              <Link href={'/auth/signin'} className="cursor-pointer w-full px-4 py-2 text-red-800 font-semibold 
+              <Link href={'/'} className="cursor-pointer w-full px-4 py-2 text-red-800 font-semibold 
                 hover:bg-gray-100">
                 <li>
                   Logout
@@ -148,7 +148,7 @@ export function GuestNavbar() {
   }
 
   return (
-    <nav className="w-screen bg-white p-4 h-24 flex justify-center border-b border-gray-300">
+    <nav className="w-full bg-white p-4 h-24 flex justify-center border-b border-gray-300">
       <div className="container w-full flex justify-between md:justify-center items-center md:space-x-5">
         <Link href="/" legacyBehavior>
           <a className="text-blue-600 md:flex-1 text-lg font-bold pr-15" >ESCROW</a>
