@@ -19,7 +19,7 @@ const page = () => {
     };
 
     return (
-        <div className='w-screen'>
+        <div className='w-full'>
             <Navbar />
 
             <div className='relative bg-white w-full h-20 flex items-center justify-center'>
