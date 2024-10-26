@@ -128,5 +128,5 @@ The system architecture consists of:
 (Add guidelines for contributing to the project)
 
 ## License
-
+MIT License
 (Add license information)
