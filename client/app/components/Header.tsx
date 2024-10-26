@@ -39,7 +39,7 @@ export function GuestHeader() {
 
   return (
     <div className="relative w-full overflow-hidden">
-      <img src="/images/banner4.png" alt="" className="hidden lg:flex" />
+      <img src="/images/banner4.png" alt="" className="hidden lg:flex w-full" />
       <img src="/images/banner5.png" alt="" className="lg:hidden w-full" />
 
       {/* Hamburger Menu */}
