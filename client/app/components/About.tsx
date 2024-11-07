@@ -7,7 +7,7 @@ export default function About() {
                 <h1 className="text-gray-600 text-2xl lg:text-4xl text-center font-bold my-14">ABOUT ESCROW</h1>
 
                 <div className="flex items-center mx-auto space-x-5 mb-10 md:mb-20">
-                    <div className="text-gray-800 text-sm space-y-4">
+                    <div className="text-gray-800 max-lg:text-center text-sm space-y-4">
                         <p>
                             Escrow is a revolutionary platform that allows users to trade goods and services with Espees, a digital
                             currency designed for seamless, secure, and transparent transactions. By leveraging advanced blockchain
