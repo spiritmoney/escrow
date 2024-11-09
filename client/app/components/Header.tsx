@@ -72,8 +72,8 @@ export function GuestHeader() {
       </div>
 
 
-      <div className="w-full absolute top-0 flex justify-between items-center py-3 lg:py-8 px-5 lg:px-14">
-        <h1 className="text-lg lg:text-2xl font-semibold">ESCROW</h1>
+      <div className="w-full absolute top-0 flex justify-between items-center py-3 md:py-8 px-5 md:px-10 lg:px-14">
+        <h1 className="text-lg text-white md:text-xl lg:text-2xl font-semibold">ESCROW</h1>
 
         <button onClick={toggleMenu} className='lg:hidden'>
           <img src="/icons/menu2.png" alt="" className='' />
@@ -93,24 +93,23 @@ export function GuestHeader() {
         </div>
       </div>
 
-      <div className="absolute top-24 md:top[50%] lg:top-[25%] left-4 lg:left-32 w-11/12 lg:w-[540px] flex flex-col space-y-3 lg:space-y-5">
-        <h1 className="w-full text-3xl lg:text-6xl max-md:text-center font-medium">Trade your goods and services with Espees</h1>
-
-        <p className="w-full text-[12px] max-md:text-center lg:text-sm">
+      <div className="absolute top-24 md:top-44 lg:top-[25%] max-sm:inset-x-0 max-sm:mx-auto max-lg:inset-x-0 max-lg:mx-auto  lg:left-32 w-11/12 md:w-10/12 lg:w-[540px] flex flex-col space-y-3 md:space-y-5">
+        <h1 className="w-full text-white max-xs:text-2xl text-3xl md:text-5xl lg:text-6xl text-center font-medium md:font-semibold">Trade your goods and services with Espees</h1>
+        <p className="w-full text-white text-[12px] text-center md:py-3 md:text-xl lg:text-sm">
           Experience secure and seamless trading of goods and services with Espees, the future of digital
           currency. Our cutting-edge Escrow platform harnesses the power of blockchain technology,
           ensuring transparency, fairness, and protection for every transaction. Whether you're buying or
           selling, we provide a trusted space for secure, reliable digital exchanges.
         </p>
 
-        <Link href={"/auth/register"}>
-          <button className="bg-white max-md:text-sm rounded-md w-full p-2 lg:p-4 text-blue-600">
+        <Link href={"/auth/register"}> 
+          <button className="bg-white text-sm md:text-xl text-medium rounded-md w-full p-2 lg:p-4 text-blue-600">
             Get Started
           </button>
         </Link>
 
         <Link href={"/auth/signin"}>
-          <button className="bg-white max-md:text-sm rounded-md w-full p-2 lg:p-4 text-blue-600">
+          <button className="bg-white text-sm md:text-xl text-medium rounded-md w-full p-2 lg:p-4 text-blue-600">
             Sign In
           </button>
         </Link>

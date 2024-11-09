@@ -12,6 +12,17 @@ export default function Navbar() {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [isOptionsVisible, setIsOptionsVisible] = useState(false);
   const [construction, setConstruction] = useState(false);
+  const [logginOut, setLogginOut] = useState(false);
+
+  const handleLogout = (e: any) => {
+    e.preventDefault(); // Prevent the default navigation
+
+    setLogginOut(true);
+
+    setTimeout(() => {
+      window.location.href = '/';
+    }, 2000);
+  };
 
   function toggleConstruction() {
     setConstruction(!construction);
@@ -30,6 +41,7 @@ export default function Navbar() {
   function toggleDropdown() {
     setIsDropdownVisible(!isDropdownVisible);
   }
+
   function handleSelect(option: string) {
     setSelectedOption(option);
     setIsDropdownVisible(false);
@@ -40,7 +52,7 @@ export default function Navbar() {
       {construction && <div className="w-full h-full fixed inset-0 z-40 bg-black bg-opacity-90"></div>}
       <div className="container w-full flex justify-between md:justify-center items-center md:space-x-5">
         <Link href="/home" legacyBehavior>
-          <a className="text-blue-600 md:flex-1 text-lg font-bold" >ESCROW</a> 
+          <a className="text-blue-600 md:flex-1 text-lg font-bold" >ESCROW</a>
         </Link>
 
         <div className='hidden md:flex relative items-center border border-gray-400 p-1 rounded-md '>
@@ -117,12 +129,12 @@ export default function Navbar() {
               hover:bg-gray-100">
                 Support
               </li>
-              <Link href={'/'} className="cursor-pointer w-full px-4 py-2 text-red-800 font-semibold 
-                hover:bg-gray-100">
-                <li>
-                  Logout
-                </li>
-              </Link>
+              <li
+                onClick={handleLogout}
+                className={`cursor-pointer w-full px-4 py-2 text-red-800 font-semibold hover:bg-gray-100 ${logginOut && 'bg-red-400'}`}
+              >
+                {logginOut ? 'Logging Out...' : 'Logout'}
+              </li>
 
             </ul>
           )}
