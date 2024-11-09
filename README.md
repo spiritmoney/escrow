@@ -129,4 +129,3 @@ The system architecture consists of:
 
 ## License
 MIT License
-(Add license information)
