@@ -3,11 +3,11 @@ import Link from "next/link";
 export default function About() {
     return (
         <div className="w-11/12 md:py-10 mx-auto">
-            <div>
+            <div className="w-full">
                 <h1 className="text-gray-600 text-2xl lg:text-4xl text-center font-bold my-14">ABOUT ESCROW</h1>
 
-                <div className="flex items-center mx-auto space-x-5 mb-10 md:mb-20">
-                    <div className="text-gray-800 max-lg:text-center text-sm space-y-4">
+                <div className="w-full flex items-center mx-auto space-x-5 mb-10 md:mb-20">
+                    <div className="lg:w-1/2 text-gray-800 max-lg:text-center text-sm space-y-4">
                         <p>
                             Escrow is a revolutionary platform that allows users to trade goods and services with Espees, a digital
                             currency designed for seamless, secure, and transparent transactions. By leveraging advanced blockchain
@@ -34,7 +34,9 @@ export default function About() {
                         </p>
                     </div>
 
-                    <img src="/icons/mockup.png" alt=""  className="w-[700px] hidden lg:flex"/>
+                    <div className="lg:w-1/2">
+                        <img src="/icons/mockup.png" alt=""  className="w-[700px] hidden lg:flex"/>
+                    </div>
                 </div>
 
             </div>
@@ -48,7 +50,7 @@ export default function About() {
                         <p className="text-blue-600 text-xl font-semibold pb-5">Client</p>
 
                         <Link href={"/auth/register"} className="text-white bg-blue-600 p-2 rounded-lg w-full">
-                            <button className="w-full">Sign Up</button>
+                            <button className="w-full bg-blue-600">Sign Up</button>
                         </Link>
                     </div>
                     <div className="bg-white rounded-lg w-60 h-60 flex flex-col items-center justify-center p-3">
@@ -56,7 +58,7 @@ export default function About() {
                         <p className="text-blue-600 text-xl font-semibold pb-5">Vendor</p>
 
                         <Link href={"/auth/register"} className="text-white bg-blue-600 p-2 rounded-lg w-full">
-                            <button className="w-full">Sign Up</button>
+                            <button className="w-full bg-blue-600">Sign Up</button>
                         </Link>
                     </div>
                     <div className="bg-white rounded-lg w-60 h-60 flex flex-col items-center justify-center p-3">
@@ -64,7 +66,7 @@ export default function About() {
                         <p className="text-blue-600 text-xl font-semibold pb-5">Freelancer</p>
 
                         <Link href={"/auth/register"} className="text-white bg-blue-600 p-2 rounded-lg w-full">
-                            <button className="w-full">Sign Up</button>
+                            <button className="w-full bg-blue-600">Sign Up</button>
                         </Link>
                     </div>
                 </div>

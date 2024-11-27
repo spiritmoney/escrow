@@ -100,14 +100,7 @@ const page = () => {
               </p>
 
             </div>
-            <Link href={"/home"}>
-              <button
-                type="submit"
-                className="w-full h-[50px] bg-blue-600 text-white py-2 px-4 mt-4 rounded-md hover:bg-[#035ADC] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-              >
-                Login
-              </button>
-            </Link>
+              
             <button
               type="submit"
               disabled={loginMutation.isPending}

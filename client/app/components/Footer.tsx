@@ -11,7 +11,7 @@ export default function Footer() {
             <ul>
               <li className="flex items-center mb-2">
                 <img src="/icons/location.png" alt="location" className="mr-2" width={15}/>
-                8502 Preston Rd. Inglewood, Maine 98380
+                45 St. Finbars rd. Yaba, Lagos.
               </li>
               <li className="flex items-center mb-2">
                 <img src="/icons/email.png" alt="email" className="mr-2" width={15}/>
@@ -19,7 +19,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center mb-2">
                 <img src="/icons/phone.png" alt="phone" className="mr-2" width={15}/>
-                +234 123 456 7890
+                +234 810 012 9769
               </li>
             </ul>
           </div>

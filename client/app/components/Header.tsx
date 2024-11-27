@@ -18,7 +18,7 @@ export default function Header() {
               type="search"
               placeholder="Search products or services"
             />
-            <Link href={"/search"}>
+            <Link href={"/search/services"}>
               <button className="absolute right-2 top-1/2 ml-2 transform -translate-y-1/2 bg-blue-600 p-2 rounded-md">
                 <Image src="/icons/search2.png" alt="search" width={20} height={20} />
               </button>
@@ -77,7 +77,7 @@ export function GuestHeader() {
 
         <button onClick={toggleMenu} className='lg:hidden'>
           <img src="/icons/menu2.png" alt="" className='' />
-        </button>
+        </button>  
 
         <div className="hidden lg:flex items-center space-x-4">
           <Link href={"/auth/signin"}>
@@ -93,26 +93,28 @@ export function GuestHeader() {
         </div>
       </div>
 
-      <div className="absolute top-24 md:top-44 lg:top-[25%] max-sm:inset-x-0 max-sm:mx-auto max-lg:inset-x-0 max-lg:mx-auto  lg:left-32 w-11/12 md:w-10/12 lg:w-[540px] flex flex-col space-y-3 md:space-y-5">
-        <h1 className="w-full text-white max-xs:text-2xl text-3xl md:text-5xl lg:text-6xl text-center font-medium md:font-semibold">Trade your goods and services with Espees</h1>
-        <p className="w-full text-white text-[12px] text-center md:py-3 md:text-xl lg:text-sm">
+      <div className="absolute top-24 md:top-44 lg:top-[25%] max-sm:inset-x-0 max-sm:mx-auto max-lg:inset-x-0 max-lg:mx-auto  lg:left-32 w-11/12 md:w-10/12 lg:w-[550px] flex flex-col space-y-3 md:space-y-5">
+        <h1 className="w-full text-white max-xs:text-2xl text-3xl md:text-5xl lg:text-6xl text-center lg:text-left font-medium md:font-semibold">
+          Trade your goods and services with Espees
+        </h1>
+        <p className="w-full text-white text-[12px] text-center lg:text-left md:py-3 md:text-xl lg:text-sm">
           Experience secure and seamless trading of goods and services with Espees, the future of digital
           currency. Our cutting-edge Escrow platform harnesses the power of blockchain technology,
           ensuring transparency, fairness, and protection for every transaction. Whether you're buying or
           selling, we provide a trusted space for secure, reliable digital exchanges.
         </p>
 
-        <Link href={"/auth/register"}> 
+        <Link href={"/auth/register"}>
           <button className="bg-white text-sm md:text-xl text-medium rounded-md w-full p-2 lg:p-4 text-blue-600">
             Get Started
           </button>
         </Link>
-
+{/* 
         <Link href={"/auth/signin"}>
           <button className="bg-white text-sm md:text-xl text-medium rounded-md w-full p-2 lg:p-4 text-blue-600">
             Sign In
           </button>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
