@@ -9,9 +9,11 @@ export interface User extends Document {
   phoneNumber?: string;
   address?: string;
   role: string;
+  walletAddress: string;
+  privateKey: string;
+  tokenBalance?: string;
   createdAt: Date;
   updatedAt: Date;
-  walletAddress: string;
 }
 
 
@@ -21,6 +23,7 @@ export const UserSchema = new Schema<User>({
   password: { type: String, required: true },  // Password is required
   fullName: { type: String, required: true },
   walletAddress: { type: String, required: true },
+  privateKey: { type: String, required: true },
   isVerified: { type: Boolean, required: true, default: false },
   phoneNumber: { type: String, required: false },
   address: { type: String, required: false },
@@ -30,4 +33,5 @@ export const UserSchema = new Schema<User>({
     enum: ['Guest', 'Authenticated User', 'Freelancer', 'Vendor'], 
     default: 'Guest'  // Default role as Guest
   },
+  tokenBalance: { type: String, required: false },
 }, { timestamps: true });

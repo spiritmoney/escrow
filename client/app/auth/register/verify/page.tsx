@@ -37,7 +37,7 @@ const VerifyContent: React.FC = () => {
   const verifyEmailMutation = useMutation({
     mutationFn: async (verificationCode: string) => {
       const response = await fetch(
-        "https://api.uno-finance.com/auth/verify-email",
+        "http://[::1]:5000/auth/verify-email",
         {
           method: "POST",
           headers: {
@@ -70,7 +70,7 @@ const VerifyContent: React.FC = () => {
   const resendVerificationMutation = useMutation({
     mutationFn: async (email: string) => {
       const response = await fetch(
-        "https://api.uno-finance.com/auth/resend-verification",
+        "http://[::1]:5000/auth/resend-verification",
         {
           method: "POST",
           headers: {

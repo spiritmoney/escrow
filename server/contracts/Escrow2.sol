@@ -3,7 +3,7 @@ pragma solidity ^0.8.24;
 
 // import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-contract Escrow is ReentrancyGuard {
+contract Escrow2 {
     enum State {
         Created,
         Funded,

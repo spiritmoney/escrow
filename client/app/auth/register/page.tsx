@@ -119,14 +119,11 @@ const Page = () => {
       password: string;
       fullName: string;
     }) => {
-      const response = await fetch(
-        "https://api.uno-finance.com/auth/register",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(userData),
-        }
-      );
+      const response = await fetch("http://[::1]:5000/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData),
+      });
       if (!response.ok) {
         throw new Error(await response.text());
       }

@@ -1,7 +1,7 @@
-import { Controller, Get, Patch, Body, Param, UseGuards, Req, BadRequestException } from '@nestjs/common';
+import { Controller, Get, Patch, Body, UseGuards, Req, BadRequestException } from '@nestjs/common';
 import { UserService } from './users.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
-import { UpdateProfileDto } from './update-profile.dto'; // DTO for profile update
+import { UpdateProfileDto } from './update-profile.dto';
 
 export enum UserRole {
   GUEST = 'Guest',
@@ -10,13 +10,14 @@ export enum UserRole {
   VENDOR = 'Vendor',
 }
 
-@Controller('user')
+@Controller('users')
 export class UserController {
   constructor(private userService: UserService) {}
+
   @UseGuards(JwtAuthGuard)
   @Get('profile')
   async getProfile(@Req() req) {
-    const userId = req.user.id;
+    const userId = req.user.userId;
     const user = await this.userService.getProfile(userId);
     
     if (!user) {
@@ -28,8 +29,6 @@ export class UserController {
   @UseGuards(JwtAuthGuard)
   @Patch('profile')
   async updateProfile(@Req() req, @Body() updateData: UpdateProfileDto) {
-    console.log("Req: ", req.user)
-    // Use req.user.userId instead of req.user.id
     const userId = req.user.userId;
     
     const user = await this.userService.updateProfile(userId, updateData);
@@ -41,7 +40,6 @@ export class UserController {
     return user;
   }
   
-  // List all users (For admin or future RBAC)
   @Get('list')
   async getAllUsers() {
     return this.userService.getAllUsers();

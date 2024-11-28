@@ -21,11 +21,8 @@ export class AuthController {
     const existingUser = await this.userService.findUserByEmail(email);
     if (existingUser) throw new BadRequestException('User with this email already exists');
 
-    // Create user and generate wallet
+    // Create user and generate wallet (this will also transfer tokens)
     const user = await this.userService.createUser(email, password, fullName);
-
-    // Fund the user's wallet with Ether
-    const txHash = await this.userService.fundWallet(user.walletAddress);
 
     // Generate a 6-digit verification code and send it via email
     const verificationCode = await this.authService.generateVerificationCode(user.id);
@@ -34,7 +31,7 @@ export class AuthController {
     return {
       message: 'User registered successfully. Please check your email to verify your account.',
       walletAddress: user.walletAddress,
-      transactionHash: txHash, // Provide transaction hash as confirmation
+      tokenBalance: user.tokenBalance, // Include token balance in response
     };
   }
 

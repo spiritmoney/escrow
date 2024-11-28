@@ -2,11 +2,9 @@ import {
   Injectable,
   CanActivate,
   ExecutionContext,
-  ForbiddenException,
   UnauthorizedException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { UserRole } from 'src/users/users.controller';
 import { UserService } from 'src/users/users.service';
 
 @Injectable()
@@ -26,32 +24,26 @@ export class CartGuard implements CanActivate {
 
     try {
       const decodedToken = this.jwtService.verify(token);
-      console.log('Decoded Token:', decodedToken); // Debug: Print decoded token
+      console.log('Decoded Token:', decodedToken);
 
       // Attach decoded token to the request object
       request.user = decodedToken;
 
       // Fetch user data using the ID from the decoded token
-      const user = await this.userService.findUserById(request.user.userId); // Assuming userId is in the token payload
+      const user = await this.userService.findUserById(request.user.userId);
       if (!user) {
         throw new UnauthorizedException('User not found');
       }
 
-      request.user = user; // Attach the complete user object to the request
+      request.user = user;
       console.log('User Data:', request.user);
-      // Check if the user role matches 'freelancer'
-      if (user.role === 'Guest') {
-        throw new ForbiddenException(
-          'You do not have permission to access this resource',
-        );
-      } else {
-        return true;
-      }
+      
+      // Allow access for all users including guests
+      return true;
+      
     } catch (error) {
-      console.error('Error during token validation:', error.message); // Debug: Print error
-      throw new UnauthorizedException(
-        'Invalid/Expired token or Unauthorized AAcess',
-      );
+      console.error('Error during token validation:', error.message);
+      throw new UnauthorizedException('Invalid/Expired token or Unauthorized Access');
     }
   }
 

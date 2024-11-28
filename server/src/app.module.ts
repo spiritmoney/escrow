@@ -37,7 +37,7 @@ import { ServiceModule } from './services/services.module';
     FreelancerModule,
     AuthModule,
     VendorModule,
-    ServiceModule
+    ServiceModule,
   ],
   controllers: [AppController],
   providers: [AppService],
